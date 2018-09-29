@@ -1,0 +1,252 @@
+%********************************************************************
+% Appendix
+%*******************************************************
+% If problems with the headers: get headings in appendix etc. right
+%\markboth{\spacedlowsmallcaps{Appendix}}{\spacedlowsmallcaps{Appendix}}
+
+%********************************************************************
+% Summary of the various Boolean properties and functions (from Chapter 3)
+%*******************************************************
+\chapter{Boolean Properties and Functions}
+\label{ap:ch:boolean_properties_and_functions}
+
+\begin{tabular}{ccc}
+
+	% AND Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{AND Truth Table}} \\
+		\multicolumn{2}{c}{Inputs} & {Output} \\
+		A & B & Y \\
+		\hline
+		0 & 0 & 0 \\
+		0 & 1 & 0 \\
+		1 & 0 & 0 \\
+		1 & 1 & 1 
+	\end{tabular}
+&
+	% OR Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{OR Truth Table}} \\
+		\multicolumn{2}{c}{Inputs} & {Output} \\
+		A & B & Y \\
+		\hline
+		0 & 0 & 0 \\
+		0 & 1 & 1 \\
+		1 & 0 & 1 \\
+		1 & 1 & 1 
+	\end{tabular}
+&
+	% XOR Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{XOR Truth Table}} \\
+		\multicolumn{2}{c}{Inputs} & {Output} \\
+		A & B & Y \\
+		\hline
+		0 & 0 & 0 \\
+		0 & 1 & 1 \\
+		1 & 0 & 1 \\
+		1 & 1 & 0 
+	\end{tabular}
+\\
+\\
+	% NAND Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{NAND Truth Table}} \\
+		\multicolumn{2}{c}{Inputs} & {Output} \\
+		A & B & Y \\
+		\hline
+		0 & 0 & 1 \\
+		0 & 1 & 1 \\
+		1 & 0 & 1 \\
+		1 & 1 & 0 
+	\end{tabular}
+&
+	% NOR Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{NOR Truth Table}} \\
+		\multicolumn{2}{c}{Inputs} & {Output} \\
+		A & B & Y \\
+		\hline
+		0 & 0 & 1 \\
+		0 & 1 & 0 \\
+		1 & 0 & 0 \\
+		1 & 1 & 0 
+	\end{tabular}
+&
+	% XNOR Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{XNOR Truth Table}} \\
+		\multicolumn{2}{c}{Inputs} & {Output} \\
+		A & B & Y \\
+		\hline
+		0 & 0 & 1 \\
+		0 & 1 & 0 \\
+		1 & 0 & 0 \\
+		1 & 1 & 1 
+	\end{tabular}
+\\
+\\
+	% NOT Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{NOT Truth Table}} \\
+		Input & Output \\
+		\hline
+		0 & 1 \\
+		1 & 0 \\
+	\end{tabular}
+&
+	% Buffer Truth Table
+	\begin{tabular}{ccc} 
+		\multicolumn{3}{c}{\emph{Buffer Truth Table}} \\
+		{Input} & {Output} \\
+		\hline
+		0 & 0 \\
+		1 & 1 
+	\end{tabular}
+&
+\end{tabular}
+
+\hrulefill
+
+%******************************************************
+% Univariate Properties
+%******************************************************
+\begin{table}[ht]
+	\caption{Univariate Properties}
+	\label{ap:tab:univeriate_properties}
+	\sffamily
+	\newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+	\begin{center}
+		\rowcolors{2}{gray!10}{white} % Color every other line a light gray
+		\begin{tabular}{ccc} 
+			\rowcolor{black!75}
+			{\head{Property}} & \head{OR} & \head{AND} \\
+			Identity & $ A + 0 = A $ & $ 1A = A $ \\
+			Idempotence & $ A + A = A $ & $ AA = A $ \\
+			Annihilator & $ A + 1 = 1 $ & $ 0A = 0 $ \\
+			Complement & $ A + A' = 1 $ & $ AA' = 0 $ \\
+			Involution & \multicolumn{2}{c}{$ (A')' = A $} 
+		\end{tabular}
+	\end{center}
+\end{table}
+
+%******************************************************
+% Multivariate Properties
+%******************************************************
+\begin{table}[ht]
+	\caption{Multivariate Properties}
+	\label{ap:tab:multivariate_properties}
+	\sffamily
+	\newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+	\begin{center}
+		\rowcolors{2}{gray!10}{white} % Color every other line a light gray
+		\begin{tabular}{ccc} 
+			\rowcolor{black!75}
+			{\head{Property}} & \head{OR} & \head{AND} \\
+			Commutative & $ A + B = B + A $ & $ AB = BA $ \\
+			Associative & $ (A + B) + C = A + (B + C) $ & $ (AB)C = A(BC) $ \\
+			Distributive & $ A + (BC) = (A+B)(A+C) $ & $ A(B+C) = AB + AC $ \\
+			Absorption & $ A + AB = A $ & $ A(A+B) = A $ \\
+			DeMorgan & $ \overline{A+B}=\overline{A}\,\overline{B} $ 
+				& $ \overline{AB}=\overline{A}+\overline{B} $ \\
+			Adjacency & \multicolumn{2}{c}{$ AB + AB' = A $} 
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[ht]
+	\caption{Boolean Functions}
+	\label{ap:tab:boolean_functions}
+	\sffamily
+	\newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+	\begin{center}
+		\rowcolors{2}{gray!10}{white} % Color every other line a light gray
+		\begin{tabular}{llllll}
+			\textbf{A} & 0 & 0 & 1 & 1 &  \\ 
+			\textbf{B} & 0 & 1 & 0 & 1 &  \\ \hline
+			$ F_{0} $ & 0 & 0 & 0 & 0 
+			& Zero or Clear. Always zero (Annihilation) \\ 
+			$ F_{1} $ & 0 & 0 & 0 & 1 
+			& Logical AND: $ A * B $  \\ 
+			$ F_{2} $ & 0 & 0 & 1 & 0 
+			& Inhibition: $ AB' $ or $ A>B $ \\ 
+			$ F_{3} $ & 0 & 0 & 1 & 1 
+			& Transfer A to Output, Ignore B \\ 
+			$ F_{4} $ & 0 & 1 & 0 & 0 
+			& Inhibition: $ A'B $ or $ B>A $ \\ 
+			$ F_{5} $ & 0 & 1 & 0 & 1 
+			& Transfer B to Output, Ignore A \\ 
+			$ F_{6} $ & 0 & 1 & 1 & 0 
+			& Exclusive Or (XOR): $ A \oplus B $ \\ 
+			$ F_{7} $ & 0 & 1 & 1 & 1 
+			& Logical OR: $ A + B $ \\ 
+			$ F_{8} $ & 1 & 0 & 0 & 0 
+			& Logical NOR: $ (A + B)' $ \\ 
+			$ F_{9} $ & 1 & 0 & 0 & 1 
+			& Equivalence: $ (A = B)' $ \\ 
+			$ F_{10} $ & 1 & 0 & 1 & 0 
+			& Not B and ignore A, B Complement \\ 
+			$ F_{11} $ & 1 & 0 & 1 & 1 
+			& Implication, $ A + B' $, $ B >= A $ \\ 
+			$ F_{12} $ & 1 & 1 & 0 & 0 
+			& Not A and ignore B, A Complement \\ 
+			$ F_{13} $ & 1 & 1 & 0 & 1 
+			& Implication, $ A' + B $, $ A >= B $ \\ 
+			$ F_{14} $ & 1 & 1 & 1 & 0 
+			& Logical NAND: $ (A*B)' $ \\ 
+			$ F_{15} $ & 1 & 1 & 1 & 1 
+			& One or Set. Always one (Identity) \\ 
+		\end{tabular} 
+	\end{center}
+\end{table}
+
+%*******************************************************
+% Resources
+%*******************************************************
+\chapter{Resources}
+\label{ap:ch:resources}
+
+The following materials were used as resources for this book.
+
+\section{Digital Logic}
+\subsection{Books}
+
+\begin{enumerate}
+  \item Gregg, John, 1998, Ones and zeros. New York : IEEE Press.
+  \item Holdsworth, B and Woods, R. C, 2002, Digital logic design. Oxford : Newnes.
+  \item Langholz, Gideon, Kandel, Abraham and Mott, Joe L, 1998, Foundations of digital logic design. Singapore : World Scientific.
+  \item M.Rafiquzzaman., 2005, Fundamentals of Digital Logic and Microcomputer Design, 5th Edition. John Wiley \& Sons.
+  \item Mano, M. Morris and Ciletti, Michael D, 2013, Digital design. Upper Saddle River, NJ : Pearson Prentice Hall.
+  \item Maxfield, Clive Max, Maxfield, Clive Max and Maxfield, Clive Max, 1998, Designus Maximus unleashed!. Boston : Newnes.
+  \item Maxfield, Clive, 2003, Bebop to the Boolean boogie. Amsterdam : Newnes.
+  \item Nisan, Noam and Schocken, Shimon, [no date], The elements of computing systems.
+  \item Petzold, Charles, 1999, Code. Redmond, Wash. : Microsoft Press.
+  \item Predko, Michael, 2005, Digital electronics demystified. New York : McGraw-Hill.
+  \item Saha, A and Manna, N, 2007, Digital principles and logic design. Hingham, Mass. : Infinity Science Press.
+  \item Tokheim, Roger L, 1999, Digital electronics. New York : Glencoe/McGraw-Hill.
+  \item Yarbrough, John M, 1997, Digital logic. Minneapolis/St. Paul : West Pub. Co.
+\end{enumerate}
+
+\subsection{Found Online}
+
+\begin{enumerate}
+  \item Cummings, Clifford, 2002, The Fundamentals of Efficient Synthesizable Finite State Machine Design using NC-Verilog and BuildGates [online]. 1. Sunburst Design, Inc. [Accessed 12  April  2016]. Available from: \url{http://www.sunburst-design.com/papers/CummingsICU2002\_FSMFundamentals.pdf}
+  \item de Pablo, S., Cebrian, J. A., Herrero, L.C. and Rey, A.B., 2016, A very simple 8-bit RISC processor for FPGA [online]. 1. [Accessed 12  April  2016]. Available from: \url{http://www.dte.eis.uva.es/Datos/Congresos/FPGAworld2006a.pdf}
+  \item Digital Circuits - Wikibooks, open books for an open world, 2016. En.wikibooks.org [online]
+  \item Gray, Jan, 2000, Designing a Simple FPGA-Optimized RISC CPU and System-on-a-Chip [online]. 1. Gray Research, LLC. [Accessed 12  April  2016]. Available from: \url{http://www.fpgacpu.org/papers/soc-gr0040-paper.pdf}
+  \item Kaur, Ramandeep, 2016, 8 Bit RISC Processor Using Verilog HDL [online]. 1. Anuj el al Int. Journal of Engineering Research and Applications. [Accessed 12  April  2016]. Available from: \url{http://www.ijera.com/papers/Vol4\_issue3/Version\%201/BV4301417422.pdf}
+  \item Liu, Jianming, Zhang, Yunjie, Xu, Lili and Liu, Pengtao, 2013, [online]. 1. 2nd International Conference on Computer Science and Electronics Engineering. [Accessed 12  April  2016]. Available from: \url{http://www.atlantis-press.com/php/pub.php?publication=iccsee-13\&frame=http\%3A//www.atlantis-press.com/php/paper-details.php\%3Fid\%3D4893}
+  \item Nyasulu, Peter and Knight, J., 2003, Introduction to Verilog [online]. 1. Carleton University. [Accessed 12  April  2016]. Available from: \url{http://www.doe.carleton.ca/~jknight/97.478/97.478\_02F/PetervrlQ.pdf}
+  \item Phelps, Andrew, 2006, Constructing an Error Correcting Code [online]. 1. Madison : University of Wisconsin. [Accessed 12  April  2016]. Available from: \url{http://pages.cs.wisc.edu/~markhill/cs552/Fall2006/handouts/ConstructingECC.pdf}
+  \item Programmable Logic - Wikibooks, open books for an open world, 2016. En.wikibooks.org [online]
+  \item User Guide, 2016. Icarus Verilog [online]
+  \item Verilog Tutorial -Table of Contents: ElectroSofts.com, 2016. Electrosofts.com [online]
+  \item Welcome To Verilog Page, 2016. Asic-world.com [online]
+\end{enumerate}
+
+
+%*******************************************************
+% New Appendix Here
+%*******************************************************
+%\chapter{New Appendix Here}
+%\label{ap:ch:new_appendix_here}

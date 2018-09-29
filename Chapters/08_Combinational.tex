@@ -1,0 +1,2068 @@
+\chapter{Combinational Logic Circuits}\label{ch08}
+\section{Introduction}
+
+Electronic circuits that do not require any memory devices (like flip-flops or registers) use what is called ``Combinational Logic.'' These systems can be quite complex, but all outputs are determined solely by the actions of a series of logic gates on a given set of inputs. Another characteristic of combinational circuits is the lack of feedback. An output state is determined almost instantly from the inputs with no feedback loops. Combinational circuits can be reduced to a Boolean Algebra expression, though one that may be quite complex. Combinational circuits include many useful applications, including adders, subtractors, multipliers, dividers, encoders, decoders, display drivers, and keyboard encoders.
+ 
+This chapter develops combinational logic circuits.\footnote{All circuits found in this chapter are available as \Le files in the course materials.}
+
+\section{Multiplexers/Demultiplexers}
+\label{CL:sec:multiplexers_demultiplexers}
+
+\subsection{Multiplexer}
+\label{CL:subsec:multiplexer}
+
+\marginpar{A multiplexer is usually called a ``mux'' and a demultiplexer is called a ``dmux.''}
+
+A multiplexer is used to connect one of several input lines to a single output line. Thus, it selects which input to pass to the output. This function is similar to a rotary switch where several potential inputs to the switch can be sent to a single output. A demultiplexer is a multiplexer in reverse, so a single input can be routed to any of several outputs. While mux/dmux circuits were originally built for transmission systems (like using a single copper wire to carry several different telephone calls simultaneously), today they are used as ``decision-makers'' in virtually every digital logic system and are, therefore, one of the most important devices for circuit designers. 
+
+To help clarify this concept, Figure \ref{CL:fig:multiplexer_using_rotary_switches} is a simple schematic diagram that shows two rotary switches set up as a mux/dmux pair. As the switches are set in the diagram, a signal would travel from \textsf{INPUT B} to \textsf{OUTPUT 2} through a connecting wire. 
+
+\begin{figure}[H]
+  \caption{Multiplexer Using Rotary Switches}
+  \label{CL:fig:multiplexer_using_rotary_switches}  
+  \myfloatalign
+  \begin{tikzpicture} [circuit logic US, scale=1.00]
+  % make all path lines (the node shapes) a little thicker
+  \tikzstyle{every path}=[line width=0.50mm]  
+  
+  % Input nodes
+  \node[circ,label={135:A}] (nA) at (0.40,2.50) {};
+  \node[circ,label={180:B}] (nB) at (0.15,2.35) {};
+  \node[circ,label={180:C}] (nC) at (0.0,2.00) {};
+  \node[circ,label={180:D}] (nD) at (0.15,1.65) {};
+  \node[circ,label={225:E}] (nE) at (0.40,1.50) {};
+  % Connector Nodes
+  \node[circ] (c01) at (0.5,2.00) {};
+  \node[circ] (c02) at (2.0,2.00) {};  
+  % Output nodes
+  \node[circ,label={45:1}] (o1)  at (2.1,2.50) {};
+  \node[circ,label={0:2}]  (o2)  at (2.35,2.35) {};
+  \node[circ,label={0:3}]  (o3)  at (2.5,2.00) {};
+  \node[circ,label={0:4}]  (o4)  at (2.35,1.65) {};
+  \node[circ,label={315:5}] (o5) at (2.1,1.50) {};
+  
+  % Draw the lines
+  \pgfsetarrowsend{latex};
+  \draw (c01) -- (nB);
+  \draw (c02) -- (o2);
+
+  \pgfsetarrowsend{};
+  \draw (c02) -- (c01) ;    
+  \end{tikzpicture}
+\end{figure}
+
+Imagine that the switches could somehow be synchronized so they rotated among the setting together; that is, \textsf{INPUT A}  would always connect to \textsf{OUTPUT 1} and so forth. That would mean a single wire could carry five different signals. For example, imagine that the inputs were connected to five different intrusion sensors in a building and the five outputs were connected to lamps on a guard's console in a remote building. If something triggered sensor $ A $ then as soon as the mux/dmux pair rotated to that position it would light lamp one on the console. Carrying all of these signals on a single wire saves a lot of expense. Of course, a true alarm system would be more complex than this, but this example is only designed to illustrate how a mux/dmux pair works in a transmission system.
+
+\footnote{In this book, input data ports are labeled with a single letter from the beginning of the alphabet, output data ports are labeled with a single letter from the end of the alphabet, and other signals use descriptive labels.}Figure \ref{fig:08_01} is the logic diagram for a simple one-bit two-to-one multiplexer. In this circuit, an input is applied to input ports \emph{A} and \emph{B}. Port \emph{Sel} is the selector and if that signal is zero then Port \emph{A} will be routed to output \emph{Y}; if, though, \emph{Sel} is one then Port \emph{B} will be routed to \emph{Y}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_01}
+	\caption{Simple Mux}
+	\label{fig:08_01}
+\end{figure}
+
+Truth Table \ref{tab:08_01}, below, is for a multiplexer:
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cc|cc} 
+      \rowcolor{black!75}
+      \multicolumn{3}{c}{\head{Inputs}} & \head{Output} \\
+      A & B & Sel & Y \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 0 \\
+      0 & 1 & 1 & 1 \\
+      1 & 0 & 0 & 1 \\
+      1 & 0 & 1 & 0 \\
+      1 & 1 & 0 & 1 \\
+      1 & 1 & 1 & 1 
+    \end{tabular}
+  \end{center}
+  \caption{Truth Table for a Multiplexer}
+  \label{tab:08_01}
+\end{table}
+
+In this multiplexer, the data input ports are only a single bit wide; however, in a normal circuit those ports could be a full $ 32 $-bit or $ 64 $-bit word and the selected word would be passed to the output port. Moreover, a multiplexer can have more than two input ports so a very versatile switch can be built to handle switching full words from one of eight or even sixteen different inputs. Because of its ability to channel a selected data stream to a single bus line from many different sub-circuits, the multiplexer is one of the workhorses for digital logic circuits and is frequently found in complex devices like \acp{CPU}.
+ 
+\subsection{Demultiplexer}
+\label{CL:subsec:demultiplexer}
+
+A demultiplexer is the functional opposite of a multiplexer: a single input is routed to one of several potential outputs. Figure \ref{fig:08_02} is the logic diagram for a one-bit one-to-two demultiplexer. In this circuit, an input is applied to input port \emph{A}. Port \emph{Sel} is a control signal and if that signal is zero then input \emph{A} will be routed to output \emph{Y}, but if the control signal is one then input \emph{A} will be routed to output \emph{Z}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_02}
+	\caption{Simple Dmux}
+	\label{fig:08_02}
+\end{figure}
+
+Truth Table \ref{tab:08_02}, below, is for a demultiplexer.
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cc|cc} 
+      \rowcolor{black!75}
+      \multicolumn{2}{c}{\head{Inputs}} & \multicolumn{2}{c}{\head{Outputs}} \\
+      A & Sel & Y & Z \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      0 & 1 & 0 & 0 \\
+      1 & 0 & 0 & 1 \\
+      1 & 1 & 1 & 0 
+    \end{tabular}
+  \end{center}
+  \caption{Truth Table for a Demultiplexer}
+  \label{tab:08_02}
+\end{table}
+
+In this demultiplexer the data input port is only a single bit wide; however, in a normal circuit that port could be a full $ 32 $-bit or $ 64 $-bit word and that entire word would be passed to the selected output port. Moreover, a demultiplexer can have more than two outputs so a very versatile switch can be built to handle switching full words to one of eight or even sixteen different outputs. Because of its ability to switch a data stream to different sub-circuits, the demultiplexer is one of the workhorses for digital logic circuits and is frequently found in complex devices like \acp{CPU}.
+
+\subsection{Minterm Generators}
+\label{CL:subsec:minterm_generators}
+
+Demultiplexers can be combined with an \textsf{OR} gate and be used as a minterm generator. Consider the circuit for this two-variable equation.
+
+\begin{align}
+  \label{CL:eq:2_var_minterm_gen}
+  \int(A,B) &= \sum(1,2)
+\end{align}
+
+Since there are two input variables, \emph{A} and \emph{B}, the dmux needs to have two select bits, one for each variable, and that would generate four potential dmux outputs \emph{W}, \emph{X}, \emph{Y}, and \emph{Z}. This circuit could be constructed using a four-output dmux with a two-bit control signal.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_03}
+	\caption{1-to-4 Dmux}
+	\label{fig:08_03}
+\end{figure}
+
+In Figure \ref{fig:08_03}, a four-bit input (\emph{A}) is routed to one of four output ports: \emph{W}, \emph{X}, \emph{Y}, or \emph{Z}, depending on the setting of the select, \emph{Sel}. Figure \ref{fig:08_03} shows the data input of $ 1010 $ being routed to \emph{Y} by a select of $ 10 $.
+
+However, the equation specifies that the only outputs that would be used are when \emph{Sel} is $ 01 $ or $ 10 $. Thus, output ports \emph{X} and \emph{Y} must be sent to an \textsf{OR} gate and the other two outputs ignored. The output of the \textsf{OR} gate would only activate when \emph{Sel} is set to $ 01 $ or $ 10 $, as shown in Figure \ref{fig:08_04}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_04}
+	\caption{1-to-4 Dmux As Minterm Generator}
+	\label{fig:08_04}
+\end{figure}
+
+\section{Adders and Subtractors}
+\label{CL:sec:adders_and_subtractors}
+
+\subsection{Introduction}
+\label{CL:subsec:introduction_to_adders_and_subtractors}
+
+In the Binary Mathematics chapter, the concept of adding two binary numbers was developed and the process of adding binary numbers can be easily implemented in hardware. If two one-bit numbers are added, they will produce a sum and an optional carry-out bit and the circuit that performs this is called a ``half adder.'' If two one-bit numbers along with a carry-in bit from another stage are added they will produce a sum and an optional carry-out, and the circuit that performs this is function called a ``full adder.'' 
+
+Subtractors are similar to adders but they must be able to signal a ``borrow'' bit rather than send a carry-out bit. Like adders, subtractors are developed from half-subtractor circuits. This unit develops both adders and subtractors.
+
+\subsection{Half Adder}
+\label{CL:subsec:half_adder}
+
+Following is the truth table for a half adder.
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cc|cc} 
+      \rowcolor{black!75}
+      \multicolumn{2}{c}{\head{Inputs}} & \multicolumn{2}{c}{\head{Output}} \\
+      A & B & Sum & COut \\
+      \hline
+      0 & 0 & 0 & 0 \\
+      0 & 1 & 1 & 0 \\
+      1 & 0 & 1 & 0 \\
+      1 & 1 & 0 & 1 
+    \end{tabular}
+  \end{center}
+  \caption{Truth Table for Half-Adder}
+  \label{CL:tab:truth_table_for_half_adder}
+\end{table}
+
+The \emph{Sum} column in this truth table is the same pattern as an \textsf{XOR}) so the easiest way to create a half adder is to use an \textsf{XOR} gate. However, if both input bits are high a half adder will also generate a carry out (\emph{COut}) bit, so the half adder circuit should be designed to provide that carry out. The circuit in Figure \ref{fig:08_05} meets those requirements. In this circuit, \emph{A} and \emph{B} are connected to \textsf{XOR} gate \textsf{U1} and that is connected to output \emph{Sum}. \emph{A} and \emph{B} are also connected to \textsf{AND} gate \textsf{U2} and that is connected to carry-out bit \emph{COut}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_05}
+	\caption{Half-Adder}
+	\label{fig:08_05}
+\end{figure}
+
+\subsection{Full Adder}
+\label{CL:subsec:full_adder}
+
+A full adder sums two one-bit numbers along with a carry-in bit and produces a sum with a carry-out bit. Truth table \ref{CL:tab:truth_table_for_full_adder} defines a full adder. 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccc|cc} 
+      \rowcolor{black!75}
+      \multicolumn{3}{c}{\head{Inputs}} & \multicolumn{2}{c}{\head{Output}} \\
+      A & B & CIn & Sum & COut \\
+      \hline
+      0 & 0 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 1 & 0 \\
+      0 & 1 & 0 & 1 & 0 \\
+      0 & 1 & 1 & 0 & 1 \\
+      1 & 0 & 0 & 1 & 0 \\
+      1 & 0 & 1 & 0 & 1 \\
+      1 & 1 & 0 & 0 & 1 \\
+      1 & 1 & 1 & 1 & 1
+    \end{tabular}
+  \end{center}
+  \caption{Truth Table for Full Adder}
+  \label{CL:tab:truth_table_for_full_adder}
+\end{table}
+
+Following are Karnaugh Maps for both outputs.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% K-Map for Sum
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	%   \node[] at (2.25,2.25) {\Huge $ 1 $}; % 00
+	   \node[] at (2.25,0.75) {\Huge $ 1 $}; % 01
+	   \node[] at (3.75,2.25) {\Huge $ 1 $}; % 02
+	%   \node[] at (3.75,0.75) {\Huge $ 1 $}; % 03
+	   \node[] at (6.75,2.25) {\Huge $ 1 $}; % 04
+	%   \node[] at (6.75,0.75) {\Huge $ 1 $}; % 05
+	%   \node[] at (5.25,2.25) {\Huge $ 1 $}; % 06
+	   \node[] at (5.25,0.75) {\Huge $ 1 $}; % 07
+	
+	% The coords for each cell - this is used as the origin for the solution box
+	\coordinate (cell00) at (1.5,1.5); \coordinate (cell01) at (1.5,0.0);
+	\coordinate (cell02) at (3.0,1.5); \coordinate (cell03) at (3.0,0.0);
+	
+	\coordinate (cell04) at (6.0,1.5); \coordinate (cell05) at (6.0,0.0);
+	\coordinate (cell06) at (4.5,1.5); \coordinate (cell07) at (4.5,0.0);
+	
+	% The colored boxes enclosing adjacent ones
+	% Set the ``at'' to the lower-left cell of the rectangle using 
+	% the 'cellxx' defined above
+	% Set the minimum height/width to (number of cells) * 1.5. 
+	% May have to decrease these by 0.1 to cut the rectangle 
+	% just inside the cell.
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell01) {};
+	
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell02) {};
+
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell07) {};
+
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell04) {};
+
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************  
+	% Text in top-Left cell
+	\node[] at (0.50,3.40) { $ \mathsf{ \mathbf{C} } $ }; % C
+	\node[] at (1.10,4.05) { $ \mathsf{ \mathbf{AB} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {
+		(2.25,3.75)/{00}, (3.75,3.75)/{01},
+		(5.25,3.75)/{11}, (6.75,3.75)/{10}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in { 
+		(0.75,2.25)/{0},(0.75,0.75)/{1}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { 
+		(2.75,1.75)/{00} , (4.25,1.75)/{02} , (5.75,1.75)/{06} , (7.25,1.75)/{04} ,
+		(2.75,0.15)/{01} , (4.25,0.15)/{03} , (5.75,0.15)/{07} , (7.25,0.15)/{05} }
+	\draw \loc node{ \color{blue!90!black} \small { $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,4.5) % The Grid
+	(0.0,4.5) -- (1.5,3.0) % Diagonal in the top left cell
+	(1.5,3.10) -- (7.5,3.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,3.0) % Double line on left of header column one
+	;    
+	\end{tikzpicture}
+	\caption{K-Map For The SUM Output}
+	\label{kmap:08_01}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% K-Map for COut
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	%   \node[] at (2.25,2.25) {\Huge $ 1 $}; % 00
+	%   \node[] at (2.25,0.75) {\Huge $ 1 $}; % 01
+	%   \node[] at (3.75,2.25) {\Huge $ 1 $}; % 02
+	   \node[] at (3.75,0.75) {\Huge $ 1 $}; % 03
+	%   \node[] at (6.75,2.25) {\Huge $ 1 $}; % 04
+	   \node[] at (6.75,0.75) {\Huge $ 1 $}; % 05
+	   \node[] at (5.25,2.25) {\Huge $ 1 $}; % 06
+	   \node[] at (5.25,0.75) {\Huge $ 1 $}; % 07
+	
+	% The coords for each cell - this is used as the origin for the solution box
+	\coordinate (cell00) at (1.5,1.5); \coordinate (cell01) at (1.5,0.0);
+	\coordinate (cell02) at (3.0,1.5); \coordinate (cell03) at (3.0,0.0);
+	
+	\coordinate (cell04) at (6.0,1.5); \coordinate (cell05) at (6.0,0.0);
+	\coordinate (cell06) at (4.5,1.5); \coordinate (cell07) at (4.5,0.0);
+	
+	% The colored boxes enclosing adjacent ones
+	% Set the ``at'' to the lower-left cell of the rectangle using 
+	% the 'cellxx' defined above
+	% Set the minimum height/width to (number of cells) * 1.5. 
+	% May have to decrease these by 0.1 to cut the rectangle 
+	% just inside the cell.
+	\node [draw,
+	color=red!70!black,
+	fill=red!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=2.9cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell03) {};
+
+	\node [draw,
+	color=green!70!black,
+	fill=green!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=2.9cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell07) {};
+	
+	\node [draw,
+	color=blue!70!black,
+	fill=blue!20!white,
+	fill opacity=0.3,
+	minimum height=2.9cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell07) {};
+	
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************  
+	% Text in top-Left cell
+	\node[] at (0.50,3.40) { $ \mathsf{ \mathbf{C} } $ }; % C
+	\node[] at (1.10,4.05) { $ \mathsf{ \mathbf{AB} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {
+		(2.25,3.75)/{00}, (3.75,3.75)/{01},
+		(5.25,3.75)/{11}, (6.75,3.75)/{10}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in { 
+		(0.75,2.25)/{0},(0.75,0.75)/{1}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { 
+		(2.75,1.75)/{00} , (4.25,1.75)/{02} , (5.75,1.75)/{06} , (7.25,1.75)/{04} ,
+		(2.75,0.15)/{01} , (4.25,0.15)/{03} , (5.75,0.15)/{07} , (7.25,0.15)/{05} }
+	\draw \loc node{ \color{blue!90!black} \small { $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,4.5) % The Grid
+	(0.0,4.5) -- (1.5,3.0) % Diagonal in the top left cell
+	(1.5,3.10) -- (7.5,3.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,3.0) % Double line on left of header column one
+	;    
+	\end{tikzpicture}
+	\caption{K-Map For The COut Output}
+	\label{kmap:08_02}
+\end{figure}
+
+Karnaugh map \ref{kmap:08_01} is a Reed-Muller pattern that is typical of an \textsf{XOR} gate. Karnaugh map \ref{kmap:08_02} can be reduced to three Boolean expressions. The full adder circuit is, therefore, defined by the following Boolean equations. 
+
+\begin{align}
+  \label{CL:eq:full_adder}
+  A \oplus B \oplus CIn &= Sum \\
+  \nonumber
+  (A * B) + (A * CIn) + (B * CIn) &= COut
+\end{align}
+
+Figure \ref{fig:08_06} is a full adder. In essence, this circuit combines two half-adders such that \textsf{U1} and \textsf{U2} are one half-adder that sums \emph{A} and \emph{B} while \textsf{U3} and \textsf{U4} are the other half-adder that sums the output of the first half-adder and \emph{CIn}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_06}
+	\caption{Full Adder}
+	\label{fig:08_06}
+\end{figure}
+
+\subsection{Cascading Adders}
+\label{CL:subsec:cascading_adders}
+
+The full adder developed above will only add two one-bit numbers along with an optional carry-in bit; however, those adders can be cascaded such that an adder of any bit width can be easily created. Figure \ref{fig:08_07} shows a four-bit adder created by cascading four one-bit adders. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_07}
+	\caption{4-Bit Adder}
+	\label{fig:08_07}
+\end{figure}
+
+This circuit would add two four-bit inputs, \emph{A} and \emph{B}. Stage zero, at the top of the stack, adds bit zero from both inputs and then outputs bit zero of the sum, \emph{Y0}, along with a carry-out bit. The carry-out bit from stage zero is wired directly into the stage one's carry-in port. That adder then adds bit one from both inputs along with the carry-in bit to create bit one of the sum, \emph{Y1}, along with a carry-out bit. This process continues until all for bits have been added. In the end, outputs \emph{Y0} - \emph{Y3} are combined to create a four-bit sum. If there is a carry-out bit from the last stage it could be used as the carry-in bit for another device or could be used to signal an overflow error.
+
+\subsection{Half Subtractor}
+\label{CL:subsec:half_subtractor}
+
+To understand a binary subtraction circuit, it is helpful begin with subtraction in a base-10 system.  
+
+\begin{binDisp}[commandchars=~\[\]]
+     83
+    -~underline[65]
+     18
+\end{binDisp}
+
+Since $ 5 $ cannot be subtracted from $ 3 $ (the least significant digits), $ 10 $ must be borrowed from $ 8 $. This is simple elementary-school arithmetic but the principle is important for base-2 subtraction. There are only four possible one-bit subtraction problems.
+
+\begin{binDisp}[commandchars=~\[\]]
+     0     1     1     10
+    -~underline[0]    -~underline[0]    -~underline[1]     -~underline[1]
+     0     1     0      1
+\end{binDisp}
+
+The first three examples above need no explanation, but the fourth only makes sense when it is understood that it is impossible to subtract $ 1 $ from $ 0 $ so $ 10_{2} $ was borrowed from the next most significant bit position. The problems above were used to generate the following half-subtractor truth table.
+
+\begin{table}[H]
+	\sffamily
+	\newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+	\begin{center}
+		\rowcolors{2}{gray!10}{white} % Color every other line a light gray
+		\begin{tabular}{ccc|cc} 
+			\rowcolor{black!75}
+			\multicolumn{2}{c}{\head{Inputs}} & \multicolumn{2}{c}{\head{Outputs}} \\
+			A & B & Diff & BOut \\
+			\hline
+			0 & 0 & 0 & 0 \\
+			0 & 1 & 1 & 1 \\
+			1 & 0 & 1 & 0 \\
+			1 & 1 & 0 & 0
+		\end{tabular}
+	\end{center}
+	\caption{Truth Table for Half-Subtractor}
+	\label{CL:tab:truth_table_for_half_subtractor}
+\end{table}
+
+\emph{Diff} is the difference of \emph{A} minus \emph{B}. \emph{BOut} (``Borrow Out'') is a signal that a borrow is necessary from the next most significant bit position when \emph{B} is greater than \emph{A}. The following Boolean equations define the calculations needed for a half-subtractor.
+
+\begin{align}
+\label{CL:eq:half_subtractor}
+	A \oplus B &= Diff \\
+	\nonumber
+	A' * B &= BOut
+\end{align}
+
+The pattern for \emph{Diff} is the same as an \textsf{XOR} gate so using an \textsf{XOR} gate is the easiest way to generate the difference. \emph{BOut} is only high when \emph{A} is low and \emph{B} is high so a simple \textsf{AND} gate with one inverted input can be used to generate \emph{BOut}. The circuit in figure \ref{fig:08_08} realizes a half-subtractor.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_08}
+	\caption{Half-Subtractor}
+	\label{fig:08_08}
+\end{figure}
+
+\subsection{Full Subtractor}
+\label{CL:subsec:full_subtractor}
+
+A full subtractor produces a difference and borrow-out signal, just like a half-subtractor, but also includes a borrow-in signal so they can be cascaded to create a subtractor of any desired bit width.
+
+Truth table \ref{CL:tab:truth_table_for_subtractor} is for a full subtractor. 
+
+\begin{table}[H]
+	\sffamily
+	\newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+	\begin{center}
+		\rowcolors{2}{gray!10}{white} % Color every other line a light gray
+		\begin{tabular}{ccc|cc} 
+			\rowcolor{black!75}
+			\multicolumn{3}{c}{\head{Inputs}} & \multicolumn{2}{c}{\head{Output}} \\
+			A & B & BIn & Diff & BOut \\
+			\hline
+			0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 1 & 1 & 1 \\
+			0 & 1 & 0 & 1 & 1 \\
+			0 & 1 & 1 & 0 & 1 \\
+			1 & 0 & 0 & 1 & 0 \\
+			1 & 0 & 1 & 0 & 0 \\
+			1 & 1 & 0 & 0 & 0 \\
+			1 & 1 & 1 & 1 & 1
+		\end{tabular}
+	\end{center}
+	\caption{Truth Table for Subtractor}
+	\label{CL:tab:truth_table_for_subtractor}
+\end{table}
+
+\emph{Diff} is the difference of \emph{A} minus \emph{B} minus \emph{BIn}. \emph{BOut} (``Borrow Out'') is a signal that a borrow is necessary from the next most significant bit position when \emph{A} is less than \emph{B} plus \emph{BIn}. 
+
+Following are Karnaugh Maps for both outputs.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% K-Map for Difference
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	%   \node[] at (2.25,2.25) {\Huge $ 1 $}; % 00
+	\node[] at (2.25,0.75) {\Huge $ 1 $}; % 01
+	\node[] at (3.75,2.25) {\Huge $ 1 $}; % 02
+	%   \node[] at (3.75,0.75) {\Huge $ 1 $}; % 03
+	\node[] at (6.75,2.25) {\Huge $ 1 $}; % 04
+	%   \node[] at (6.75,0.75) {\Huge $ 1 $}; % 05
+	%   \node[] at (5.25,2.25) {\Huge $ 1 $}; % 06
+	\node[] at (5.25,0.75) {\Huge $ 1 $}; % 07
+	
+	% The coords for each cell - this is used as the origin for the solution box
+	\coordinate (cell00) at (1.5,1.5); \coordinate (cell01) at (1.5,0.0);
+	\coordinate (cell02) at (3.0,1.5); \coordinate (cell03) at (3.0,0.0);
+	
+	\coordinate (cell04) at (6.0,1.5); \coordinate (cell05) at (6.0,0.0);
+	\coordinate (cell06) at (4.5,1.5); \coordinate (cell07) at (4.5,0.0);
+	
+	% The colored boxes enclosing adjacent ones
+	% Set the ``at'' to the lower-left cell of the rectangle using 
+	% the 'cellxx' defined above
+	% Set the minimum height/width to (number of cells) * 1.5. 
+	% May have to decrease these by 0.1 to cut the rectangle 
+	% just inside the cell.
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell01) {};
+	
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell02) {};
+	
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell07) {};
+	
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.4cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell04) {};
+	
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************  
+	% Text in top-Left cell
+	\node[] at (0.50,3.40) { $ \mathsf{ \mathbf{C} } $ }; % C
+	\node[] at (1.10,4.05) { $ \mathsf{ \mathbf{AB} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {
+		(2.25,3.75)/{00}, (3.75,3.75)/{01},
+		(5.25,3.75)/{11}, (6.75,3.75)/{10}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in { 
+		(0.75,2.25)/{0},(0.75,0.75)/{1}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { 
+		(2.75,1.75)/{00} , (4.25,1.75)/{02} , (5.75,1.75)/{06} , (7.25,1.75)/{04} ,
+		(2.75,0.15)/{01} , (4.25,0.15)/{03} , (5.75,0.15)/{07} , (7.25,0.15)/{05} }
+	\draw \loc node{ \color{blue!90!black} \small { $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,4.5) % The Grid
+	(0.0,4.5) -- (1.5,3.0) % Diagonal in the top left cell
+	(1.5,3.10) -- (7.5,3.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,3.0) % Double line on left of header column one
+	;    
+	\end{tikzpicture}
+	\caption{K-Map For The Difference Output}
+	\label{kmap:08_03}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% K-Map for BOut
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	%   \node[] at (2.25,2.25) {\Huge $ 1 $}; % 00
+	   \node[] at (2.25,0.75) {\Huge $ 1 $}; % 01
+	   \node[] at (3.75,2.25) {\Huge $ 1 $}; % 02
+	   \node[] at (3.75,0.75) {\Huge $ 1 $}; % 03
+	%   \node[] at (6.75,2.25) {\Huge $ 1 $}; % 04
+	%   \node[] at (6.75,0.75) {\Huge $ 1 $}; % 05
+	%   \node[] at (5.25,2.25) {\Huge $ 1 $}; % 06
+	   \node[] at (5.25,0.75) {\Huge $ 1 $}; % 07
+	
+	% The coords for each cell - this is used as the origin for the solution box
+	\coordinate (cell00) at (1.5,1.5); \coordinate (cell01) at (1.5,0.0);
+	\coordinate (cell02) at (3.0,1.5); \coordinate (cell03) at (3.0,0.0);
+	
+	\coordinate (cell04) at (6.0,1.5); \coordinate (cell05) at (6.0,0.0);
+	\coordinate (cell06) at (4.5,1.5); \coordinate (cell07) at (4.5,0.0);
+	
+	% The colored boxes enclosing adjacent ones
+	% Set the ``at'' to the lower-left cell of the rectangle using 
+	% the 'cellxx' defined above
+	% Set the minimum height/width to (number of cells) * 1.5. 
+	% May have to decrease these by 0.1 to cut the rectangle 
+	% just inside the cell.
+	\node [draw,
+	color=red!70!black,
+	fill=red!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=2.9cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell01) {};
+	
+	\node [draw,
+	color=green!70!black,
+	fill=green!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=2.9cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell03) {};
+	
+	\node [draw,
+	color=blue!70!black,
+	fill=blue!20!white,
+	fill opacity=0.3,
+	minimum height=2.9cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell03) {};
+	
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************  
+	% Text in top-Left cell
+	\node[] at (0.50,3.40) { $ \mathsf{ \mathbf{C} } $ }; % C
+	\node[] at (1.10,4.05) { $ \mathsf{ \mathbf{AB} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {
+		(2.25,3.75)/{00}, (3.75,3.75)/{01},
+		(5.25,3.75)/{11}, (6.75,3.75)/{10}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in { 
+		(0.75,2.25)/{0},(0.75,0.75)/{1}
+	}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { 
+		(2.75,1.75)/{00} , (4.25,1.75)/{02} , (5.75,1.75)/{06} , (7.25,1.75)/{04} ,
+		(2.75,0.15)/{01} , (4.25,0.15)/{03} , (5.75,0.15)/{07} , (7.25,0.15)/{05} }
+	\draw \loc node{ \color{blue!90!black} \small { $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,4.5) % The Grid
+	(0.0,4.5) -- (1.5,3.0) % Diagonal in the top left cell
+	(1.5,3.10) -- (7.5,3.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,3.0) % Double line on left of header column one
+	;    
+	\end{tikzpicture}
+	\caption{K-Map For The BOut Output}
+	\label{kmap:08_04}
+\end{figure}
+
+Karnaugh map \ref{kmap:08_03} is a Reed-Muller pattern that is typical of an \textsf{XOR} gate. Karnaugh map \ref{kmap:08_04} can be reduced to three Boolean expressions. The full subtactor circuit is, therefore, defined by the following Boolean equations. 
+
+\begin{align}
+	\label{CL:eq:subtractor}
+	A \oplus B \oplus BIn &= Diff \\
+	\nonumber
+	A'B + (A' * BIn) + (B * BIn) &= BOut
+\end{align}
+
+The circuit in figure \ref{fig:08_09} realizes a subtractor.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_09}
+	\caption{Subtractor}
+	\label{fig:08_09}
+\end{figure}
+
+\subsection{Cascading Subtractors}
+\label{CL:subsec:cascading_subtractors}
+
+The full subtractor developed above will only subtract two one-bit numbers along with an optional borrow bit; however, those subtractors can be cascaded such that a subtractor of any bit width can be easily created. Figure \ref{fig:08_10} shows a four-bit subtractor created by cascading four one-bit subtractors.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_10}
+	\caption{4-Bit Subtractor}
+	\label{fig:08_10}
+\end{figure}
+
+This circuit would subtract a four bit number \emph{B} from \emph{A}. The subtractor is set up to solve $ 1110_2 - 0011_2 = 1011_2 $. Stage zero, at the top of the stack, subtracts bit zero of input \emph{B} from bit zero of input \emph{A} and then outputs bit zero of the difference, \emph{Y0}, along with a borrow-out bit. The borrow-out bit from stage zero is wired directly into the stage one's borrow-in port. That stage then subtracts bit one of input \emph{B} from bit one of input \emph{A} along with the borrow-in bit to create bit one of the sum, \emph{Y1}, along with a borrow-out bit. This process continues until all for bits have been subtracted. In the end, outputs \emph{Y0} - \emph{Y3} are combined to create a four-bit difference. The borrow-out bit of the last stage is not connected to anything but it could be used as the borrow-in bit for another device.
+
+\subsection{Adder-Subtractor Circuit}
+\label{CL:subsec:adder_subtractor_circuit}
+
+It is remarkably easy to create a device that both adds and subtracts based on a single-bit control signal. Figure \ref{fig:08_11} is a 4-bit adder that was modified to become both an adder and subtractor. The circuit has been set up with this problem: $ 0101_2 - 0011_2 = 0010_2 $. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_11}
+	\caption{4-Bit Adder-Subtractor}
+	\label{fig:08_11}
+\end{figure}
+
+To change an adder to an adder-subtractor makes use of the binary mathematics concept of subtracting by adding the twos complement (see Section \ref{MO:subsub:binary_subtraction_with_radix_complement} on page \pageref{MO:subsub:binary_subtraction_with_radix_complement}). The ``trick'' is to use the \textsf{XOR} gates on input \emph{B} to convert that input to its complement then the adder will subtract \emph{B} from \emph{A} instead of add. 
+
+To create the twos complement of a binary number each of the bits are complemented and then one is added to the result (again, this process is described in Section \ref{MO:subsub:binary_subtraction_with_radix_complement}). Each of the \emph{B} input bits are wired through one input of an \textsf{XOR} gate. The other input of that gate is a \emph{Ctrl} (``Control'') bit. When \emph{Ctrl} is low then each of the \emph{B} inputs are transmitted through an \textsf{XOR} gate without change and the adder works as an adder. When \emph{Ctrl} is high then each of the \emph{B} inputs are complemented by an \textsf{XOR} gate such that the ones complement is created. However, \emph{Ctrl} is also wired to the \emph{CIn} input of the first stage which has the effect of adding one to the result and turn input \emph{B} into a twos complement number. Now the adder will subtract input \emph{B} from input \emph{A}.
+
+In the end, the designer only needs to set \emph{Ctrl} to zero to make the circuit add or one to make the circuit subtract.
+
+\subsection{Integrated Circuits}
+\label{CL:subsec:adder_integrated_circuits}
+
+In practice, circuit designers rarely build adders or subtractors. There are many different types of manufactured low-cost adders, subtractors, and adder/subtractor combinations available and designers usually find it easiest to use one of those circuits rather than re-invent the proverbial wheel. A quick look at Wikipedia\footnote{\url{https://www.wikipedia.com/en/List_of_7400_series_integrated_circuits}} found this list of adders:
+
+\begin{itemize}
+	\item $ 7480 $, gated full adder
+	\item $ 7482 $, two-bit binary full adder
+	\item $ 7483 $, four-bit binary full adder
+	\item $ 74183 $, dual carry-save full adder
+	\item $ 74283 $, four-bit binary full adder
+	\item $ 74385 $, quad four-bit adder/subtractor
+	\item $ 74456 $, BCD adder
+\end{itemize}
+
+In addition to adder circuits, designers can also opt to use an \ac{ALU} \ac{IC}.
+
+\section{Arithmetic Logic Units}
+\label{CL:sec:arithmetic_and_logic_units}
+
+An \ac{ALU} is a specialized \ac{IC} that performs all arithmetic and logic functions needed in a device. Most \acp{ALU} will carry out dozens of different functions like the following few examples from a $ 74181 $ \ac{ALU} (assume that the ALU has two inputs, $ A $ and $ B $, and one output, $ F $):
+
+\begin{itemize}
+  \item \lstinline[columns=fixed]|F = NOT A|
+  \item \lstinline[columns=fixed]|F = A NAND B|
+  \item \lstinline[columns=fixed]|F = (NOT A) OR B|
+  \item \lstinline[columns=fixed]|F = B|
+  \item \lstinline[columns=fixed]|F = (NOT A) AND B|
+  \item \lstinline[columns=fixed]|F = A - 1|
+  \item \lstinline[columns=fixed]|F = A - B|
+  \item \lstinline[columns=fixed]|F = AB - 1|
+  \item \lstinline[columns=fixed]|F = -1|
+\end{itemize}
+
+\acp{ALU} are very important in many devices, in fact, they are at the core of a \ac{CPU}. Because they are readily available at low cost, most designers will use a commercially-produced \ac{ALU} in a project rather than try to create their own.
+
+A quick look at Wikipedia\footnote{\url{https://www.wikipedia.com/en/List_of_7400_series_integrated_circuits}} found this list of \acp{ALU}:
+
+\begin{itemize}
+  \item $ 74181 $, four-bit arithmetic logic unit and function generator
+  \item $ 74381 $, four-bit arithmetic logic unit/function generator with generate and propagate outputs
+  \item $ 74382 $, four-bit arithmetic logic unit/function generator with ripple carry and overflow outputs
+  \item $ 74881 $, Arithmetic logic unit
+\end{itemize}
+
+\section{Comparators}
+\label{CL:sec:comparators}
+
+A comparator compares two binary numbers, \emph{A} and \emph{B}. One of three outputs is generated by the comparison: \lstinline[]|A = B, A > B, A < B|. A one-bit comparator uses a combination of \textsf{AND} gates, \textsf{NOT} gates, and an \textsf{XNOR} gate to generate a \emph{True} output for each of the three comparisons: 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{1}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cc} 
+      $ A=B $ & $ (A \odot B)' $ \\
+      $ A > B $ & $ AB' $ \\
+      $ A < B $ & $ A'B $
+    \end{tabular}
+  \end{center}
+  \caption{One-Bit Comparator Functions}
+  \label{CL:tab:one-bit_comparator_functions}
+\end{table}
+
+Figure \ref{fig:08_12} is the logic diagram for a one-bit comparator.  
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_12}
+	\caption{One-Bit Comparator}
+	\label{fig:08_12}
+\end{figure}
+
+To compare numbers larger than one bit requires a more involved analysis of the problem. First, a truth table is developed for every possible combination of two 2-bit numbers, \emph{A} and \emph{B}.
+
+\begin{table}[H]
+	\sffamily
+	\newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+	\begin{center}
+		\rowcolors{2}{gray!10}{white} % Color every other line a light gray
+		\begin{tabular}{cccc|ccc} 
+			\rowcolor{black!75}
+			\multicolumn{4}{c}{\head{Inputs}} & \multicolumn{3}{c}{\head{Outputs}} \\
+			$A1$ & $A0$ & $B1$ & $B0$ & $A<B$ & $A=B$ & $A>B$ \\
+			\hline
+			0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+			0 & 0 & 0 & 1 & 1 & 0 & 0 \\
+			0 & 0 & 1 & 0 & 1 & 0 & 0 \\
+			0 & 0 & 1 & 1 & 1 & 0 & 0 \\
+			0 & 1 & 0 & 0 & 0 & 0 & 1 \\
+			0 & 1 & 0 & 1 & 0 & 1 & 0 \\
+			0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+			0 & 1 & 1 & 1 & 1 & 0 & 0 \\
+			1 & 0 & 0 & 0 & 0 & 0 & 1 \\
+			1 & 0 & 0 & 1 & 0 & 0 & 1 \\
+			1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+			1 & 0 & 1 & 1 & 1 & 0 & 0 \\
+			1 & 1 & 0 & 0 & 0 & 0 & 1 \\
+			1 & 1 & 0 & 1 & 0 & 0 & 1 \\
+			1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+			1 & 1 & 1 & 1 & 0 & 1 & 0 
+		\end{tabular}
+	\end{center}
+	\caption{Truth Table for Two-Bit Comparator}
+	\label{08:tab:two_bit_comparator}
+\end{table}
+
+Next, Karnaugh Maps are developed for each of the three outputs.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% K-Map #1 A>B
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	% Data Row 1
+	% \node[] at (2.25,5.25) {\Huge $ 1 $}; % 00
+	% \node[] at (3.75,5.25) {\Huge $ 1 $}; % 04
+	% \node[] at (5.25,5.25) {\Huge $ 1 $}; % 12
+	% \node[] at (6.75,5.25) {\Huge $ 1 $}; % 08
+	% Data Row 2
+	\node[] at (2.25,3.75) {\Huge $ 1 $}; % 01
+	% \node[] at (3.75,3.75) {\Huge $ 1 $}; % 05
+	% \node[] at (5.25,3.75) {\Huge $ 1 $}; % 13
+	% \node[] at (6.75,3.75) {\Huge $ 1 $}; % 09
+	% Data Row 3
+	\node[] at (2.25,2.25) {\Huge $ 1 $}; % 03
+	\node[] at (3.75,2.25) {\Huge $ 1 $}; % 07
+	% \node[] at (5.25,2.25) {\Huge $ 1 $}; % 15
+	\node[] at (6.75,2.25) {\Huge $ 1 $}; % 11
+	% Data Row 4
+	\node[] at (2.25,0.75) {\Huge $ 1 $}; % 02
+	\node[] at (3.75,0.75) {\Huge $ 1 $}; % 06
+	% \node[] at (5.25,0.75) {\Huge $ 1 $}; % 14
+	% \node[] at (6.75,0.75) {\Huge $ 1 $}; % 10
+	
+	% The coords for each cell - this is used to start the rectangle box
+	\coordinate (cell00) at (1.50,4.50); \coordinate (cell01) at (1.50,3.00);
+	\coordinate (cell02) at (1.50,0.00); \coordinate (cell03) at (1.50,1.50);
+	\coordinate (cell04) at (3.00,4.50); \coordinate (cell05) at (3.00,3.00);
+	\coordinate (cell06) at (3.00,0.00); \coordinate (cell07) at (3.00,1.50);
+	\coordinate (cell08) at (6.00,4.50); \coordinate (cell09) at (6.00,3.00);
+	\coordinate (cell10) at (6.00,0.00); \coordinate (cell11) at (6.00,1.50);
+	\coordinate (cell12) at (4.50,4.50); \coordinate (cell13) at (4.50,3.00);
+	\coordinate (cell14) at (4.50,0.00); \coordinate (cell15) at (4.50,1.50);
+	
+	% Set the ``at'' to the lower-left cell of the rectangle using the coords defined above
+	% Set the minimum height/width to (number of cells) * 1.5. May have to decrease 
+	% these by 0.1 to cut the rectangle just inside the cell.
+	\node [draw,
+	color=red!70!black,
+	fill=red!20!white,
+	fill opacity=0.3,
+	minimum height=2.9cm,
+	minimum width=3.0cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell02) {};
+
+	\node [draw,
+	color=blue!70!black,
+	fill=blue!20!white,
+	fill opacity=0.3,
+	minimum height=2.9cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell03) {};
+
+	\node [draw,
+	color=green!70!black,
+	fill=green!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell11) {};
+
+	\node [draw,
+	color=green!70!black,
+	fill=green!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell03) {};
+	
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************	
+	% Text in top-Left cell
+	\node[] at (0.55,6.35) { $ \mathsf{ \mathbf{A1A0} } $ }; % CD
+	\node[] at (1.05,7.05) { $ \mathsf{ \mathbf{B1B0} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {(2.25,6.75)/{00},(3.75,6.75)/{01},(5.25,6.75)/{11},(6.75,6.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in {(0.75,5.25)/{00},(0.75,3.75)/{01},(0.75,2.25)/{11},(0.75,0.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { (2.75,4.75)/{00} , (4.25,4.75)/{04} , (5.75,4.75)/{12} , (7.25,4.75)/{08} ,
+		(2.75,3.25)/{01} , (4.25,3.25)/{05} , (5.75,3.25)/{13} , (7.25,3.25)/{09} ,
+		(2.75,1.75)/{03} , (4.25,1.75)/{07} , (5.75,1.75)/{15} , (7.25,1.75)/{11} ,
+		(2.75,0.25)/{02} , (4.25,0.25)/{06} , (5.75,0.25)/{14} , (7.25,0.25)/{10} }
+	\draw \loc node{ \color{blue!90!black} \small{ $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,7.5) % The Grid
+	(0.0,7.5) -- (1.5,6.0) % Diagonal in the top left cell
+	(1.5,6.10) -- (7.50,6.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,6.0) % Double line on left of header column one
+	;
+	\end{tikzpicture}
+	\caption{K-Map For $A>B$}
+	\label{kmap:08_05}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% K-Map #2 A=B
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	% Data Row 1
+	\node[] at (2.25,5.25) {\Huge $ 1 $}; % 00
+	% \node[] at (3.75,5.25) {\Huge $ 1 $}; % 04
+	% \node[] at (5.25,5.25) {\Huge $ 1 $}; % 12
+	% \node[] at (6.75,5.25) {\Huge $ 1 $}; % 08
+	% Data Row 2
+	% \node[] at (2.25,3.75) {\Huge $ 1 $}; % 01
+	\node[] at (3.75,3.75) {\Huge $ 1 $}; % 05
+	% \node[] at (5.25,3.75) {\Huge $ 1 $}; % 13
+	% \node[] at (6.75,3.75) {\Huge $ 1 $}; % 09
+	% Data Row 3
+	% \node[] at (2.25,2.25) {\Huge $ 1 $}; % 03
+	% \node[] at (3.75,2.25) {\Huge $ 1 $}; % 07
+	\node[] at (5.25,2.25) {\Huge $ 1 $}; % 15
+	% \node[] at (6.75,2.25) {\Huge $ 1 $}; % 11
+	% Data Row 4
+	% \node[] at (2.25,0.75) {\Huge $ 1 $}; % 02
+	% \node[] at (3.75,0.75) {\Huge $ 1 $}; % 06
+	% \node[] at (5.25,0.75) {\Huge $ 1 $}; % 14
+	\node[] at (6.75,0.75) {\Huge $ 1 $}; % 10
+	
+	% The coords for each cell - this is used to start the rectangle box
+	\coordinate (cell00) at (1.50,4.50); \coordinate (cell01) at (1.50,3.00);
+	\coordinate (cell02) at (1.50,0.00); \coordinate (cell03) at (1.50,1.50);
+	\coordinate (cell04) at (3.00,4.50); \coordinate (cell05) at (3.00,3.00);
+	\coordinate (cell06) at (3.00,0.00); \coordinate (cell07) at (3.00,1.50);
+	\coordinate (cell08) at (6.00,4.50); \coordinate (cell09) at (6.00,3.00);
+	\coordinate (cell10) at (6.00,0.00); \coordinate (cell11) at (6.00,1.50);
+	\coordinate (cell12) at (4.50,4.50); \coordinate (cell13) at (4.50,3.00);
+	\coordinate (cell14) at (4.50,0.00); \coordinate (cell15) at (4.50,1.50);
+	
+	% Set the ``at'' to the lower-left cell of the rectangle using the coords defined above
+	% Set the minimum height/width to (number of cells) * 1.5. May have to decrease 
+	% these by 0.1 to cut the rectangle just inside the cell.
+	\node [draw,
+	color=red!70!black,
+	fill=red!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell00) {};
+	
+	\node [draw,
+	color=blue!70!black,
+	fill=blue!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell05) {};
+	
+	\node [draw,
+	color=yellow!70!black,
+	fill=yellow!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell15) {};
+	
+	\node [draw,
+	color=green!70!black,
+	fill=green!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell10) {};
+	
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************	
+	% Text in top-Left cell
+	\node[] at (0.55,6.35) { $ \mathsf{ \mathbf{A1A0} } $ }; % CD
+	\node[] at (1.05,7.05) { $ \mathsf{ \mathbf{B1B0} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {(2.25,6.75)/{00},(3.75,6.75)/{01},(5.25,6.75)/{11},(6.75,6.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in {(0.75,5.25)/{00},(0.75,3.75)/{01},(0.75,2.25)/{11},(0.75,0.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { (2.75,4.75)/{00} , (4.25,4.75)/{04} , (5.75,4.75)/{12} , (7.25,4.75)/{08} ,
+		(2.75,3.25)/{01} , (4.25,3.25)/{05} , (5.75,3.25)/{13} , (7.25,3.25)/{09} ,
+		(2.75,1.75)/{03} , (4.25,1.75)/{07} , (5.75,1.75)/{15} , (7.25,1.75)/{11} ,
+		(2.75,0.25)/{02} , (4.25,0.25)/{06} , (5.75,0.25)/{14} , (7.25,0.25)/{10} }
+	\draw \loc node{ \color{blue!90!black} \small{ $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,7.5) % The Grid
+	(0.0,7.5) -- (1.5,6.0) % Diagonal in the top left cell
+	(1.5,6.10) -- (7.50,6.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,6.0) % Double line on left of header column one
+	;
+	\end{tikzpicture}
+	\caption{K-Map For $A=B$}
+	\label{kmap:08_06}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% K-Map #3 A<B
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	% Data Row 1
+	% \node[] at (2.25,5.25) {\Huge $ 1 $}; % 00
+	\node[] at (3.75,5.25) {\Huge $ 1 $}; % 04
+	\node[] at (5.25,5.25) {\Huge $ 1 $}; % 12
+	\node[] at (6.75,5.25) {\Huge $ 1 $}; % 08
+	% Data Row 2
+	% \node[] at (2.25,3.75) {\Huge $ 1 $}; % 01
+	% \node[] at (3.75,3.75) {\Huge $ 1 $}; % 05
+	\node[] at (5.25,3.75) {\Huge $ 1 $}; % 13
+	\node[] at (6.75,3.75) {\Huge $ 1 $}; % 09
+	% Data Row 3
+	% \node[] at (2.25,2.25) {\Huge $ 1 $}; % 03
+	% \node[] at (3.75,2.25) {\Huge $ 1 $}; % 07
+	% \node[] at (5.25,2.25) {\Huge $ 1 $}; % 15
+	% \node[] at (6.75,2.25) {\Huge $ 1 $}; % 11
+	% Data Row 4
+	% \node[] at (2.25,0.75) {\Huge $ 1 $}; % 02
+	% \node[] at (3.75,0.75) {\Huge $ 1 $}; % 06
+	\node[] at (5.25,0.75) {\Huge $ 1 $}; % 14
+	% \node[] at (6.75,0.75) {\Huge $ 1 $}; % 10
+	
+	% The coords for each cell - this is used to start the rectangle box
+	\coordinate (cell00) at (1.50,4.50); \coordinate (cell01) at (1.50,3.00);
+	\coordinate (cell02) at (1.50,0.00); \coordinate (cell03) at (1.50,1.50);
+	\coordinate (cell04) at (3.00,4.50); \coordinate (cell05) at (3.00,3.00);
+	\coordinate (cell06) at (3.00,0.00); \coordinate (cell07) at (3.00,1.50);
+	\coordinate (cell08) at (6.00,4.50); \coordinate (cell09) at (6.00,3.00);
+	\coordinate (cell10) at (6.00,0.00); \coordinate (cell11) at (6.00,1.50);
+	\coordinate (cell12) at (4.50,4.50); \coordinate (cell13) at (4.50,3.00);
+	\coordinate (cell14) at (4.50,0.00); \coordinate (cell15) at (4.50,1.50);
+	
+	% Set the ``at'' to the lower-left cell of the rectangle using the coords defined above
+	% Set the minimum height/width to (number of cells) * 1.5. May have to decrease 
+	% these by 0.1 to cut the rectangle just inside the cell.
+	\node [draw,
+	color=red!70!black,
+	fill=red!20!white,
+	fill opacity=0.3,
+	minimum height=2.9cm,
+	minimum width=3.0cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell13) {};
+
+	\node [draw,
+	color=blue!70!black,
+	fill=blue!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=3.0cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell04) {};
+
+	\node [draw,
+	color=green!70!black,
+	fill=green!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell14) {};
+	
+	\node [draw,
+	color=green!70!black,
+	fill=green!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell12) {};
+	
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************	
+	% Text in top-Left cell
+	\node[] at (0.55,6.35) { $ \mathsf{ \mathbf{A1A0} } $ }; % CD
+	\node[] at (1.05,7.05) { $ \mathsf{ \mathbf{B1B0} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {(2.25,6.75)/{00},(3.75,6.75)/{01},(5.25,6.75)/{11},(6.75,6.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in {(0.75,5.25)/{00},(0.75,3.75)/{01},(0.75,2.25)/{11},(0.75,0.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { (2.75,4.75)/{00} , (4.25,4.75)/{04} , (5.75,4.75)/{12} , (7.25,4.75)/{08} ,
+		(2.75,3.25)/{01} , (4.25,3.25)/{05} , (5.75,3.25)/{13} , (7.25,3.25)/{09} ,
+		(2.75,1.75)/{03} , (4.25,1.75)/{07} , (5.75,1.75)/{15} , (7.25,1.75)/{11} ,
+		(2.75,0.25)/{02} , (4.25,0.25)/{06} , (5.75,0.25)/{14} , (7.25,0.25)/{10} }
+	\draw \loc node{ \color{blue!90!black} \small{ $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,7.5) % The Grid
+	(0.0,7.5) -- (1.5,6.0) % Diagonal in the top left cell
+	(1.5,6.10) -- (7.50,6.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,6.0) % Double line on left of header column one
+	;
+	\end{tikzpicture}
+	\caption{K-Map For $A=B$}
+	\label{kmap:08_07}
+\end{figure}
+
+Given the above K-Maps, the following Boolean Equations can be derived.
+\begin{align}
+	\label{08:eq:comparator}
+	A<B &: A1'B1 + A0'B1B0 + A1'A0'B0 \\
+	\nonumber
+	A=B &: (A0 \odot B0) (A1 \odot B1) \\
+	\nonumber
+	A>B &: A1B1' + A0B1'B0' + A1A0B0'
+\end{align}
+
+The above Boolean expressions can be used to create the circuit in Figure \ref{fig:08_13}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_13}
+	\caption{Two-Bit Comparator}
+	\label{fig:08_13}
+\end{figure}
+
+\section{Encoders/Decoders}
+\label{CL:sec:encoders_decoders}
+
+\subsection{Introduction}
+\label{CL:subsec:introduction_to_encoders_decoders}
+
+Encoders and decoders are used to convert some sort of coded data into a different code. For example, it may be necessary to convert the code created by a keyboard into \ac{ASCII} for use in a word processor. By definition, the difference between an encoder and a decoder is the number of inputs and outputs: Encoders have more inputs than outputs, while decoders have more outputs than inputs. 
+
+As an introduction to encoders, consider Figure \ref{fig:08_14}, which is designed to encode three single line inputs (maybe three different push buttons on a control panel) into a binary number for further processing by the computer. In this circuit, the junction between the two \textsf{OR} gates and the output ($ Y $) is a \emph{joiner} that combines two bit streams into a single bus. Physically, two wires (one from \emph{U1} and one from \emph{U2}) would be spliced together into a single cable (a \emph{bus}) that contains two strands. The figure shows that when input \emph{C} is active the output of the encoder is $ 11 $.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_14}
+	\caption{Three-line to 2-Bit Encoder}
+	\label{fig:08_14}
+\end{figure}
+ 
+As an introduction to decoders, consider Figure \ref{fig:08_15}, which is designed to decode a two-bit binary input and drive a single output line high. A circuit like this may be used to light an \ac{LED} used as a warning on a console if a particular binary code is generated elsewhere in a circuit. In this circuit, the input is a two-bit number ($ 10 $ in the illustration), but those two bits are separated through a splitter and each is applied to one of the inputs of a series of four \textsf{AND} gates. Imagine that the \ac{MSB} was placed on the wire on the left of the grid and wired to the bottom input of each of the \textsf{AND} gates. If $ A=10 $, then \textsf{AND} gate three would activate and output \emph{X} would go high.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_15}
+	\caption{Four-Bit to 4-Line Decoder}
+	\label{fig:08_15}
+\end{figure}
+
+Both encoders and decoders are quite common and are used in many electronic devices. However, it is not very common to build these circuits out of discrete components (like in the circuits above). Rather, inexpensive integrated circuits are available for most encoder/decoder operations and these are much easier, and more reliable, to use. 
+
+\subsection{Ten-Line Priority}
+\label{CL:subsec:10_line_priority}
+
+\marginpar{This encoder is sometimes called Ten-Line to Four-Line.}
+
+Consider a ten-key keypad containing the numbers zero through nine, like a keypad that could be used for numeric input from some hand-held device. In order to be useful, a key press would need to be encoded to a binary number for further processing by a logic circuit. 
+
+The keypad outputs a nine-bit number such that a single bit goes high to indicate which key was. For example, when key number two is pressed, $ 0\_0000\_0010 $ is output from the device. A priority encoder would accept that nine-bit number and output a binary number that could be used in computer circuits. Truth Table \ref{CL:tab:truth_table_for_priority_encoder} is for the Priority Encoder that meets the specification. The device is called a ``priority'' encoder since it will respond to only the highest value key press. For example, if someone pressed the three and five keys simultaneously the encoder would ignore the three key press and transmit $ 0101 $, or binary five.\marginpar{Dashes are normally used to indicate ``don't care'' on a Truth Table.}
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccc|cccc} 
+      \rowcolor{black!75}
+      \multicolumn{9}{c}{\head{Inputs}} & \multicolumn{4}{c}{\head{Outputs}} \\
+      9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & Y1 & Y2 & Y3 & Y4 \\
+      \hline
+      0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 \\
+      0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & - & 0 & 0 & 1 & 0 \\
+      0 & 0 & 0 & 0 & 0 & 0 & 1 & - & - & 0 & 0 & 1 & 1 \\
+      0 & 0 & 0 & 0 & 0 & 1 & - & - & - & 0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 0 & 1 & - & - & - & - & 0 & 1 & 0 & 1 \\
+      0 & 0 & 0 & 1 & - & - & - & - & - & 0 & 1 & 1 & 0 \\
+      0 & 0 & 1 & - & - & - & - & - & - & 0 & 1 & 1 & 1 \\
+      0 & 1 & - & - & - & - & - & - & - & 1 & 0 & 0 & 0 \\
+      1 & - & - & - & - & - & - & - & - & 1 & 0 & 0 & 1
+    \end{tabular}
+  \end{center}
+  \caption{Truth Table for Priority Encoder}
+  \label{CL:tab:truth_table_for_priority_encoder}
+\end{table}
+
+This circuit can be realized by using a grid input and routing the various lines to an appropriate \emph{AND} gate. This is one of the circuits built in the lab manual that accompanies this text.
+
+\subsection{Seven-Segment Display}
+\label{CL:subsec:7_segment_display}
+
+A seven-segment display is commonly used in calculators and other devices to show hexadecimal numbers. To create the numeric shapes, various segments are activated while others remain off, so binary numbers must be decoded to turn on the various segments for any given combination of inputs. A seven-segment display has eight input ports and, when high, each of those ports will activate one segment of the display. 
+
+\begin{figure}[H]
+  \caption{Seven-Segment Display}
+  \label{CL:fig:seven_segment_display}  
+  \myfloatalign
+  \begin{tikzpicture} [circuit logic US, scale=1.00]
+    \SSGLeg[3em]{};
+    \SSGNb[3em]{}{2};
+  \end{tikzpicture}
+\end{figure}
+ 
+\marginpar{Usually an eighth ``segment'' is available \textemdash a decimal point in the lower right corner.}
+
+In Figure \ref{CL:fig:seven_segment_display} the seven segments are labeled and it shows that the number ``$ 2 $'' for example, is made by activating segments \textsf{a}, \textsf{b}, \textsf{g}, \textsf{e}, and \textsf{d}. Table \ref{CL:tab:truth_table_for_seven_segment_display} shows the various segments that must be activated for each of the $ 16 $ possible input values.
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cccccccccccccc} 
+      \rowcolor{black!75}
+      \head{Hex} & \head{|} & \multicolumn{4}{c}{\head{Binary}} & \head{|} & \multicolumn{7}{c}{\head{Display}} \\
+        &|& \textbf{3} & \textbf{2} & \textbf{1} & \textbf{0} &|& \textbf{a} & \textbf{b} & \textbf{c} & \textbf{d} & \textbf{e} & \textbf{f} & \textbf{g} \\
+%      0 &|& 0 & 0 & 0 & 0 &|& a & b & c & d & e & f & g \\
+      0 &|& 0 & 0 & 0 & 0 &|& 1 & 1 & 1 & 1 & 1 & 1 & 0 \\
+      1 &|& 0 & 0 & 0 & 1 &|& 0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+      \textbf{2} &|& \textbf{0} & \textbf{0} & \textbf{1} & 
+        \textbf{0} &|& \textbf{1} & \textbf{1} & \textbf{0} & 
+        \textbf{1} & \textbf{1} & \textbf{0} & \textbf{1} \\
+      3 &|& 0 & 0 & 1 & 1 &|& 1 & 1 & 1 & 1 & 0 & 0 & 1 \\
+      4 &|& 0 & 1 & 0 & 0 &|& 0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+      5 &|& 0 & 1 & 0 & 1 &|& 1 & 0 & 1 & 1 & 0 & 1 & 1 \\
+      6 &|& 0 & 1 & 1 & 0 &|& 1 & 0 & 1 & 1 & 1 & 1 & 1 \\
+      7 &|& 0 & 1 & 1 & 1 &|& 1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+      8 &|& 1 & 0 & 0 & 0 &|& 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+      9 &|& 1 & 0 & 0 & 1 &|& 1 & 1 & 1 & 1 & 0 & 1 & 1 \\
+      A &|& 1 & 0 & 1 & 0 &|& 1 & 1 & 1 & 0 & 1 & 1 & 1 \\
+      B &|& 1 & 0 & 1 & 1 &|& 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+      C &|& 1 & 1 & 0 & 0 &|& 1 & 0 & 0 & 1 & 1 & 1 & 0 \\
+      D &|& 1 & 1 & 0 & 1 &|& 0 & 1 & 1 & 1 & 1 & 0 & 1 \\
+      E &|& 1 & 1 & 1 & 0 &|& 1 & 0 & 0 & 1 & 1 & 1 & 1 \\
+      F &|& 1 & 1 & 1 & 1 &|& 1 & 0 & 0 & 0 & 1 & 1 & 1 
+    \end{tabular}
+  \end{center}
+  \caption{Truth Table for Seven-Segment Display}
+  \label{CL:tab:truth_table_for_seven_segment_display}
+\end{table}
+
+Notice that to display the number ``$ 2 $'' (in bold font), segments \textsf{a}, \textsf{b}, \textsf{d}, \textsf{e}, and \textsf{g} must be activated. 
+
+A decoder circuit, as in Figure \ref{fig:08_16}, uses a demultiplexer to activate a one-bit line based on the value of the binary input. Note: to save space, two parallel decoders are used in this circuit.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_16}
+	\caption{7-Segment Decoder}
+	\label{fig:08_16}
+\end{figure}
+
+Figure \ref{fig:08_16} shows an input of $ 1111_2 $ so the last line on each demultiplexer is activated. Those lines are used to activate the necessary inputs on the seven-segment display to create an output of ``F''. 
+
+A Hex Digit Display has a single port that accepts a four-bit binary number and that number is decoded into a digital display. Figure \ref{fig:08_17} shows a hex digit display. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_17}
+	\caption{Hex Decoder}
+	\label{fig:08_17}
+\end{figure}
+
+The \Le simulator used in this class includes both a \emph{7-Segment Display} and a \emph{Hex Digit Display}. One of the strengths of using a seven-segment display rather than a hex digit display is that the circuit designer has total control over which segments are displayed. It is common, for example, to activate each of the outer segments in a rapid sequence to give the illusion of a rotating circle. As opposed to a seven-segment display, a hex digit display is very simple to wire and use, as Figures \ref{fig:08_16} and \ref{fig:08_17} make clear. Both of these two types of displays are available on the market and a designer would chose whichever type meets the needs. 
+
+\subsection{Function Generators}
+\label{CL:subsec:function_generators}
+
+Decoders provide an easy way to create a circuit when given a minterm function. Imagine that a circuit is needed for the function defined in Equation \ref{CL:eq:decoder_as_minterm_gen}.
+
+\begin{align}
+  \label{CL:eq:decoder_as_minterm_gen}
+  \int(A,B,C) &= \sum(0,2,7)
+\end{align}
+
+Whatever this circuit is designed to do, it should activate an output only when the input is zero, two, or seven. The circuit in Figure \ref{fig:08_18} illustrates a simple minterm generator using a demultiplexer and an \textsf{OR} gate. When input \emph{A} is zero, two, or seven then output \emph{Y} will go high, otherwise it is low.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_18}
+	\caption{Minterm Generator}
+	\label{fig:08_18}
+\end{figure}
+
+\section{Error Detection}
+\label{CL:sec:error_detection}
+
+\subsection{Introduction}
+\label{CL:subsec:introduction_to_error_detection}
+
+Whenever a byte (or any other group of bits) is transmitted or stored, there is always the possibility that one or more bits will be accidentally complemented. Consider these two binary numbers:
+
+\begin{verbatim}
+     0110 1010 0011 1010
+     0110 1010 0111 1010
+\end{verbatim} 
+
+They differ by only one bit (notice Group Three). If the top number is what is supposed to be in a memory location but the bottom number is what is actually there then this would, obviously, create a problem. There could be any number of reasons why a bit would be wrong, but the most common is some sort of error that creeps in while the byte is being transmitted between two stores, like between a \ac{USB} drive and memory or between two computers sharing a network. It is desirable to be able to detect that a byte contains a bad bit and, ideally, even know which bit is wrong so it can be corrected. 
+
+Parity is a common method used to check data for errors and it can be used to check data that has been transmitted, held in memory, or stored on a hard drive. The concept of parity is fairly simple: A bit (called the \emph{parity bit}) is added to each data byte and that extra bit is either set to zero or one in order to make the bit-count of that byte contain an even or odd number of ones. For example, consider this binary number: 
+
+\begin{verbatim}
+     1101
+\end{verbatim}
+
+There are three ones in this number, which is an odd number. If odd parity is being used in this circuit, then the parity bit would be zero so there would be an odd number of ones in the number. However, if the circuit is using even parity, then the parity bit would be set to one in order to have four ones in the number, which is an even number. Following is the above number with both even and odd parity bits (those parity bits are in the least significant position and are separated from the original number by a space for clarity): 
+
+\begin{verbatim}
+     1101 0 (Odd Parity)
+     1101 1 (Even Parity)
+\end{verbatim}
+
+Table \ref{CL:tab:even_parity_examples} shows several examples that may help to clarify this concept. In each case, a parity bit is used to make the data byte even parity (spaces were left in the data byte for clarity). 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cc} 
+      \rowcolor{black!75}
+      \head{Data Byte} & \head{Parity Bit} \\
+      0000 0000 & 0 \\
+      0000 0001 & 1 \\
+      0000 0011 & 0 \\
+      0000 0100 & 1 \\
+      1111 1110 & 1 \\
+      1111 1111 & 0
+    \end{tabular}
+  \end{center}
+  \caption{Even Parity Examples}
+  \label{CL:tab:even_parity_examples}
+\end{table}
+
+Generating a parity bit can be done with a series of cascading \emph{XOR} gates but \Le had two parity gates, one that outputs high when the inputs have an odd number of ones and the other when there are an even number of ones. Figure \ref{fig:08_19} illustrates using an odd parity gate (labeled ``2K+1''). In this circuit, if input \emph{A} has an odd number of ones, as illustrated, then the parity generator will output a one to indicate input \emph{A} has an odd number of ones. That parity bit is added as the most significant bit to output \emph{Y}. Since output \emph{Y} will always have an even number of bits this is an even parity circuit.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_19}
+	\caption{Parity Generator}
+	\label{fig:08_19}
+\end{figure}
+
+Parity is a simple concept and is the foundation for one of the most basic methods of error checking. As an example, if some byte is transmitted using even parity but the data arrives with an odd number of ones then one of the bits was changed during transmission. 
+
+\subsection{Iterative Parity Checking}
+\label{CL:subsec:iterative_parity_checking}
+
+One of the problems with using parity for error detection is that while it may be known that \emph{something} is wrong, there is no way to know which of the bits is wrong. For example, imagine an eight-bit system is using even parity and receives this data and parity bit:
+
+\begin{verbatim}
+     1001 1110 PARITY: 0
+\end{verbatim} 
+
+There is something wrong with the byte. It is indicating even parity but has an odd number of ones in the byte. It is impossible to know which bit changed during transmission. In fact, it may be that the byte is correct but the parity bit itself changed (a \emph{false error}). It would be nice if the parity error detector would not only indicate that there was an error, but could also determine which bit changed so it could be corrected. 
+
+One method of error correction is what is known as \emph{Iterative Parity Checking}. Imagine that a series of eight-bit bytes were being transmitted. Each byte would have a parity bit attached; however, there would also be a parity byte that contains a parity bit for each bit in the preceding five bytes. It is easiest to understand this by using a table (even parity is being used):
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cccccccccc} 
+      \rowcolor{black!75}
+      \head{Byte} & \multicolumn{8}{c}{\head{Data}} & \head{Parity} \\
+      1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+      2 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \\
+      3 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 \\
+      4 & 1 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+      5 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+      P & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 0
+    \end{tabular}
+  \end{center}
+  \caption{Iterative Parity}
+  \label{CL:tab:iterative_parity}
+\end{table}
+ 
+In Table \ref{CL:tab:iterative_parity}, Byte one is $ 0000\;0000 $. Since the system is set for even parity, and it is assumed that a byte with all zeros is even, then the parity bit is zero. Each of the five bytes has a parity bit that is properly set such that each byte (with the parity bit) includes an even number of bits. Then, after a group of five bytes a \emph{parity byte} is inserted into the data stream so that each column of five bits also has a parity check; and that parity bit is found in row $ P $ on the table. Thus, the parity bit at the bottom of the first column is one since that column has three other ones. As a final check, the parity byte itself also has a parity bit added. 
+
+Table \ref{CL:tab:iterative_parity_with_error} is the same as Table \ref{CL:tab:iterative_parity}, but Bit Zero, the least significant bit, in Byte One has been changed from a zero to a one (that number is highlighted).
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cccccccccc} 
+      \rowcolor{black!75}
+      \head{Byte} & \multicolumn{8}{c}{\head{Data}} & \head{Parity} \\
+      1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \cellcolor{yellow!70!white}1 & 0 \\
+      2 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \\
+      3 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 1 \\
+      4 & 1 & 1 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+      5 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+      P & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 0
+    \end{tabular}
+  \end{center}
+  \caption{Iterative Parity With Error}
+  \label{CL:tab:iterative_parity_with_error}
+\end{table}
+
+In Table \ref{CL:tab:iterative_parity_with_error} the parity for Byte One is wrong, and the parity for Bit Zero in the parity byte is wrong; therefore, Bit Zero in Byte One needs to be changed. If the parity bit for a row is wrong, but no column parity bits are wrong, or a column is wrong but no rows are wrong, then the parity bit itself is incorrect. This is one simple way to not only detect data errors, but correct those errors. 
+
+There are two weaknesses with iterative parity checking. First, it is restricted to only single-bit errors. If more than one bit is changed in a group then the system fails. This, though, is a general weakness for most parity checking schemes. The second weakness is that a parity byte must be generated and transmitted for every few data bytes (five in the example). This increases the transmission time dramatically and normally makes the system unacceptably slow.
+
+\subsection{Hamming Code}
+\label{CL:subsec:hamming_code}
+
+\subsubsection{Introduction}
+\label{CL:subsubsec:introduction_to_hamming_code}
+
+Richard Hamming worked at Bell labs in the $ 1940 $s and he devised a way to not only detect that a transmitted byte had changed, but exactly which bit had changed by interspersing parity bits within the data itself. Hamming first defined the ``distance'' between any two binary words as the number of bits that were different between them. As an example, the two binary numbers $ 1010 $ and $ 1010 $ has a distance of zero between them since there are no different bits, but $ 1010 $ and $ 1011 $ has a distance of one since one bit is different. This concept is called the \emph{Hamming Distance} in honor of his work.
+
+The circuit illustrated in Figure \ref{fig:08_20} calculates the Hamming distance between two four-bit numbers. In the illustration, $ 0100 $ and $ 1101 $ are compared and two bits difference in those two numbers is reported.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_20}
+	\caption{Hamming Distance}
+	\label{fig:08_20}
+\end{figure}
+
+The four bits for input \emph{A} and input \emph{B} are wired to four \textsf{XOR} gates then the output of those gates is wired to a \emph{Bit Adder} device. The \textsf{XOR} gates will output a one if the two input bits are different then the bit adder will total how many ones are present at its input. The output of the bit adder is a three-bit number but to make it easier to read that number it is wired to a hex digit display. Since that display needs a four-bit input a constant zero is wired to the most significant bit of the input of the hex digit display.
+
+\subsubsection{Generating Hamming Code}
+\label{CL:subsubsec:generating_hamming_code}
+
+Hamming parity is designed so a parity bit is generated for various combinations of bits within a byte in such a way that every data bit is linked to at least three different parity bits. This system can then determine not only that the parity is wrong but which bit is wrong. The cost of a Hamming system is that it adds five parity bits to an eight-bit byte to create a $ 13 $-bit word. Consider the bits for the $ 13 $-bit word in Table \ref{cl:tab:hamming_parity_bits}.
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      $ 0 $ & $ 0 $ & $ 0 $ &
+      $ 0 $ & $ 0 $ & $ 0 $ &
+      $ 0 $ & $ 0 $ & $ 0 $ &
+      $ 0 $ & $ 0 $ & $ 0 $ &
+      $ 0 $ 
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Parity Bits}
+  \label{cl:tab:hamming_parity_bits}
+\end{table}
+
+The bits numbered $ P_0 $ to $ P_4 $ are Hamming parity bits and the bits numbered $ d_0 $ to $ d_7 $ are the data bits. The Hamming parity bits are interspersed with the data but they occur in positions zero, one, three, and seven (counting right to left). The following chart shows the data bits that are used to create each parity bit: 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      % Line P0
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      $ X $ & \color{gray}{$ 0 $} & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{red}{$ P $} \\
+      % Line P1
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & $ X $ &
+      $ X $ & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & $ X $ & \color{red}{$ P $} &
+      \color{gray}{$ 0 $} \\
+      % Line P2
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & $ X $ &
+      \color{red}{$ P $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} \\
+      % Line P3
+      \color{gray}{$ 0 $} & $ X $ & $ X $ &
+      $ X $ & $ X $ & \color{red}{$ P $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} \\
+      % Line P4
+      \color{red}{$ P $} & $ X $ & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & $ X $ & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} 
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Parity Cover Table}
+  \label{cl:tab:hamming_parity_cover_table}
+\end{table}
+
+From Table \ref{cl:tab:hamming_parity_cover_table}, line one shows the data bits that are used to set parity bit zero ($ P_{0} $). If data bits $ d0 $, $ d1 $, $ d3 $, $ d4 $, and $ d6 $ are all one then $ P_{0} $ would be one (even parity is assumed). The data bits needed to create the Hamming parity bit are marked in all five lines. A note is necessary about parity bit $ P_4 $. In order to detect transmission errors that are two bits large (that is, two bits were flipped), each data bit needs to be covered by three parity bits. Parity bit $ P_4 $ is designed to provide the third parity bit for any data bits that have only two others. For example, look down the column containing data bit $ d_0 $ and notice that it has only two parity bits ($ P_0 $ and $ P_1 $) before $ P_4 $. By adding $ P_4 $ to the circuit that data bit gets a third parity bit.
+
+As an example of a Hamming code, imagine that this byte needed to be transmitted: $ 0110 \; 1001 $. This number could be placed in the data bit positions of the Hamming table. 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      \color{gray}{$ 0 $} & $ 0 $ & $ 1 $ &
+      $ 1 $ & $ 0 $ & \color{gray}{$ 0 $} &
+      $ 1 $ & $ 0 $ & $ 0 $ &
+      \color{gray}{$ 0 $} & $ 1 $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $}
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Example - Iteration 1}
+  \label{cl:tab:hamming_example_iteration_1}
+\end{table}
+
+Bit zero, $ P0 $, is designed to generate even parity for data bits $ d_0 $, $ d_1 $, $ d_3 $, $ d_4 $, and $ d_6 $. Since there are three ones in that group, then $ P_0 $ must be one. That has been filled in below (for convenience, the Hamming parity bit pattern for $ P_0 $ is included in the last row of the table). 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      \color{gray}{$ 0 $} & $ 0 $ & $ 1 $ &
+      $ 1 $ & $ 0 $ & \color{gray}{$ 0 $} &
+      $ 1 $ & $ 0 $ & $ 0 $ &
+      \color{gray}{$ 0 $} & $ 1 $ & \color{gray}{$ 0 $} &
+      \color{red}{$ 1 $} \\
+      % Line P0
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      $ X $ & \color{gray}{$ 0 $} & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{red}{$ P $} \\      
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Example - Iteration 2}
+  \label{cl:tab:hamming_example_iteration_2}
+\end{table}
+
+Bit one, $ P_1 $, is designed to generate even parity for data bits $ d_0 $, $ d_2 $, $ d_3 $, $ d_5 $, and $ d_6 $. Since there are four ones in that group, then $ P_1 $ must be zero. That has been filled in below. 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      \color{gray}{$ 0 $} & $ 0 $ & $ 1 $ &
+      $ 1 $ & $ 0 $ & \color{gray}{$ 0 $} &
+      $ 1 $ & $ 0 $ & $ 0 $ &
+      \color{gray}{$ 0 $} & $ 1 $ & \color{red}{$ 0 $} &
+      $ 1 $ \\
+      % Line P1
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & $ X $ &
+      $ X $ & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & $ X $ & \color{red}{$ P $} &
+      \color{gray}{$ 0 $} \\
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Example - Iteration 3}
+  \label{cl:tab:hamming_example_iteration_3}
+\end{table}
+
+Bit three, $ P_2 $, is designed to generate even parity for data bits $ d_1 $, $ d_2 $, $ d_3 $, and $ d_7 $. Since there is one one in that group, then $ P_2 $ must be one. That has been filled in below. 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      \color{gray}{$ 0 $} & $ 0 $ & $ 1 $ &
+      $ 1 $ & $ 0 $ & \color{gray}{$ 0 $} &
+      $ 1 $ & $ 0 $ & $ 0 $ &
+      \color{red}{$ 1 $} & $ 1 $ & $ 0 $ &
+      $ 1 $ \\
+      % Line P2
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & $ X $ &
+      \color{red}{$ P $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} \\
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Example - Iteration 4}
+  \label{cl:tab:hamming_example_iteration_4}
+\end{table}
+
+Bit seven, $ P_3 $, is designed to generate even parity for data bits $ d_4 $, $ d_5 $, $ d_6 $, and $ d_7 $. Since there are two ones in that group, then $ P_3 $ must be zero. That has been filled in below. 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      \color{gray}{$ 0 $} & $ 0 $ & $ 1 $ &
+      $ 1 $ & $ 0 $ & \color{red}{$ 0 $} &
+      $ 1 $ & $ 0 $ & $ 0 $ &
+      $ 1 $ & $ 1 $ & $ 0 $ &
+      $ 1 $ \\
+      % Line P3
+      \color{gray}{$ 0 $} & $ X $ & $ X $ &
+      $ X $ & $ X $ & \color{red}{$ P $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} \\
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Example - Iteration 5}
+  \label{cl:tab:hamming_example_iteration_5}
+\end{table}
+
+Bit eight, $ P_4 $, is designed to generate even parity for data bits $ d_0 $, $ d_1 $, $ d_2 $, $ d_4 $, $ d_5 $, and $ d_7 $. Since there are two ones in that group, then $ P_4 $ must be zero. That has been filled in below. 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      \color{red}{$ 0 $} & $ 0 $ & $ 1 $ &
+      $ 1 $ & $ 0 $ & $ 0 $ &
+      $ 1 $ & $ 0 $ & $ 0 $ &
+      $ 1 $ & $ 1 $ & $ 0 $ &
+      $ 1 $ \\
+      % Line P4
+      \color{red}{$ P $} & $ X $ & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & $ X $ & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} 
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Example - Iteration 6}
+  \label{cl:tab:hamming_example_iteration_6}
+\end{table}
+
+When including Hamming parity, the byte $ 0110 \; 1001 $ is converted to: $ 0 \; 0110 \; 0100 \; 1101 $.
+
+In Figure \ref{fig:08_21}, a 11-bit input, \emph{A}, is used to create a 16-bit word that includes Hamming parity bits. In the illustration, input $ 010 \; 0111 \; 0111 $ is converted to $ 1010 \; 0100 \; 1110 \; 1111 $.  
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_21}
+	\caption{Generating Hamming Parity}
+	\label{fig:08_21}
+\end{figure}
+
+The process used by the circuit in Figure \ref{fig:08_21} is to wire each of the input bits to various parity generators and then combine the outputs of those parity generators, along with the original bits, into a single 16-bit word. While the circuit has a lot of wired connections the concept is fairly simple. \textsf{P0} calculates the parity for input bits $ 0, 1, 3, 4, 6, 8, 10 $. That is then wired to the least significant bit of output \emph{Y}.
+
+\subsubsection{Checking Hamming Code}
+\label{CL:subsubsec:checking_hamming_code}
+
+To check the accuracy of the data bits in a word that contains Hamming parity bits the following general process is used:
+
+\begin{enumerate}
+  \item Calculate the Hamming Parity Bit for each of the bit groups exactly like when the parity was first calculated.
+  \item Compare the calculated Hamming Parity bits with the parity bits found in the original binary word.
+  \item If the parity bits match then there is no error. If the parity bits do not match then the bad bit can be corrected by using the pattern of parity bits that do not match.
+\end{enumerate}
+
+As an example, imagine that bit eight (last bit in the first group of four) in the Hamming code created above was changed from zero to one: $ 0 \; 011\underline{1} \; 0100 \; 1101 $ (this is bit $ d_4 $).  Table \ref{cl:tab:hamming_parity_cover_table_reproduced} shows that Hamming Bits $ P_0 $, $ P_3 $, and $ P_4 $ would now be incorrect since $ d_4 $ is used to create those parity bits.
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{ccccccccccccc} 
+      \rowcolor{black!75}
+      \head{$ P_4 $} & \head{$ d_7 $} & \head{$ d_6 $} &
+      \head{$ d_5 $} & \head{$ d_4 $} & \head{$ P_3 $} &
+      \head{$ d_3 $} & \head{$ d_2 $} & \head{$ d_1 $} &
+      \head{$ P_2 $} & \head{$ d_0 $} & \head{$ P_1 $} &
+      \head{$ P_0 $} \\
+      % Line P0
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & $ X $ &
+      \color{gray}{$ 0 $} & \cellcolor{yellow!70!white}$ X $ & \color{gray}{$ 0 $} &
+      $ X $ & \color{gray}{$ 0 $} & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{red}{$ P $} \\
+      % Line P1
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & $ X $ &
+      $ X $ & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & $ X $ & \color{red}{$ P $} &
+      \color{gray}{$ 0 $} \\
+      % Line P2
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      $ X $ & $ X $ & $ X $ &
+      \color{red}{$ P $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} \\
+      % Line P3
+      \color{gray}{$ 0 $} & $ X $ & $ X $ &
+      $ X $ & \cellcolor{yellow!70!white}$ X $ & \color{red}{$ P $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & \color{gray}{$ 0 $} & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} \\
+      % Line P4
+      \color{red}{$ P $} & $ X $ & \color{gray}{$ 0 $} &
+      $ X $ & \cellcolor{yellow!70!white}$ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} & $ X $ & $ X $ &
+      \color{gray}{$ 0 $} & $ X $ & \color{gray}{$ 0 $} &
+      \color{gray}{$ 0 $} 
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Parity Cover Table Reproduced}
+  \label{cl:tab:hamming_parity_cover_table_reproduced}
+\end{table}
+
+Since the only data bit that uses these three parity bits is $ d_4 $ then that one bit can be inverted to correct the data in the eight-bit byte.
+
+The circuit illusted in Figure \ref{fig:08_22} realizes a Hamming parity check. Notice that the input is the same 16-bit word generated in the circuit in Figure \ref{fig:08_21} except bit eight (the last bit on the top row of the input) has been complemented. The circuit reports that bit eight is in err so it would not only alert an operator that something is wrong with this data but it would also be able to automatically correct the wrong bit.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/08_22}
+	\caption{Checking Hamming Parity}
+	\label{fig:08_22}
+\end{figure}
+
+
+\subsection{Hamming Code Notes}
+\label{CL:subsec:hamming_code_notes}
+
+\begin{itemize}
+  \item When a binary word that includes Hamming parity is checked to verify the accuracy of the data bits using three overlapping parity bits, as developed in this book, one-bit errors can be corrected and two-bit errors can be detected. This type of system is often called \ac{SECDED} and is commonly used in computer memories to ensure data integrity.
+
+  \item While it seems wasteful to add five Hamming bits to an eight-bit byte (a 62.5\% increase in length), the number of bits needed for longer words does not continue to increase at that rate. Hamming bits are added to a binary word in multiples of powers of two. For example, to cover a 32-bit word only seven Hamming bits are needed, an increase of only about 22.\%; and to cover a 256-bit word only $ 10 $ Hamming bits are needed, an increase of just under 4\%.
+
+  \item This lesson counts bits from right-to-left and considers the first position as bit zero, which matches with the bit counting pattern used throughout the book. However, many authors and online resources count Hamming bits from left-to-right and consider the left-most position as bit one because that is a natural way to count.
+\end{itemize}
+
+\subsection{Sample Problems}
+\label{CL:subsec:sample_problems_error_detection}
+
+The following problems are provided for practice. 
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cc} 
+      \rowcolor{black!75}
+      \head{8-Bit Byte} & \head{With Hamming} \\
+      $ 11001010 $ & $ 1110011011001 $ \\
+      $ 10001111 $ & $ 1100001110111 $ \\
+      $ 01101101 $ & $ 0011011100111 $ \\
+      $ 11100010 $ & $ 0111000010000 $ \\
+      $ 10011011 $ & $ 1100111011100 $ \\
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Parity Examples}
+  \label{CL:tab:hamming_parity_examples}
+\end{table}
+
+\begin{table}[H]
+  \sffamily
+  \newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}    
+  \begin{center}
+    \rowcolors{2}{gray!10}{white} % Color every other line a light gray
+    \begin{tabular}{cc} 
+      \rowcolor{black!75}
+      \head{Hamming With Error} & \head{Error Bit} \\
+      $ 0110101011001 $ & 1 \\
+      $ 1100000100110 $ & 3 \\
+      $ 0000100001100 $ & 5 \\
+      $ 1110111011010 $ & 9 \\
+      $ 1110010100110 $ & 12 \\
+    \end{tabular}
+  \end{center}
+  \caption{Hamming Parity Errors}
+  \label{CL:tab:hamming_parity_errors}
+\end{table}

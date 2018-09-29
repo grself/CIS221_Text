@@ -1,0 +1,233 @@
+\BOOKMARK [1][-]{tableofcontents.1}{Contents}{}% 1
+\BOOKMARK [0][]{dummy.3}{List of Figures}{}% 2
+\BOOKMARK [1][-]{lof.1}{List of Figures}{dummy.3}% 3
+\BOOKMARK [0][]{dummy.4}{List of Tables}{}% 4
+\BOOKMARK [1][-]{lot.1}{List of Tables}{dummy.4}% 5
+\BOOKMARK [0][]{dummy.5}{Listings}{}% 6
+\BOOKMARK [1][-]{lol.1}{Listings}{dummy.5}% 7
+\BOOKMARK [1][-]{acronyms.1}{Acronyms}{dummy.5}% 8
+\BOOKMARK [-1][]{part.1}{ Theory}{}% 9
+\BOOKMARK [0][]{chapter.1}{1 Introduction}{part.1}% 10
+\BOOKMARK [1][-]{section.1.1}{1.1 Preface}{chapter.1}% 11
+\BOOKMARK [2][-]{subsection.1.1.1}{1.1.1 Introduction to the Study of Digital Logic}{section.1.1}% 12
+\BOOKMARK [2][-]{subsection.1.1.2}{1.1.2 Introduction to the Author}{section.1.1}% 13
+\BOOKMARK [2][-]{subsection.1.1.3}{1.1.3 Introduction to This Book}{section.1.1}% 14
+\BOOKMARK [2][-]{subsection.1.1.4}{1.1.4 About the Creative Commons License}{section.1.1}% 15
+\BOOKMARK [1][-]{section.1.2}{1.2 About Digital Logic}{chapter.1}% 16
+\BOOKMARK [2][-]{subsection.1.2.1}{1.2.1 Introduction}{section.1.2}% 17
+\BOOKMARK [2][-]{subsection.1.2.2}{1.2.2 A Brief Electronics Primer}{section.1.2}% 18
+\BOOKMARK [1][-]{section.1.3}{1.3 Boolean Algebra}{chapter.1}% 19
+\BOOKMARK [2][-]{subsection.1.3.1}{1.3.1 History}{section.1.3}% 20
+\BOOKMARK [2][-]{subsection.1.3.2}{1.3.2 Boolean Equations}{section.1.3}% 21
+\BOOKMARK [1][-]{section.1.4}{1.4 About This Book}{chapter.1}% 22
+\BOOKMARK [0][]{chapter.2}{2 Foundations of Binary Mathematics}{part.1}% 23
+\BOOKMARK [1][-]{section.2.1}{2.1 Introduction to Number Systems}{chapter.2}% 24
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Background}{section.2.1}% 25
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Binary Mathematics}{section.2.1}% 26
+\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 Systems Without Place Value}{section.2.1}% 27
+\BOOKMARK [2][-]{subsection.2.1.4}{2.1.4 Systems With Place Value}{section.2.1}% 28
+\BOOKMARK [2][-]{subsection.2.1.5}{2.1.5 Summary of Numeration Systems}{section.2.1}% 29
+\BOOKMARK [2][-]{subsection.2.1.6}{2.1.6 Conventions}{section.2.1}% 30
+\BOOKMARK [1][-]{section.2.2}{2.2 Converting Between Radices}{chapter.2}% 31
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Introduction}{section.2.2}% 32
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Expanded Positional Notation}{section.2.2}% 33
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Binary to Decimal}{section.2.2}% 34
+\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Binary to Octal}{section.2.2}% 35
+\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 Binary to Hexadecimal}{section.2.2}% 36
+\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Octal to Decimal}{section.2.2}% 37
+\BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Hexadecimal to Decimal}{section.2.2}% 38
+\BOOKMARK [2][-]{subsection.2.2.8}{2.2.8 Decimal to Binary}{section.2.2}% 39
+\BOOKMARK [2][-]{subsection.2.2.9}{2.2.9 Calculators}{section.2.2}% 40
+\BOOKMARK [2][-]{subsection.2.2.10}{2.2.10 Practice Problems}{section.2.2}% 41
+\BOOKMARK [1][-]{section.2.3}{2.3 Floating Point Numbers}{chapter.2}% 42
+\BOOKMARK [0][]{chapter.3}{3 Binary Mathematics Operations}{part.1}% 43
+\BOOKMARK [1][-]{section.3.1}{3.1 Binary Addition}{chapter.3}% 44
+\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 Overflow Error}{section.3.1}% 45
+\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Sample Binary Addition Problems}{section.3.1}% 46
+\BOOKMARK [1][-]{section.3.2}{3.2 Binary Subtraction}{chapter.3}% 47
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Simple Manual Subtraction}{section.3.2}% 48
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Representing Negative Binary Numbers Using Sign-and-Magnitude}{section.3.2}% 49
+\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 Representing Negative Binary Numbers Using Signed Complements }{section.3.2}% 50
+\BOOKMARK [2][-]{subsection.3.2.4}{3.2.4 Subtracting Using the Diminished Radix Complement }{section.3.2}% 51
+\BOOKMARK [2][-]{subsection.3.2.5}{3.2.5 Subtracting Using the Radix Complement}{section.3.2}% 52
+\BOOKMARK [2][-]{subsection.3.2.6}{3.2.6 Overflow}{section.3.2}% 53
+\BOOKMARK [1][-]{section.3.3}{3.3 Binary Multiplication}{chapter.3}% 54
+\BOOKMARK [2][-]{subsection.3.3.1}{3.3.1 Multiplying Unsigned Numbers}{section.3.3}% 55
+\BOOKMARK [2][-]{subsection.3.3.2}{3.3.2 Multiplying Signed Numbers}{section.3.3}% 56
+\BOOKMARK [1][-]{section.3.4}{3.4 Binary Division}{chapter.3}% 57
+\BOOKMARK [1][-]{section.3.5}{3.5 Bitwise Operations}{chapter.3}% 58
+\BOOKMARK [1][-]{section.3.6}{3.6 Codes}{chapter.3}% 59
+\BOOKMARK [2][-]{subsection.3.6.1}{3.6.1 Introduction}{section.3.6}% 60
+\BOOKMARK [2][-]{subsection.3.6.2}{3.6.2 Computer Codes}{section.3.6}% 61
+\BOOKMARK [0][]{chapter.4}{4 Boolean Functions}{part.1}% 62
+\BOOKMARK [1][-]{section.4.1}{4.1 Introduction to Boolean Functions}{chapter.4}% 63
+\BOOKMARK [1][-]{section.4.2}{4.2 Primary Logic Operations}{chapter.4}% 64
+\BOOKMARK [2][-]{subsection.4.2.1}{4.2.1 AND}{section.4.2}% 65
+\BOOKMARK [2][-]{subsection.4.2.2}{4.2.2 OR}{section.4.2}% 66
+\BOOKMARK [2][-]{subsection.4.2.3}{4.2.3 NOT}{section.4.2}% 67
+\BOOKMARK [1][-]{section.4.3}{4.3 Secondary Logic Functions}{chapter.4}% 68
+\BOOKMARK [2][-]{subsection.4.3.1}{4.3.1 NAND}{section.4.3}% 69
+\BOOKMARK [2][-]{subsection.4.3.2}{4.3.2 NOR}{section.4.3}% 70
+\BOOKMARK [2][-]{subsection.4.3.3}{4.3.3 XOR}{section.4.3}% 71
+\BOOKMARK [2][-]{subsection.4.3.4}{4.3.4 XNOR}{section.4.3}% 72
+\BOOKMARK [2][-]{subsection.4.3.5}{4.3.5 Buffer}{section.4.3}% 73
+\BOOKMARK [1][-]{section.4.4}{4.4 Univariate Boolean Algebra Properties}{chapter.4}% 74
+\BOOKMARK [2][-]{subsection.4.4.1}{4.4.1 Introduction}{section.4.4}% 75
+\BOOKMARK [2][-]{subsection.4.4.2}{4.4.2 Identity}{section.4.4}% 76
+\BOOKMARK [2][-]{subsection.4.4.3}{4.4.3 Idempotence}{section.4.4}% 77
+\BOOKMARK [2][-]{subsection.4.4.4}{4.4.4 Annihilator}{section.4.4}% 78
+\BOOKMARK [2][-]{subsection.4.4.5}{4.4.5 Complement}{section.4.4}% 79
+\BOOKMARK [2][-]{subsection.4.4.6}{4.4.6 Involution}{section.4.4}% 80
+\BOOKMARK [1][-]{section.4.5}{4.5 Multivariate Boolean Algebra Properties}{chapter.4}% 81
+\BOOKMARK [2][-]{subsection.4.5.1}{4.5.1 Introduction}{section.4.5}% 82
+\BOOKMARK [2][-]{subsection.4.5.2}{4.5.2 Commutative}{section.4.5}% 83
+\BOOKMARK [2][-]{subsection.4.5.3}{4.5.3 Associative}{section.4.5}% 84
+\BOOKMARK [2][-]{subsection.4.5.4}{4.5.4 Distributive}{section.4.5}% 85
+\BOOKMARK [2][-]{subsection.4.5.5}{4.5.5 Absorption}{section.4.5}% 86
+\BOOKMARK [2][-]{subsection.4.5.6}{4.5.6 Adjacency}{section.4.5}% 87
+\BOOKMARK [1][-]{section.4.6}{4.6 DeMorgan's Theorem}{chapter.4}% 88
+\BOOKMARK [2][-]{subsection.4.6.1}{4.6.1 Introduction}{section.4.6}% 89
+\BOOKMARK [2][-]{subsection.4.6.2}{4.6.2 Applying DeMorgan's Theorem}{section.4.6}% 90
+\BOOKMARK [2][-]{subsection.4.6.3}{4.6.3 Simple Example}{section.4.6}% 91
+\BOOKMARK [2][-]{subsection.4.6.4}{4.6.4 Incorrect Application of DeMorgan's Theorem}{section.4.6}% 92
+\BOOKMARK [2][-]{subsection.4.6.5}{4.6.5 About Grouping}{section.4.6}% 93
+\BOOKMARK [2][-]{subsection.4.6.6}{4.6.6 Summary}{section.4.6}% 94
+\BOOKMARK [2][-]{subsection.4.6.7}{4.6.7 Example Problems}{section.4.6}% 95
+\BOOKMARK [1][-]{section.4.7}{4.7 Boolean Functions}{chapter.4}% 96
+\BOOKMARK [1][-]{section.4.8}{4.8 Functional Completeness}{chapter.4}% 97
+\BOOKMARK [0][]{chapter.5}{5 Boolean Expressions}{part.1}% 98
+\BOOKMARK [1][-]{section.5.1}{5.1 Introduction}{chapter.5}% 99
+\BOOKMARK [1][-]{section.5.2}{5.2 Creating Boolean Expressions}{chapter.5}% 100
+\BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Example}{section.5.2}% 101
+\BOOKMARK [1][-]{section.5.3}{5.3 Minterms and Maxterms}{chapter.5}% 102
+\BOOKMARK [2][-]{subsection.5.3.1}{5.3.1 Introduction}{section.5.3}% 103
+\BOOKMARK [2][-]{subsection.5.3.2}{5.3.2 Sum Of Products \(SOP\) Defined}{section.5.3}% 104
+\BOOKMARK [2][-]{subsection.5.3.3}{5.3.3 Product of Sums \(POS\) Defined}{section.5.3}% 105
+\BOOKMARK [2][-]{subsection.5.3.4}{5.3.4 About Minterms}{section.5.3}% 106
+\BOOKMARK [2][-]{subsection.5.3.5}{5.3.5 About Maxterms}{section.5.3}% 107
+\BOOKMARK [2][-]{subsection.5.3.6}{5.3.6 Minterm and Maxterm Relationships}{section.5.3}% 108
+\BOOKMARK [2][-]{subsection.5.3.7}{5.3.7 Sum of Products Example}{section.5.3}% 109
+\BOOKMARK [2][-]{subsection.5.3.8}{5.3.8 Product of Sums Example}{section.5.3}% 110
+\BOOKMARK [2][-]{subsection.5.3.9}{5.3.9 Summary}{section.5.3}% 111
+\BOOKMARK [1][-]{section.5.4}{5.4 Canonical Form}{chapter.5}% 112
+\BOOKMARK [2][-]{subsection.5.4.1}{5.4.1 Introduction}{section.5.4}% 113
+\BOOKMARK [2][-]{subsection.5.4.2}{5.4.2 Converting Terms Missing One Variable}{section.5.4}% 114
+\BOOKMARK [2][-]{subsection.5.4.3}{5.4.3 Converting Terms Missing Two Variables}{section.5.4}% 115
+\BOOKMARK [2][-]{subsection.5.4.4}{5.4.4 Summary}{section.5.4}% 116
+\BOOKMARK [2][-]{subsection.5.4.5}{5.4.5 Practice Problems}{section.5.4}% 117
+\BOOKMARK [1][-]{section.5.5}{5.5 Simplification Using Algebraic Methods}{chapter.5}% 118
+\BOOKMARK [2][-]{subsection.5.5.1}{5.5.1 Introduction}{section.5.5}% 119
+\BOOKMARK [2][-]{subsection.5.5.2}{5.5.2 Starting From a Circuit}{section.5.5}% 120
+\BOOKMARK [2][-]{subsection.5.5.3}{5.5.3 Starting From a Boolean Equation}{section.5.5}% 121
+\BOOKMARK [2][-]{subsection.5.5.4}{5.5.4 Practice Problems}{section.5.5}% 122
+\BOOKMARK [0][]{chapter.6}{6 Karnaugh maps}{part.1}% 123
+\BOOKMARK [1][-]{section.6.1}{6.1 Introduction}{chapter.6}% 124
+\BOOKMARK [1][-]{section.6.2}{6.2 Reading Karnaugh maps}{chapter.6}% 125
+\BOOKMARK [1][-]{section.6.3}{6.3 Drawing Two-Variable Karnaugh maps}{chapter.6}% 126
+\BOOKMARK [1][-]{section.6.4}{6.4 Drawing Three-Variable Karnaugh maps}{chapter.6}% 127
+\BOOKMARK [2][-]{subsection.6.4.1}{6.4.1 The Gray Code}{section.6.4}% 128
+\BOOKMARK [1][-]{section.6.5}{6.5 Drawing Four-Variable Karnaugh maps}{chapter.6}% 129
+\BOOKMARK [1][-]{section.6.6}{6.6 Simplifying Groups of Two}{chapter.6}% 130
+\BOOKMARK [1][-]{section.6.7}{6.7 Simplifying Larger Groups}{chapter.6}% 131
+\BOOKMARK [2][-]{subsection.6.7.1}{6.7.1 Groups of 16}{section.6.7}% 132
+\BOOKMARK [2][-]{subsection.6.7.2}{6.7.2 Groups of Eight}{section.6.7}% 133
+\BOOKMARK [2][-]{subsection.6.7.3}{6.7.3 Groups of Four}{section.6.7}% 134
+\BOOKMARK [2][-]{subsection.6.7.4}{6.7.4 Groups of Two}{section.6.7}% 135
+\BOOKMARK [1][-]{section.6.8}{6.8 Overlapping Groups}{chapter.6}% 136
+\BOOKMARK [1][-]{section.6.9}{6.9 Wrapping Groups}{chapter.6}% 137
+\BOOKMARK [1][-]{section.6.10}{6.10 Karnaugh maps for Five-Variable Inputs}{chapter.6}% 138
+\BOOKMARK [1][-]{section.6.11}{6.11 ``Don't Care'' Terms}{chapter.6}% 139
+\BOOKMARK [1][-]{section.6.12}{6.12 Karnaugh map Simplification Summary}{chapter.6}% 140
+\BOOKMARK [1][-]{section.6.13}{6.13 Practice Problems}{chapter.6}% 141
+\BOOKMARK [1][-]{section.6.14}{6.14 Reed-M\374ller Logic}{chapter.6}% 142
+\BOOKMARK [1][-]{section.6.15}{6.15 Introduction}{chapter.6}% 143
+\BOOKMARK [1][-]{section.6.16}{6.16 Zero In First Cell}{chapter.6}% 144
+\BOOKMARK [2][-]{subsection.6.16.1}{6.16.1 Two-Variable Circuit}{section.6.16}% 145
+\BOOKMARK [2][-]{subsection.6.16.2}{6.16.2 Three-Variable Circuit}{section.6.16}% 146
+\BOOKMARK [2][-]{subsection.6.16.3}{6.16.3 Four-Variable Circuit}{section.6.16}% 147
+\BOOKMARK [1][-]{section.6.17}{6.17 One In First Cell}{chapter.6}% 148
+\BOOKMARK [0][]{chapter.7}{7 Advanced Simplifying Methods}{part.1}% 149
+\BOOKMARK [1][-]{section.7.1}{7.1 Quine-McCluskey Simplification Method}{chapter.7}% 150
+\BOOKMARK [2][-]{subsection.7.1.1}{7.1.1 Introduction}{section.7.1}% 151
+\BOOKMARK [2][-]{subsection.7.1.2}{7.1.2 Example One}{section.7.1}% 152
+\BOOKMARK [2][-]{subsection.7.1.3}{7.1.3 Example Two}{section.7.1}% 153
+\BOOKMARK [2][-]{subsection.7.1.4}{7.1.4 Summary}{section.7.1}% 154
+\BOOKMARK [2][-]{subsection.7.1.5}{7.1.5 Practice Problems}{section.7.1}% 155
+\BOOKMARK [2][-]{subsection.7.1.6}{7.1.6 Practice Problems}{section.7.1}% 156
+\BOOKMARK [1][-]{section.7.2}{7.2 Automated Tools}{chapter.7}% 157
+\BOOKMARK [2][-]{subsection.7.2.1}{7.2.1 Introduction}{section.7.2}% 158
+\BOOKMARK [2][-]{subsection.7.2.2}{7.2.2 KARMA}{section.7.2}% 159
+\BOOKMARK [-1][]{part.2}{ Practice}{}% 160
+\BOOKMARK [0][]{chapter.8}{8 Combinational Logic Circuits}{part.2}% 161
+\BOOKMARK [1][-]{section.8.1}{8.1 Introduction}{chapter.8}% 162
+\BOOKMARK [1][-]{section.8.2}{8.2 Multiplexers/Demultiplexers}{chapter.8}% 163
+\BOOKMARK [2][-]{subsection.8.2.1}{8.2.1 Multiplexer}{section.8.2}% 164
+\BOOKMARK [2][-]{subsection.8.2.2}{8.2.2 Demultiplexer}{section.8.2}% 165
+\BOOKMARK [2][-]{subsection.8.2.3}{8.2.3 Minterm Generators}{section.8.2}% 166
+\BOOKMARK [1][-]{section.8.3}{8.3 Adders and Subtractors}{chapter.8}% 167
+\BOOKMARK [2][-]{subsection.8.3.1}{8.3.1 Introduction}{section.8.3}% 168
+\BOOKMARK [2][-]{subsection.8.3.2}{8.3.2 Half Adder}{section.8.3}% 169
+\BOOKMARK [2][-]{subsection.8.3.3}{8.3.3 Full Adder}{section.8.3}% 170
+\BOOKMARK [2][-]{subsection.8.3.4}{8.3.4 Cascading Adders}{section.8.3}% 171
+\BOOKMARK [2][-]{subsection.8.3.5}{8.3.5 Half Subtractor}{section.8.3}% 172
+\BOOKMARK [2][-]{subsection.8.3.6}{8.3.6 Full Subtractor}{section.8.3}% 173
+\BOOKMARK [2][-]{subsection.8.3.7}{8.3.7 Cascading Subtractors}{section.8.3}% 174
+\BOOKMARK [2][-]{subsection.8.3.8}{8.3.8 Adder-Subtractor Circuit}{section.8.3}% 175
+\BOOKMARK [2][-]{subsection.8.3.9}{8.3.9 Integrated Circuits}{section.8.3}% 176
+\BOOKMARK [1][-]{section.8.4}{8.4 Arithmetic Logic Units}{chapter.8}% 177
+\BOOKMARK [1][-]{section.8.5}{8.5 Comparators}{chapter.8}% 178
+\BOOKMARK [1][-]{section.8.6}{8.6 Encoders/Decoders}{chapter.8}% 179
+\BOOKMARK [2][-]{subsection.8.6.1}{8.6.1 Introduction}{section.8.6}% 180
+\BOOKMARK [2][-]{subsection.8.6.2}{8.6.2 Ten-Line Priority}{section.8.6}% 181
+\BOOKMARK [2][-]{subsection.8.6.3}{8.6.3 Seven-Segment Display}{section.8.6}% 182
+\BOOKMARK [2][-]{subsection.8.6.4}{8.6.4 Function Generators}{section.8.6}% 183
+\BOOKMARK [1][-]{section.8.7}{8.7 Error Detection}{chapter.8}% 184
+\BOOKMARK [2][-]{subsection.8.7.1}{8.7.1 Introduction}{section.8.7}% 185
+\BOOKMARK [2][-]{subsection.8.7.2}{8.7.2 Iterative Parity Checking}{section.8.7}% 186
+\BOOKMARK [2][-]{subsection.8.7.3}{8.7.3 Hamming Code}{section.8.7}% 187
+\BOOKMARK [2][-]{subsection.8.7.4}{8.7.4 Hamming Code Notes}{section.8.7}% 188
+\BOOKMARK [2][-]{subsection.8.7.5}{8.7.5 Sample Problems}{section.8.7}% 189
+\BOOKMARK [0][]{chapter.9}{9 Sequential Logic Circuits}{part.2}% 190
+\BOOKMARK [1][-]{section.9.1}{9.1 Introduction}{chapter.9}% 191
+\BOOKMARK [1][-]{section.9.2}{9.2 Timing Diagrams}{chapter.9}% 192
+\BOOKMARK [1][-]{section.9.3}{9.3 Flip-Flops}{chapter.9}% 193
+\BOOKMARK [2][-]{subsection.9.3.1}{9.3.1 Introduction}{section.9.3}% 194
+\BOOKMARK [2][-]{subsection.9.3.2}{9.3.2 SR Latch}{section.9.3}% 195
+\BOOKMARK [2][-]{subsection.9.3.3}{9.3.3 Data \(D\) Flip-Flop}{section.9.3}% 196
+\BOOKMARK [2][-]{subsection.9.3.4}{9.3.4 JK Flip-Flop}{section.9.3}% 197
+\BOOKMARK [2][-]{subsection.9.3.5}{9.3.5 Toggle \(T\) Flip-Flop}{section.9.3}% 198
+\BOOKMARK [2][-]{subsection.9.3.6}{9.3.6 Master-Slave Flip-Flops}{section.9.3}% 199
+\BOOKMARK [1][-]{section.9.4}{9.4 Registers}{chapter.9}% 200
+\BOOKMARK [2][-]{subsection.9.4.1}{9.4.1 Introduction}{section.9.4}% 201
+\BOOKMARK [2][-]{subsection.9.4.2}{9.4.2 Registers As Memory}{section.9.4}% 202
+\BOOKMARK [2][-]{subsection.9.4.3}{9.4.3 Shift Registers}{section.9.4}% 203
+\BOOKMARK [1][-]{section.9.5}{9.5 Counters}{chapter.9}% 204
+\BOOKMARK [2][-]{subsection.9.5.1}{9.5.1 Introduction}{section.9.5}% 205
+\BOOKMARK [2][-]{subsection.9.5.2}{9.5.2 Asynchronous Counters}{section.9.5}% 206
+\BOOKMARK [2][-]{subsection.9.5.3}{9.5.3 Synchronous Counters}{section.9.5}% 207
+\BOOKMARK [2][-]{subsection.9.5.4}{9.5.4 Ring Counters}{section.9.5}% 208
+\BOOKMARK [2][-]{subsection.9.5.5}{9.5.5 Modulus Counters}{section.9.5}% 209
+\BOOKMARK [2][-]{subsection.9.5.6}{9.5.6 Up-Down Counters}{section.9.5}% 210
+\BOOKMARK [2][-]{subsection.9.5.7}{9.5.7 Frequency Divider}{section.9.5}% 211
+\BOOKMARK [2][-]{subsection.9.5.8}{9.5.8 Counter Integrated Circuits \(IC\)}{section.9.5}% 212
+\BOOKMARK [1][-]{section.9.6}{9.6 Memory}{chapter.9}% 213
+\BOOKMARK [2][-]{subsection.9.6.1}{9.6.1 Read-Only Memory}{section.9.6}% 214
+\BOOKMARK [2][-]{subsection.9.6.2}{9.6.2 Random Access Memory}{section.9.6}% 215
+\BOOKMARK [0][]{chapter.10}{10 Simulation}{part.2}% 216
+\BOOKMARK [1][-]{section.10.1}{10.1 Introduction}{chapter.10}% 217
+\BOOKMARK [1][-]{section.10.2}{10.2 Finite State Machines}{chapter.10}% 218
+\BOOKMARK [2][-]{subsection.10.2.1}{10.2.1 Introduction}{section.10.2}% 219
+\BOOKMARK [2][-]{subsection.10.2.2}{10.2.2 Moore Finite State Machine}{section.10.2}% 220
+\BOOKMARK [2][-]{subsection.10.2.3}{10.2.3 Mealy Finite State Machine}{section.10.2}% 221
+\BOOKMARK [2][-]{subsection.10.2.4}{10.2.4 Finite State Machine Tables}{section.10.2}% 222
+\BOOKMARK [1][-]{section.10.3}{10.3 Elevator}{chapter.10}% 223
+\BOOKMARK [1][-]{section.10.4}{10.4 Central Processing Unit}{chapter.10}% 224
+\BOOKMARK [2][-]{subsection.10.4.1}{10.4.1 Introduction}{section.10.4}% 225
+\BOOKMARK [2][-]{subsection.10.4.2}{10.4.2 CPU States}{section.10.4}% 226
+\BOOKMARK [-1][]{part.3}{ Appendix}{}% 227
+\BOOKMARK [0][]{chapter.1}{a Boolean Properties and Functions}{part.3}% 228
+\BOOKMARK [0][]{chapter.2}{b Resources}{part.3}% 229
+\BOOKMARK [1][-]{section.2.1}{b.1 Digital Logic}{chapter.2}% 230
+\BOOKMARK [2][-]{subsection.2.1.1}{b.1.1 Books}{section.2.1}% 231
+\BOOKMARK [2][-]{subsection.2.1.2}{b.1.2 Found Online}{section.2.1}% 232
+\BOOKMARK [0][]{colophon.0}{Colophon}{part.3}% 233

@@ -1,0 +1,295 @@
+\chapter{Introduction}\label{ch01}
+\section{Preface}
+\subsection{Introduction to the Study of Digital Logic}
+
+Digital logic is the study of how electronic devices make decisions. It functions at the lowest level of computer operations: bits that can either be ``on'' or ``off'' and groups of bits that form ``bytes'' and ``words'' that control physical devices. The language of digital logic is Boolean algebra, which is a mathematical model used to describe the logical function of a circuit; and that model can then be used to design the most efficient device possible. Finally, various simple devices, such as adders and registers, can be combined into increasingly complex circuits designed to accomplish advanced decision-making tasks.
+
+\subsection{Introduction to the Author}
+
+I have worked with computers and computer controlled systems for more than 30 years. I took my first programming class in 1976; and, several years later, was introduced to digital logic while taking classes to learn how to repair computer systems. For many years, my profession was to work on computer systems, both as a repair technician and a programmer, where I used the principles of digital logic daily. I then began teaching digital logic classes at Cochise College and was able to share my enthusiasm for the subject with Computer Information Systems students. Over the years, I have continued my studies of digital logic in order to improve my understanding of the topic; I also enjoy building logic circuits on a simulator to solve interesting challenges. It is my goal to make digital logic understandable and to also ignite a lifelong passion for the subject in students.
+
+\subsection{Introduction to This Book}
+
+This book has two goals:
+
+1. \textsc{Audience}. Many, perhaps most, digital logic books are designed for third or fourth year electronics engineering or computer science students and presume a background that includes advanced mathematics and various engineering classes. For example, it is possible to find a digital logic book that discusses topics like physically building circuits from discrete components and then calculating the heat rise of those circuits while operating at maximum capacity. This book, though, was written for students in their second year of a Computer Information Systems program and makes no assumptions about prior mathematics and engineering classes.
+
+2. \textsc{Cost}. Most digital logic books are priced at \$150 (and up) but this book is published under a Creative Commons license and, though only a tiny drop in the proverbial textbook ocean, is hoped to keep the cost of books for at least one class as low as possible.
+
+Following are the features for the various editions of this book:
+
+\begin{enumerate}
+  \item 2012. Prior to 2012, handouts were given to students as they were needed during class; however, it was in this year that the numerous disparate documents were assembled into a cohesive book and printed by a professional printing company.
+  \item 2013. A number of complex circuits were added to the book, including a Hamming Code generator/checker, which is used for error detection, and a \ac{CPU} using discrete logic gates.
+  \item 2014. New material on Mealy and Moore State Machines was included, but the major change was in the laboratory exercises where five Verilog labs were added to the ten gate-level simulation labs.
+  \item 2015. New information was added about adding/subtracting \ac{BCD} numbers and representing floating point numbers in binary form; and all of the laboratory exercises were re-written in Verilog. Also, the book was reorganized and converted to \LaTeX for printing.
+  \item 2018. The labs were re-written using \textit{Logisim-evolution} because students find that system easier to understand than iVerilog.
+\end{enumerate}
+
+This book was written with \LaTeX \: using TeXstudio. The source for this book is available at GITHUB, \url{http://bit.ly/2w6qU2C}, and anyone is welcomed to fork the book and develop their own version. 
+
+% Add some vertical space
+\medskip
+
+% This is a "sidebar" box
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+  % Upper half of box: my "title" area
+  \textcolor{blue}{DISCLAIMER}
+  % Lower half of the box: the content
+  \tcblower
+  \textsf{I wrote, edited, illustrated, and published this book myself. While I did the best that I could, there are, no doubt, errors. I apologize in advance if anything presented here is factually erroneous; I'll correct those errors as soon as they are discovered. I'll also correct whatever typos I overlooked, despite TeXstudio's red squiggly underlines trying to tell me to check my work. --George Self}
+\end{tcolorbox}
+
+% Add some vertical space
+\medskip
+
+\subsection{About the Creative Commons License}
+
+This book is being released under the Creative Commons 0 license, which is the same as public domain. That permits people to share, remix, or even rewrite the work so it can be used to help educate students wherever they are studying digital logic. 
+
+
+\section{About Digital Logic}
+
+\subsection{Introduction}
+
+Digital logic is the study of how logic is used in digital devices to complete tasks in fields as diverse as communication, business, space exploration, and medicine (not to mention everyday life). This definition has two main components: logic and digital. \emph{Logic} is the branch of philosophy that concerns making reasonable judgment based on sound principles of inference. It is a method of problem solving based on a linear, step-by-step procedure. \emph{Digital} is a system of mathematics where only two possible values exist: \emph{True} and \emph{False} (usually represented by 1 and 0). While this approach may seem limited, it actually works quite nicely in computer circuits where \emph{True} and \emph{False} can be easily represented by the presence or absence of voltage.
+
+Digital logic is not the same as programming logic, though there is some relationship between them. A programmer would use the constructs of logic within a high-level language, like Java or C++, to get a computer to complete some task. On the other hand, an engineer would use digital logic with hardware devices to build a machine, like an alarm clock or calculator, which executes some task. In broad strokes, then, programming logic concerns writing software while digital logic concerns building hardware. 
+
+Digital logic may be divided into two broad classes: 
+
+\begin{enumerate}
+
+  \item \textsc{Combinational Logic}, in which the outputs are determined solely by the input states at one particular moment with no memory of prior states. An example of a combinational circuit is a simple adder where the output is determined only by the values of two inputs.
+
+  \item \textsc{Sequential Logic}, in which the outputs depend on both current and prior inputs, so some sort of memory is necessary. An example of a sequential circuit is a counter where a sensed new event is added to some total contained in memory.
+
+\end{enumerate}
+
+Both combinational and sequential logic are developed in this book, along with complex circuits that require both combinational and sequential logic.
+
+\subsection{A Brief Electronics Primer}
+
+Electricity is nothing more than the flow of electrons from point \emph{A} to point \emph{B}. Along the way, those electrons can be made to do work as they flow through various devices. Electronics is the science (and, occasionally, art) of using tiny quantities of electricity to do work. As an example, consider the circuit schematic illustrated in Figure \ref{IN:fig:simple_lamp_circuit}:
+
+\begin{figure}[htb]
+  \myfloatalign
+  \begin{tikzpicture} [circuit logic US, scale=1.00]
+  % make all path lines (the node shapes) a little thicker
+  \tikzstyle{every path}=[line width=0.20mm]  
+    
+  % Draw the figure
+  \draw
+    (0,0)
+    to[battery,label=$B_1$] (0,2) % The voltage source
+    to[short] (2,2)
+    to[lamp,label=$Lmp_1$] (2,0) % The lamp
+    to[ospst,label=$Sw_1$] (0.25,0) % The switch
+    to[short] (0,0)
+  ;    
+  \end{tikzpicture}
+  \caption{Simple Lamp Circuit}
+  \label{IN:fig:simple_lamp_circuit}
+\end{figure}
+
+In this diagram, battery \emph{B1} is connected to lamp \emph{Lmp1} through switch \emph{Sw1}. When the switch is closed, electrons will flow from the negative battery terminal, through the switch and lamp, and back to the positive battery terminal. As the electrons flow through the lamp's filament it will heat up and glow: light! 
+
+\begin{figure}[htb]
+  \myfloatalign
+  \begin{tikzpicture} [circuit logic US, scale=1.00]
+  % make all path lines (the node shapes) a little thicker
+  \tikzstyle{every path}=[line width=0.20mm]  
+  
+  % Draw the figure
+  \draw
+    (4,1) node[npn,rotate=90,label=$Q_1$,anchor=E](npn) {}
+    
+    % From origin to switch to Q1 base
+    (0,0) 
+    to[ospst,label=$Sw_1$] (2,0) % Switch
+    to[short] (3.25,0)
+    to (npn.base)
+    
+    (npn.emitter)
+    to[short] (4.5,1)
+    to[battery,l_=$B_1$] (4.5,3.5) % Battery
+    to[short] (4.5,5)
+    to[short] (0,5)
+    to[resistor,l=$R_1$] (0,0) % Resistor
+    to (0,0)
+    
+    % Internal loop from Q1 Collector to Lamp
+    (npn.collector) 
+    to[short] (2,1)
+    to[short] (2,3.5)
+    to[lamp,label=$Lmp_1$] (4.25,3.5) % Lamp
+    to(4.5,3.5)    
+  ;    
+  \end{tikzpicture}
+  \caption{Transistor-Controlled Lamp Circuit}
+  \label{IN:fig:xistor_lamp_circuit}
+\end{figure}
+
+A slightly more complex circuit is illustrated in Figure \ref{IN:fig:xistor_lamp_circuit}. In this case, a transistor, \emph{Q1}, has been added to the circuit. When switch \emph{Sw1} is closed, a tiny current can flow from the battery, through the transistor's emitter (the connection with the arrow) to its base, through the switch, through a resistor \emph{R1}, and back to the positive terminal of the battery. However, that small current turns on transistor \emph{Q1} so a much larger current can also flow from the battery, through the collector port, to lamp \emph{Lmp1}, and back to the battery. The final effect is the same for both circuits: close a switch and the lamp turns on. However, by using a transistor, the lamp can be controlled by applying any sort of positive voltage to the transistor's base; so the lamp could be controlled by a switch, as illustrated, or by the output of some other electronic process, like a photo-electric cell sensing that the room is dark.
+
+Using various electronic components, like transistors and resistors, digital logic ``gates'' can be constructed, and these become the building blocks for complex logic circuits. Logic gates are more thoroughly covered in a later chapter, but one of the fundamental logic gates is an \textsf{OR} gate, and a simplified schematic diagram for an \textsf{OR} gate is in Figure \ref{IN:fig:xistor_or_gate}. In this circuit, any voltage present at \emph{Input A} or \emph{Input B} will activate the transistors and develop voltage at the output. 
+
+\begin{figure}[htb]
+  \myfloatalign
+  \begin{tikzpicture} [circuit logic US, scale=1.00]
+  % make all path lines (the node shapes) a little thicker
+  \tikzstyle{every path}=[line width=0.20mm]  
+  
+  % Draw the figure
+  \draw
+    (2,3) node[npn,label={[label distance=0.4cm]120:$Q_1$},anchor=B](npn1) {}
+    (2,1) node[npn,label={[label distance=0.4cm]120:$Q_2$},anchor=B](npn2) {}
+    (3.75,0.225) node[cground](ground) {}
+    (5.0,4.25) node[circ,label={0:out}] (out) {}
+    (0.0,3) node[circ,label={180:A}] (in_a) {}
+    (0.0,1) node[circ,label={180:B}] (in_b) {}
+    
+    % Ground to Q2 Emitter
+    (ground) 
+    to (npn2.emitter)
+    (0,1) 
+    to[R, l_=$R_2$] (2,1)
+    (0,3) 
+    to[R, l_=$R_1$] (2,3)
+    % Ground to Q1 Emitter
+    (ground)
+    to[short] (3.75,2.225)
+    to (npn1.emitter)
+    % Q2 collector to short
+    (npn2.collector)
+    to[short] (4.25,1.75)
+    to[short] (4.25,3.75)
+    % Q1 collector to R3
+    (npn1.collector)
+    to[short] (4.25,3.75)
+    to[R, l_=$R_3$] (4.25,6.5)
+    % short to out
+    (4.25,4.25)
+    to (out)
+  ;    
+  \end{tikzpicture}
+  \caption{Simple OR Gate Using Transistors}
+  \label{IN:fig:xistor_or_gate}
+\end{figure}
+
+Figure \ref{IN:fig:nmos_or_gate}\footnote{This schematic diagram was created by Ram\'{o}n Jaramillo and found at \url{http://www.texample.net/tikz/examples/or-gate/}} shows a more complete \textsf{OR} gate created with what are called ``N-Channel metal-oxide semiconductor'' (or \emph{nMOS}) transistors. The electronic functioning of this circuit is beyond the scope of this book (and is in the domain of electronics engineers), but the important point to keep in mind is that this book concerns building electronic circuits designed to accomplish a physical task rather than write a program to control a computer's processes. 
+
+\begin{figure}[bth]
+  \myfloatalign
+  % Title: OR gate
+  % Author: Ramón Jaramillo.
+  \begin{tikzpicture}[scale=2] 
+  \draw[color=black, thick]
+  % Name of MOSFET transistors left to right
+  % Left to right in baseline: nmos1, nmos2, nmos3, nmo4 & nmos5.
+  % Drawing the transistor and nodes using relative coordinates
+  (0,0) node[nigfete] (nmos1) {}
+  (1,0) node[nigfete] (nmos2) {}
+  (nmos1.S) to (nmos2.S)
+  % Connections to V_DD
+  to [short,*-o] ++(0,-0.5) {} node[below=2mm] {$V_{DD}$}
+  (1,1) node[pfet,yscale=-1] (pmos1) {} % yscale=-1 is mandatory to drawing
+  % MOSFETs with the right sense.
+  (1,2) node[pigfete,yscale=-1] (pmos2) {}
+  (nmos2.G) to [short,-*] (pmos1.G)
+  (pmos1.D) to (nmos2.D)  
+  (nmos1.G) -- ++(0,1.5) -- ++(0,0.75)
+  (pmos2.G) to [short,-*] ++(-1,0){}
+  to [short,-o] ++(-0.5,0) {} node[above=3mm] {$A$}
+  (pmos1.G) to [short,-o] ++(-1.5,0) {} node[above=3mm] {$B$}
+  (pmos1.B) -- ++(0.2,0) -| ++(0,1.15) to [short,-*]++(-0.21,0)
+  (pmos1.S) -- (pmos2.D) {}
+  % Inverter
+  (2,0) node[nigfete](nmos3) {}
+  (2,1) node[pigfete, yscale=-1] (pmos3) {}
+  (nmos3.G) to (pmos3.G)
+  (nmos3.D) to (pmos3.D)
+  % Gate OR Output
+  (3,0) node[nigfete](nmos4){}
+  (3,1) node[pigfete, yscale=-1] (pmos4) {}
+  (nmos4.G) to (pmos4.G)
+  (nmos4.D) to (pmos4.D)
+  %%%
+  (4,0) node[nigfete] (nmos5) {}
+  (4,1) node[pigfete, yscale=-1] (pmos5) {}
+  (nmos5.G) to (pmos5.G)
+  (nmos5.D) to (pmos5.D)
+  % Connection to V_DD
+  (nmos3.S) to [short,-*] (nmos4.S) -- (nmos5.S)
+  to [short,*-o] ++(0,-0.5) {} node[below=2mm] {$V_{DD}$}
+  % Connection to V_DD
+  (pmos3.S) -- (pmos4.S) -- (pmos5.S)
+  to [short,*-o] ++(0,1.5) {} node[above=2mm] {$V_{SS}$}
+  (pmos2.S) to [short,-o] ++(0,0.5) {} node[above=2mm] {$V_{SS}$}
+  %(3,-0.4) node[circ] {}
+  % Connections between nodes
+  (nmos1.D) -| (0,0.5) to [short,-o] (1,0.5) {}
+  (1,0.5) to  [short,*-*] ++(0.5,0) {}
+  (2,0.5) to  [short,*-*] ++(0.5,0) {}
+  (3,0.5) to  [short,*-*] ++(0.5,0) {}
+  (4,0.5) to  [short,*-o] ++(0.5,0) {} node[right=3mm] {$C=A+B$}
+  ;
+  \end{tikzpicture}
+  \caption{OR Gate}
+  \label{IN:fig:nmos_or_gate}  
+\end{figure}
+  
+Early electronic switches took the form of vacuum tubes, but those were replaced by transistors which were much more energy efficient and physically smaller. Eventually, entire transistorized circuits, like the \textsf{OR} gate illustrated in Figure \ref{IN:fig:nmos_or_gate}, were miniaturized and placed in a single \ac{IC}, sometimes called a ``chip,'' smaller than a postage stamp. 
+
+\acp{IC} make it possible to produce smaller, faster, and more powerful electronics devices. For example, the original ENIAC computer, built in 1946, occupied more than 1800 square feet of floor space and required 150KW of electricity, but by the 1980s integrated circuits in hand-held calculators were more powerful than that early computer. Integrated circuits are often divided into four classes: 
+
+\begin{enumerate}
+  \item Small-scale integration with fewer than 10 transistors
+  \item Medium-scale integration with 10-500 transistors
+  \item Large-scale integration with 500-20,000 transistors
+  \item Very large-scale integration with 20,000-1,000,000 transistors
+\end{enumerate}
+
+Integrated circuits are designed by engineers who use software written specifically for that purpose. While the intent of this book is to afford students a foundation in digital logic, those who pursue a degree in electronics engineering, software engineering, or some related field, will need to study a digital logic language, like iVerilog.
+
+\section{Boolean Algebra}
+
+\subsection{History}
+
+The Greek philosopher Aristotle founded a system of logic based on only two types of propositions: \emph{True} and \emph{False}. His bivalent (two-mode) definition of truth led to four foundational laws of logic: the Law of Identity (\emph{A is A}); the Law of Non-contradiction (\emph{A is not non-A}); the Law of the Excluded Middle (\emph{either A or non-A}); and the Law of Rational Inference. These laws function within the scope of logic where a proposition is limited to one of two possible values, like \emph{True} and \emph{False}; but they do not apply in cases where propositions can hold other values.
+
+The English mathematician George Boole (1815-1864) sought to give symbolic form to Aristotle's system of logic. Boole wrote a treatise on the subject in 1854, titled \emph{An Investigation of the Laws of Thought, on Which Are Founded the Mathematical Theories of Logic and Probabilities}, which codified several rules of relationship between mathematical quantities limited to one of two possible values: \emph{True} or \emph{False}, $ 1 $ or $ 0 $. His mathematical system became known as \emph{Boolean Algebra}.
+
+All arithmetic operations performed with Boolean quantities have but one of two possible outcomes: $ 1 $ or $ 0 $. There is no such thing as $ 2 $ or $ -1 $ or $ \frac{1}{3} $ in the Boolean world and numbers other than $ 1 $ and $ 0 $ are invalid by definition. Claude Shannon of MIT recognized how Boolean algebra could be applied to on-and-off circuits, where all signals are characterized as either \emph{high} ($ 1 $) or \emph{low} ($ 0 $), and his 1938 thesis, titled \emph{A Symbolic Analysis of Relay and Switching Circuits}, put Boole's theoretical work to use in land line telephone switching, a system Boole never could have imagined.
+
+While there are a number of similarities between Boolean algebra and real-number algebra, it is important to bear in mind that the system of numbers defining Boolean algebra is severely limited in scope: $ 1 $ and $ 0 $. Consequently, the ``Laws'' of Boolean algebra often differ from the ``Laws'' of real-number algebra, making possible such Boolean statements as $ 1 + 1 = 1 $, which would be considered absurd for real-number algebra. 
+
+\subsection{Boolean Equations}
+
+Boolean algebra is a mathematical system that defines a series of logical operations performed on a set of variables. The expression of a single logical function is a \emph{Boolean Equation} \marginpar{Sometimes Boolean Equations are called \textsc{Switching Equations}} that uses standardized symbols and rules. Boolean expressions are the foundation of digital circuits.
+
+Binary variables used in Boolean algebra are like variables in regular algebra except that they can only have two values: one or zero. Boolean algebra includes three primary logical functions: \textsf{AND}, \textsf{OR}, and \textsf{NOT}; and five secondary logical functions: \marginpar{XNOR is sometimes called \textsc{equivalence} and Buffer is sometimes called \textsc{transfer}.} \textsf{NAND}, \textsf{NOR}, \textsf{XOR}, and \textsf{XNOR}, and Buffer. A Boolean equation defines an electronic circuit that provides a relationship between input and output variables and takes the form of:
+
+\begin{align}
+\label{01:eq:simple_boolean_equation}
+C &= A * B 
+\end{align}
+
+where \emph{A} and \emph{B} are binary input variables that are related to the output variable \emph{C} by the function \textsf{AND} (denoted by an asterisk).
+
+In Boolean algebra, it is common to speak of \emph{truth}. This term does not mean the same as it would to a philosopher, though its use is based on Aristotelian philosophy where a statement was either \emph{True} or \emph{False}. In Boolean algebra as used in electronics, \emph{True} commonly means ``voltage present'' (or ``$ 1 $'') while \emph{False} commonly means ``voltage absent'' (or ``$ 0 $''), and this can be applied to either input or output variables. It is common to create a \emph{Truth Table} for a Boolean equation to indicate which combination of inputs should evaluate to a \emph{True} output and Truth Tables are used very frequently throughout this book.
+
+\section{About This Book}
+
+This book is organized into two main parts:
+
+\begin{enumerate}
+  \item \textsc{Theory}. Chapters two through six cover the foundational theory of digital logic. Included are chapters on binary mathematics, Boolean algebra, and simplifying Boolean expressions using tools like Karnaugh maps and the Quine-McCluskey method.
+  
+  \item \textsc{Practice}. Chapters seven through nine expand the theory of digital logic into practical applications. Covered are combinational and sequential logic circuits, and then simulation of various physical devices, like elevators.
+\end{enumerate}
+
+There is also an accompanying lab manual where \textit{Logisim-evolution} is used to build digital logic circuits. By combining the theory presented in this book along with the practical application presented in the lab manual it is hoped that students gain a thorough understanding of digital logic.
+
+By combining the theoretical background of binary mathematics and Boolean algebra with the practical application of building logic devices, digital logic becomes understandable and useful.
+

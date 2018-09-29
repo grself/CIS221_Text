@@ -1,0 +1,44 @@
+%*******************************************************
+% Declaration
+%*******************************************************
+\refstepcounter{dummy}
+\pdfbookmark[0]{Style Guide}{styleguide}
+\chapter*{Style Guide}
+\thispagestyle{empty}
+
+\begin{itemize}
+
+  \item \textsc{Numbers}. 
+  
+  \begin{itemize}
+    \item All numbers must be enclosed in a math block.
+    \item Spell out numbers up to ten; thus, not ``1s,'' but ones.
+    \item Larger numbers with a suffix, like ``s,'' do not use an apostrophe: not ten's, but tens.
+  \end{itemize}
+
+  \item \textsc{Variables}. 
+  
+  \begin{itemize}
+    \item \textsc{Single-Digit}. Single digit variable names, like ``Q,'' are enclosed in a math block.
+    \item \textsc{Long}. Long variable names, like \emph{i\_clk}, are enclosed in an \textbackslash emph\{\} block.
+  \end{itemize}
+
+  \item \textsc{Figures and Tables}.
+  
+  \begin{itemize}
+    \item Figures and Tables use an [H] specification
+    \item Captions go at the end of the table block so it is printed under the table to match figures and listings. (Figures and Listings place the caption under by default)
+  \end{itemize}
+  
+  \item \textsc{Inline Expressions}. Use \lstinline[columns=fixed]|\lstinline[columns=fixed]|foo|| for in-line Boolean expressions, equations, and Verilog commands.
+
+  \item \textsc{Verilog Commands}. Use all caps and  \lstinline[columns=fixed]|\lstinline[columns=fixed]|foo|| for Verilog commands (like CASE).
+
+  \item \textsc{Lists}. Items in a list should have an introductory phrase using title capitalization and set in small caps. If a long variable name or Verilog command starts a list item then use the formatting appropriate for that type of item rather than a list item.
+  
+  \item \textsc{Gates}. Use San Seriff font and ALL CAPS for gates (like \textsf{AND} or \textsf{OR})
+  
+  \item \textsc{True/False}. The words \emph{True} and \emph{False} are capitalized and in an \lstinline[columns=fixed]|\emph{}| block.
+
+\end{itemize}
+

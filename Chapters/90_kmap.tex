@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 4X2 K-Map
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+  \myfloatalign
+  \begin{tikzpicture} [circuit logic US, scale=1.00]
+  % make all path lines (the node shapes) a little thicker
+  \tikzstyle{every path}=[line width=0.50mm]
+  
+  %********************************************************************
+  % Adjust the settings below to display the 1's and rectangles
+  %********************************************************************
+  % Uncomment the appropriate lines below to insert ones where needed
+%   \node[] at (2.25,2.25) {\Huge $ 1 $}; % 00
+%   \node[] at (2.25,0.75) {\Huge $ 1 $}; % 01
+%   \node[] at (3.75,2.25) {\Huge $ 1 $}; % 02
+%   \node[] at (3.75,0.75) {\Huge $ 1 $}; % 03
+%   \node[] at (6.75,2.25) {\Huge $ 1 $}; % 04
+%   \node[] at (6.75,0.75) {\Huge $ 1 $}; % 05
+%   \node[] at (5.25,2.25) {\Huge $ 1 $}; % 06
+%   \node[] at (5.25,0.75) {\Huge $ 1 $}; % 07
+  
+  % The coords for each cell - this is used as the origin for the solution box
+  \coordinate (cell00) at (1.5,1.5); \coordinate (cell01) at (1.5,0.0);
+  \coordinate (cell02) at (3.0,1.5); \coordinate (cell03) at (3.0,0.0);
+  
+  \coordinate (cell04) at (6.0,1.5); \coordinate (cell05) at (6.0,0.0);
+  \coordinate (cell06) at (4.5,1.5); \coordinate (cell07) at (4.5,0.0);
+
+	% The colored boxes enclosing adjacent ones
+	% Set the ``at'' to the lower-left cell of the rectangle using 
+	% the 'cellxx' defined above
+	% Set the minimum height/width to (number of cells) * 1.5. 
+	% May have to decrease these by 0.1 to cut the rectangle 
+	% just inside the cell.
+	\node [draw,
+	color=red!70!black,
+	fill=red!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=3.0cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell02) {};
+	
+	\node [draw,
+	color=blue!70!black,
+	fill=blue!20!white,
+	fill opacity=0.3,
+	minimum height=2.9cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell07) {};
+
+
+    
+  %********************************************************************
+  % Shouldn't need to adjust anything below this point - this is just
+  % the grid and the minterms.
+  %********************************************************************  
+  % Text in top-Left cell
+  \node[] at (0.50,3.40) { $ \mathsf{ \mathbf{C} } $ }; % C
+  \node[] at (1.10,4.05) { $ \mathsf{ \mathbf{AB} } $ }; % AB
+  
+  % Populate the top row header
+  % In the following, the foreach lists a location/text pair
+  % The the draw line draws the text at each location
+  \foreach \loc/\txt in {
+    (2.25,3.75)/{00}, (3.75,3.75)/{01},
+    (5.25,3.75)/{11}, (6.75,3.75)/{10}
+  }
+  \draw \loc node{\Huge $\txt$};
+  
+  % Populate the header in column one
+  \foreach \loc/\txt in { 
+    (0.75,2.25)/{0},(0.75,0.75)/{1}
+  }
+  \draw \loc node{\Huge $\txt$};
+  
+  % Populate the minterms
+  \foreach \loc/\txt in { 
+    (2.75,1.75)/{00} , (4.25,1.75)/{02} , (5.75,1.75)/{06} , (7.25,1.75)/{04} ,
+    (2.75,0.15)/{01} , (4.25,0.15)/{03} , (5.75,0.15)/{07} , (7.25,0.15)/{05} }
+  \draw \loc node{ \color{blue!90!black} \small { $\txt$ }};
+  
+  % Draw the lines
+  \draw
+  % Finish drawing the grid
+  [step=1.5cm,black,thin] (0,0) grid (7.5,4.5) % The Grid
+  (0.0,4.5) -- (1.5,3.0) % Diagonal in the top left cell
+  (1.5,3.10) -- (7.5,3.10) % Double line under top header row
+  (1.40,0.0) -- (1.40,3.0) % Double line on left of header column one
+  ;    
+  \end{tikzpicture}
+	\caption{K-Map 2x4}
+	\label{kmap:08_03}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 4X4 K-Map
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\myfloatalign
+	\begin{tikzpicture} [circuit logic US, scale=1.00]
+	% make all path lines (the node shapes) a little thicker
+	\tikzstyle{every path}=[line width=0.50mm]
+	
+	%********************************************************************
+	% Adjust the settings below to display the 1's and rectangles
+	%********************************************************************
+	% Uncomment the appropriate lines below to insert ones where needed
+	% Data Row 1
+	% \node[] at (2.25,5.25) {\Huge $ 1 $}; % 00
+	% \node[] at (3.75,5.25) {\Huge $ 1 $}; % 04
+	% \node[] at (5.25,5.25) {\Huge $ 1 $}; % 12
+	% \node[] at (6.75,5.25) {\Huge $ 1 $}; % 08
+	% Data Row 2
+	% \node[] at (2.25,3.75) {\Huge $ 1 $}; % 01
+	% \node[] at (3.75,3.75) {\Huge $ 1 $}; % 05
+	\node[] at (5.25,3.75) {\Huge $ 1 $}; % 13
+	% \node[] at (6.75,3.75) {\Huge $ 1 $}; % 09
+	% Data Row 3
+	% \node[] at (2.25,2.25) {\Huge $ 1 $}; % 03
+	% \node[] at (3.75,2.25) {\Huge $ 1 $}; % 07
+	\node[] at (5.25,2.25) {\Huge $ 1 $}; % 15
+	\node[] at (6.75,2.25) {\Huge $ 1 $}; % 11
+	% Data Row 4
+	% \node[] at (2.25,0.75) {\Huge $ 1 $}; % 02
+	% \node[] at (3.75,0.75) {\Huge $ 1 $}; % 06
+	% \node[] at (5.25,0.75) {\Huge $ 1 $}; % 14
+	% \node[] at (6.75,0.75) {\Huge $ 1 $}; % 10
+	
+	% The coords for each cell - this is used to start the rectangle box
+	\coordinate (cell00) at (1.50,4.50); \coordinate (cell01) at (1.50,3.00);
+	\coordinate (cell02) at (1.50,0.00); \coordinate (cell03) at (1.50,1.50);
+	\coordinate (cell04) at (3.00,4.50); \coordinate (cell05) at (3.00,3.00);
+	\coordinate (cell06) at (3.00,0.00); \coordinate (cell07) at (3.00,1.50);
+	\coordinate (cell08) at (6.00,4.50); \coordinate (cell09) at (6.00,3.00);
+	\coordinate (cell10) at (6.00,0.00); \coordinate (cell11) at (6.00,1.50);
+	\coordinate (cell12) at (4.50,4.50); \coordinate (cell13) at (4.50,3.00);
+	\coordinate (cell14) at (4.50,0.00); \coordinate (cell15) at (4.50,1.50);
+	
+	% Set the ``at'' to the lower-left cell of the rectangle using 
+	% the 'cellxx' defined above
+	% Set the minimum height/width to (number of cells) * 1.5. 
+	% May have to decrease these by 0.1 to cut the rectangle 
+	% just inside the cell.
+	\node [draw,
+	color=red!70!black,
+	fill=red!20!white,
+	fill opacity=0.3,
+	minimum height=1.4cm,
+	minimum width=3.0cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell15) {};
+	
+	\node [draw,
+	color=blue!70!black,
+	fill=blue!20!white,
+	fill opacity=0.3,
+	minimum height=2.9cm,
+	minimum width=1.5cm,
+	double,
+	rounded corners,
+	anchor=south west] at (cell15) {};
+	
+	%********************************************************************
+	% Shouldn't need to adjust anything below this point - this is just
+	% the grid and the minterms.
+	%********************************************************************	
+	% Text in top-Left cell
+	\node[] at (0.55,6.35) { $ \mathsf{ \mathbf{CD} } $ }; % CD
+	\node[] at (1.05,7.05) { $ \mathsf{ \mathbf{AB} } $ }; % AB
+	
+	% Populate the top row header
+	% In the following, the foreach lists a location/text pair
+	% The the draw line draws the text at each location
+	\foreach \loc/\txt in {(2.25,6.75)/{00},(3.75,6.75)/{01},(5.25,6.75)/{11},(6.75,6.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the header in column one
+	\foreach \loc/\txt in {(0.75,5.25)/{00},(0.75,3.75)/{01},(0.75,2.25)/{11},(0.75,0.75)/{10}}
+	\draw \loc node{\Huge $\txt$};
+	
+	% Populate the minterms
+	\foreach \loc/\txt in { (2.75,4.75)/{00} , (4.25,4.75)/{04} , (5.75,4.75)/{12} , (7.25,4.75)/{08} ,
+		(2.75,3.25)/{01} , (4.25,3.25)/{05} , (5.75,3.25)/{13} , (7.25,3.25)/{09} ,
+		(2.75,1.75)/{03} , (4.25,1.75)/{07} , (5.75,1.75)/{15} , (7.25,1.75)/{11} ,
+		(2.75,0.25)/{02} , (4.25,0.25)/{06} , (5.75,0.25)/{14} , (7.25,0.25)/{10} }
+	\draw \loc node{ \color{blue!90!black} \small{ $\txt$ }};
+	
+	% Draw the lines
+	\draw
+	% Finish drawing the grid
+	[step=1.5cm,black,thin] (0,0) grid (7.5,7.5) % The Grid
+	(0.0,7.5) -- (1.5,6.0) % Diagonal in the top left cell
+	(1.5,6.10) -- (7.50,6.10) % Double line under top header row
+	(1.40,0.0) -- (1.40,6.0) % Double line on left of header column one
+	;
+	\end{tikzpicture}
+	\caption{K-Map 4x4}
+	\label{08:fig:kmap01}
+\end{figure}

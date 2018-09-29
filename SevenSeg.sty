@@ -1,0 +1,284 @@
+\NeedsTeXFormat{LaTeX2e}[1999/01/01]
+\ProvidesPackage{SevenSeg}[2009/06/03]
+
+\RequirePackage{tikz}
+\RequirePackage{xifthen}
+
+
+
+\tikzstyle SSGSty=[line cap=round]
+\tikzstyle SSGOn=[green,line width=3pt]
+\tikzstyle SSGOff=[gray!20!white,line width=3pt]
+\def\SSGSpa{0.875}
+\def\SSGSpab{0.125}
+
+
+
+\newcommand{\SSGDraw}[2][3em]{
+\def\SSGSize{#1}
+\coordinate(SSGCen)at(#2);
+\draw[SSGStySA](SSGCen)++(-\SSGSpa*\SSGSize/2,\SSGSize)--++(\SSGSpa*\SSGSize,0);
+\draw[SSGStySB](SSGCen)++(\SSGSize/2,\SSGSpab/2*\SSGSize)--++(0,\SSGSpa*\SSGSize);
+\draw[SSGStySC](SSGCen)++(\SSGSize/2,-\SSGSpab/2*\SSGSize)--++(0,-\SSGSpa*\SSGSize);
+\draw[SSGStySD](SSGCen)++(\SSGSpa*\SSGSize/2,-\SSGSize)--++(-\SSGSpa*\SSGSize,0);
+\draw[SSGStySE](SSGCen)++(-\SSGSize/2,-\SSGSpab/2*\SSGSize)--++(0,-\SSGSpa*\SSGSize);
+\draw[SSGStySF](SSGCen)++(-\SSGSize/2,\SSGSpab/2*\SSGSize)--++(0,\SSGSpa*\SSGSize);
+\draw[SSGStySG](SSGCen)++(-\SSGSpa*\SSGSize/2,0)--++(\SSGSpa*\SSGSize,0);
+}
+
+\newcommand{\SSGLeg}[2][3em]{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOff]
+\ifthenelse{\equal{#2}{}}{\coordinate(SSGCen)at(0,0);}{\coordinate(SSGCen)at(#2);}
+%\node at(0,\SSGSize)[above]{a};
+%\node at(\SSGSize/2,\SSGSize/2)[right]{b};
+%\node at(\SSGSize/2,-\SSGSize/2)[right]{c};
+%\node at(0,-\SSGSize)[above]{d};
+%\node at(-\SSGSize/2,-\SSGSize/2)[left]{e};
+%\node at(-\SSGSize/2,\SSGSize/2)[left]{f};
+%\node at(0,0)[above]{g};
+\def\SSGSize{#1}
+\draw[SSGStySA](SSGCen)++(-\SSGSpa*\SSGSize/2,\SSGSize)--node[above,black]{a}++(\SSGSpa*\SSGSize,0);
+\draw[SSGStySB](SSGCen)++(\SSGSize/2,\SSGSpab/2*\SSGSize)--node[right,black]{b}++(0,\SSGSpa*\SSGSize);
+\draw[SSGStySC](SSGCen)++(\SSGSize/2,-\SSGSpab/2*\SSGSize)--node[right,black]{c}++(0,-\SSGSpa*\SSGSize);
+\draw[SSGStySD](SSGCen)++(\SSGSpa*\SSGSize/2,-\SSGSize)--node[below,black]{d}++(-\SSGSpa*\SSGSize,0);
+\draw[SSGStySE](SSGCen)++(-\SSGSize/2,-\SSGSpab/2*\SSGSize)--node[left,black]{e}++(0,-\SSGSpa*\SSGSize);
+\draw[SSGStySF](SSGCen)++(-\SSGSize/2,\SSGSpab/2*\SSGSize)--node[left,black]{f}++(0,\SSGSpa*\SSGSize);
+\draw[SSGStySG](SSGCen)++(-\SSGSpa*\SSGSize/2,0)--node[above,black]{g}++(\SSGSpa*\SSGSize,0);
+
+
+}
+
+
+\newcommand{\SSGNb}[3][3em]{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOff]
+\ifthenelse{\equal{#3}{0}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOff]
+}{}
+\ifthenelse{\equal{#3}{1}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOff]
+}{}
+\ifthenelse{\equal{#3}{2}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{3}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{4}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{5}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{6}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{7}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOff]
+}{}
+\ifthenelse{\equal{#3}{8}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{9}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOff]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{10}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{11}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{12}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOff]
+}{}
+\ifthenelse{\equal{#3}{13}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{14}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{15}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{A}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{B}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{C}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOff]
+}{}
+\ifthenelse{\equal{#3}{D}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOff]
+\tikzstyle SSGStySB=[SSGSty,SSGOn]
+\tikzstyle SSGStySC=[SSGSty,SSGOn]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOff]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{E}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOn]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\equal{#3}{F}}{
+\tikzstyle SSGStySA=[SSGSty,SSGOn]
+\tikzstyle SSGStySB=[SSGSty,SSGOff]
+\tikzstyle SSGStySC=[SSGSty,SSGOff]
+\tikzstyle SSGStySD=[SSGSty,SSGOff]
+\tikzstyle SSGStySE=[SSGSty,SSGOn]
+\tikzstyle SSGStySF=[SSGSty,SSGOn]
+\tikzstyle SSGStySG=[SSGSty,SSGOn]
+}{}
+\ifthenelse{\isempty{#2}}{\SSGDraw[#1]{0,0}}{\SSGDraw[#1]{#2}}
+}
+
+\newcommand{\SSGBox}[2][line width=2pt]{
+\ifthenelse{\isempty{#2}}{\coordinate(SSGCen)at(0,0);}{
+\coordinate(SSGCen)at(#2);}
+\draw [#1](SSGCen)++(-1.5*\SSGSize/2,-1.25*\SSGSize)-|
+++(1.5*\SSGSize,1.25*\SSGSize*2)
+-|++(-1.5*\SSGSize,-1.25*\SSGSize*2);}
+
+\newcommand{\SSGDCB}[2][line width=2pt]{
+\ifthenelse{\isempty{#2}}{\coordinate(SSGCen)at(0,0);}{
+\coordinate(SSGCen)at(#2);}
+\draw [#1](SSGCen)++(-1.5*\SSGSize/2,-1.25*\SSGSize)-|
+++(1.5*\SSGSize,1.25*\SSGSize*2)-|++(-1.5*\SSGSize,-1.25*\SSGSize*2);
+\coordinate(#2Bit3)at(-0.5625*\SSGSize,-1.75*\SSGSize);
+\coordinate(#2Bit2)at(-0.1875*\SSGSize,-1.75*\SSGSize);
+\coordinate(#2Bit1)at(0.1875*\SSGSize,-1.75*\SSGSize);
+\coordinate(#2Bit0)at(0.5625*\SSGSize,-1.75*\SSGSize);
+\foreach \x in{0,...,3}{\fill [#1](#2Bit\x) circle (3pt);\draw[#1](#2Bit\x)--++(0,0.5*\SSGSize);}
+}
