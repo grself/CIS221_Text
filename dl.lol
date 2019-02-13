@@ -1,3 +1,3 @@
-\select@language {american}
+\babel@toc {american}{}
 \deactivateaddvspace 
-\select@language {american}
+\babel@toc {american}{}

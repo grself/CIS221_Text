@@ -67,8 +67,23 @@
 
 
 %*****
-% 3. Loading some handy packages
+% My packages
 %*****
+\usepackage[
+type={CC},
+modifier={by-nc-sa},
+version={4.0}
+]{doclicense} % Prints the Creative Commons license
+
+\usepackage[obeyspaces,hyphens]{url}
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+	\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+	\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+	\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+	\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+	\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+	\do\Y\do\Z}
+
 
 %*****
 % Packages with options that might require adjustments
@@ -83,44 +98,42 @@
 
 % I don't use a bibliography 
 %\PassOptionsToPackage{%
-%  %backend=biber, %instead of bibtex
+%	backend=biber, %instead of bibtex
 %	backend=bibtex8,bibencoding=ascii,%
 %	language=auto,%
 %	style=numeric-comp,%
-%    %style=authoryear-comp, % Author 1999, 2010
-%    %bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
-%    sorting=nyt, % name, year, title
-%    maxbibnames=10, % default: 3, et al.
-%    %backref=true,%
-%    natbib=true % natbib compatibility mode (\citep and \citet still work)
+%	%style=authoryear-comp, % Author 1999, 2010
+%	%bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
+%	sorting=nyt, % name, year, title
+%	maxbibnames=10, % default: 3, et al.
+%	%backref=true,%
+%	natbib=true % natbib compatibility mode (\citep and \citet still work)
 %}{biblatex}
-%    \usepackage{biblatex}
-
-\PassOptionsToPackage{fleqn}{amsmath}  % math environments
-    \usepackage{amsmath}
+%\usepackage{biblatex}
+%\addbibresource{dlbib}
 
 %*****
-% General useful packages
+% Generally useful packages
 %*****
-
-%\PassOptionsToPackage{T1}{fontenc} % T2A for cyrillics
-%    \usepackage{fontenc}     
+\usepackage{fontawesome} % use the fontawesome icons
 \usepackage{textcomp} % fix warning with missing font shapes
 \usepackage{scrhack} % fix warnings when using KOMA with listings package
 \usepackage{xspace} % to get the spacing after macros right  
 \usepackage{mparhack} % get marginpar right
 \usepackage{fixltx2e} % fixes some LaTeX stuff 
-\PassOptionsToPackage{printonlyused,smaller}{acronym} 
-    \usepackage{acronym} % nice macros for handling all acronyms in the thesis
-    \renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
 \usepackage[paperheight=11in,paperwidth=8.5in]{geometry}
 \usepackage{shorttoc} % generate brief version of the table of contents
-%*****
+\PassOptionsToPackage{fleqn}{amsmath}  % math environments
+	\usepackage{amsmath}
+
+% Note: I use the glossaries package for acronymns
+%\PassOptionsToPackage{printonlyused,smaller}{acronym} 
+%	\usepackage{acronym} % nice macros for handling all acronyms in the thesis
+%	\renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
 
 %*****
-% 4. Setup floats: tables, (sub)figures, and captions
+% 4. Setup floats, tables, (sub)figures, and captions
 %*****
-
 \usepackage{tabularx} % better tables
     \setlength{\extrarowheight}{3pt} % increase table row height
 \newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
@@ -128,12 +141,10 @@
 \usepackage{caption}
 \captionsetup{font=small} % format=hang,
 \usepackage{subfig}  
-%*****
 
 %*****
 % 5. Setup code listings - formatted for Verilog listings
 %*****
-
 \usepackage{listings} 
 %\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
 \lstset{language=Verilog,%[LaTeX]Tex,
@@ -158,14 +169,9 @@
     %belowcaptionskip=.75\baselineskip
     %frame=L
 } 
-%*****
 
 %*****
-% 6. PDFLaTeX, hyperreferences and citation backreferences
-%*****
-
-%*****
-% Using PDFLaTeX
+% PDFLaTeX
 %*****
 \PassOptionsToPackage{pdftex,hyperfootnotes=false,pdfpagelabels}{hyperref}
     \usepackage{hyperref}  % backref linktocpage pagebackref
@@ -212,16 +218,16 @@
 			\renewcommand*{\subsectionautorefname}{Section}%
 			\renewcommand*{\subsubsectionautorefname}{Section}%     
                 }%
-       \addto\extrasngerman{% 
-			\renewcommand*{\paragraphautorefname}{Absatz}%
-			\renewcommand*{\subparagraphautorefname}{Unterabsatz}%
-			\renewcommand*{\footnoteautorefname}{Fu\"snote}%
-			\renewcommand*{\FancyVerbLineautorefname}{Zeile}%
-			\renewcommand*{\theoremautorefname}{Theorem}%
-			\renewcommand*{\appendixautorefname}{Anhang}%
-			\renewcommand*{\equationautorefname}{Gleichung}%        
-			\renewcommand*{\itemautorefname}{Punkt}%
-                }%  
+%       \addto\extrasngerman{% 
+%			\renewcommand*{\paragraphautorefname}{Absatz}%
+%			\renewcommand*{\subparagraphautorefname}{Unterabsatz}%
+%			\renewcommand*{\footnoteautorefname}{Fu\"snote}%
+%			\renewcommand*{\FancyVerbLineautorefname}{Zeile}%
+%			\renewcommand*{\theoremautorefname}{Theorem}%
+%			\renewcommand*{\appendixautorefname}{Anhang}%
+%			\renewcommand*{\equationautorefname}{Gleichung}%        
+%			\renewcommand*{\itemautorefname}{Punkt}%
+%                }%  
             \providecommand{\subfigureautorefname}{\figureautorefname}%             
     }{\relax}
 \makeatother
@@ -240,34 +246,14 @@
 \usetikzlibrary{calc} % Do some math in tikz
 
 %*****
-% This enables enumerated lists using first, second, etc.
+% Miscellaneous packages I like
 %*****
-\usepackage{moreenum}
-
-%*****
-% Used to create framed paragraphs, like "interest boxes"
-%*****
-\usepackage{tcolorbox}
-
-%*****
-% Used to enable strike-through text
-%*****
-\usepackage[normalem]{ulem}
-
-%*****
-% The Creative Commons License Package
-%*****
-\usepackage[type={CC},modifier={zero},version={1.0}]{doclicense}
-
-%*****
-% This package permits me to align a table column on a decimal point
-%*****
-\usepackage{siunitx}
-
-%*****
-% Enable certain special chars in verbatim, like underlines
-%*****
-\usepackage{fancyvrb}
+\usepackage{moreenum} % enumerated lists using first, second, etc.
+\usepackage{tcolorbox} % framed paragraphs, like "interest boxes"
+\usepackage[normalem]{ulem} % strike-through text
+\usepackage{siunitx} % align a table column on a decimal point
+\usepackage{fancyvrb} % special chars in verbatim, like underlines
+\usepackage{SevenSeg} % draw 7-segment displays
 
 % define specific fancyvrb environments for use in my document
 \DefineVerbatimEnvironment
@@ -279,14 +265,7 @@
 {fontfamily=courier,
  numbers=left}
 
-%*****
-% To draw 7-segment displays
-%*****
-\usepackage{SevenSeg} 
-
-%*****
 % Used for wrapping figures
-%*****
 \usepackage{float}
 \usepackage{wrapfig}
 \restylefloat{figure}
@@ -307,6 +286,18 @@
 %*****
 \usepackage{layouts}
 %textwidth in cm: \printinunitsof{cm}\prntlen{\textwidth}
+
+% *************************************************
+% Glossaries and Acronyms
+% Note: Glossaries must be loaded after
+% hyperref, babel, polyglossia, inputenc, and fontenc
+% *************************************************
+\usepackage[style=long,nolist]{glossaries}
+\newcommand{\glossname}{Glossary}
+\makeglossaries
+\loadglsentries{dlGloss}
+%\newglossaryentry{LW}{name={Long Word},description={This is just a long word.}}
+%\newacronym{wtf}{WTF}{What the Flying Freakin' Flip???}
 
 %*****
 % 7. Last calls before the bar closes

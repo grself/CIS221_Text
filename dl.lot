@@ -1,6 +1,6 @@
-\select@language {american}
+\babel@toc {american}{}
 \deactivateaddvspace 
-\select@language {american}
+\babel@toc {american}{}
 \ttl@tocsep 
 \ttl@tocsep 
 \ttl@tocsep 
@@ -8,129 +8,7 @@
 \ttl@tocsep 
 \ttl@tocsep 
 \ttl@tocsep 
-\ttl@tocsep 
-\contentsline {table}{\numberline {2.1}{\ignorespaces Roman Numerals\relax }}{13}{table.caption.4}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Binary-Decimal Conversion\relax }}{15}{table.caption.5}
-\contentsline {table}{\numberline {2.3}{\ignorespaces Hexadecimal Numbers\relax }}{16}{table.caption.6}
-\contentsline {table}{\numberline {2.4}{\ignorespaces Counting To Twenty\relax }}{17}{table.caption.7}
-\contentsline {table}{\numberline {2.5}{\ignorespaces Expanding a Decimal Number\relax }}{19}{table.caption.8}
-\contentsline {table}{\numberline {2.6}{\ignorespaces Binary-Octal Conversion Examples\relax }}{22}{table.caption.11}
-\contentsline {table}{\numberline {2.7}{\ignorespaces Binary-Hexadecimal Conversion Examples\relax }}{24}{table.caption.12}
-\contentsline {table}{\numberline {2.8}{\ignorespaces Decimal to Binary\relax }}{26}{table.caption.13}
-\contentsline {table}{\numberline {2.9}{\ignorespaces Decimal to Octal\relax }}{27}{table.caption.14}
-\contentsline {table}{\numberline {2.10}{\ignorespaces Decimal to Hexadecimal\relax }}{27}{table.caption.15}
-\contentsline {table}{\numberline {2.11}{\ignorespaces Decimal to Binary Fraction\relax }}{28}{table.caption.16}
-\contentsline {table}{\numberline {2.12}{\ignorespaces Decimal to Binary Fraction Example\relax }}{28}{table.caption.17}
-\contentsline {table}{\numberline {2.13}{\ignorespaces Decimal to Long Binary Fraction\relax }}{29}{table.caption.18}
-\contentsline {table}{\numberline {2.14}{\ignorespaces Decimal to Binary Mixed Integer\relax }}{29}{table.caption.19}
-\contentsline {table}{\numberline {2.15}{\ignorespaces Decimal to Binary Mixed Fraction\relax }}{30}{table.caption.20}
-\contentsline {table}{\numberline {2.16}{\ignorespaces Practice Problems\relax }}{31}{table.caption.21}
-\contentsline {table}{\numberline {2.17}{\ignorespaces Floating Point Examples\relax }}{33}{table.caption.24}
-\ttl@tocsep 
-\contentsline {table}{\numberline {3.1}{\ignorespaces Addition Table\relax }}{35}{table.caption.25}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Binary Addition Problems\relax }}{37}{table.caption.26}
-\contentsline {table}{\numberline {3.3}{\ignorespaces Binary Subtraction Problems\relax }}{38}{table.caption.27}
-\contentsline {table}{\numberline {3.4}{\ignorespaces Ones Complement\relax }}{40}{table.caption.28}
-\contentsline {table}{\numberline {3.5}{\ignorespaces Twos Complement\relax }}{41}{table.caption.29}
-\contentsline {table}{\numberline {3.6}{\ignorespaces Example Twos Complement\relax }}{42}{table.caption.30}
-\contentsline {table}{\numberline {3.7}{\ignorespaces Binary Multiplication Table\relax }}{48}{table.caption.31}
-\contentsline {table}{\numberline {3.8}{\ignorespaces ASCII Table\relax }}{51}{table.caption.33}
-\contentsline {table}{\numberline {3.9}{\ignorespaces ASCII Symbols\relax }}{52}{table.caption.34}
-\contentsline {table}{\numberline {3.10}{\ignorespaces ASCII Practice\relax }}{52}{table.caption.35}
-\contentsline {table}{\numberline {3.11}{\ignorespaces BCD Systems\relax }}{53}{table.caption.37}
-\contentsline {table}{\numberline {3.12}{\ignorespaces Nines Complement for 127\relax }}{55}{table.caption.38}
-\contentsline {table}{\numberline {3.13}{\ignorespaces BCD Practice\relax }}{56}{table.caption.39}
-\contentsline {table}{\numberline {3.14}{\ignorespaces Gray Codes\relax }}{62}{table.caption.42}
-\ttl@tocsep 
-\contentsline {table}{\numberline {4.1}{\ignorespaces Truth Table for AND\relax }}{65}{table.caption.43}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Truth Table for OR\relax }}{68}{table.caption.44}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Truth Table for NOT\relax }}{69}{table.caption.45}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Truth Table for \textsf {NAND} Gate\relax }}{70}{table.caption.46}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Truth Table for NOR\relax }}{71}{table.caption.47}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Truth Table for XOR\relax }}{71}{table.caption.48}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Truth Table for XNOR\relax }}{72}{table.caption.49}
-\contentsline {table}{\numberline {4.8}{\ignorespaces Truth Table for a Buffer\relax }}{73}{table.caption.50}
-\contentsline {table}{\numberline {4.9}{\ignorespaces Truth Table for Absorption Property\relax }}{82}{table.caption.51}
-\contentsline {table}{\numberline {4.10}{\ignorespaces Truth Table for Generic Circuit One\relax }}{87}{table.caption.53}
-\contentsline {table}{\numberline {4.11}{\ignorespaces Truth Table for Generic Circuit Two\relax }}{88}{table.caption.54}
-\contentsline {table}{\numberline {4.12}{\ignorespaces Boolean Function Six\relax }}{88}{table.caption.55}
-\contentsline {table}{\numberline {4.13}{\ignorespaces Boolean Functions\relax }}{89}{table.caption.56}
-\ttl@tocsep 
-\contentsline {table}{\numberline {5.1}{\ignorespaces Truth Table for Example\relax }}{93}{table.caption.57}
-\contentsline {table}{\numberline {5.2}{\ignorespaces Truth Table for First Minterm Example\relax }}{95}{table.caption.60}
-\contentsline {table}{\numberline {5.3}{\ignorespaces Truth Table for Second Minterm Example\relax }}{96}{table.caption.61}
-\contentsline {table}{\numberline {5.4}{\ignorespaces Truth Table for First Maxterm Example\relax }}{97}{table.caption.62}
-\contentsline {table}{\numberline {5.5}{\ignorespaces Truth Table for Second Maxterm Example\relax }}{98}{table.caption.63}
-\contentsline {table}{\numberline {5.6}{\ignorespaces Minterm and Maxterm Relationships\relax }}{99}{table.caption.64}
-\contentsline {table}{\numberline {5.7}{\ignorespaces Minterm-Maxterm Relationships\relax }}{101}{table.caption.65}
-\contentsline {table}{\numberline {5.8}{\ignorespaces Truth Table for SOP Example\relax }}{102}{table.caption.66}
-\contentsline {table}{\numberline {5.9}{\ignorespaces Truth Table for POS Example\relax }}{103}{table.caption.67}
-\contentsline {table}{\numberline {5.10}{\ignorespaces Canonical Example Truth Table\relax }}{104}{table.caption.68}
-\contentsline {table}{\numberline {5.11}{\ignorespaces Truth Table for Standard Form Equation\relax }}{105}{table.caption.69}
-\contentsline {table}{\numberline {5.12}{\ignorespaces Truth Table for Standard Form Equation\relax }}{107}{table.caption.70}
-\contentsline {table}{\numberline {5.13}{\ignorespaces Canonical Form Practice Problems\relax }}{108}{table.caption.71}
-\contentsline {table}{\numberline {5.14}{\ignorespaces Simplifying Boolean Expressions\relax }}{111}{table.caption.72}
-\ttl@tocsep 
-\contentsline {table}{\numberline {6.1}{\ignorespaces Circuit Simplification Methods\relax }}{113}{table.caption.74}
-\contentsline {table}{\numberline {6.2}{\ignorespaces Truth Table for Simple Circuit\relax }}{114}{table.caption.75}
-\contentsline {table}{\numberline {6.3}{\ignorespaces Truth Table with Greek Letters\relax }}{115}{table.caption.76}
-\contentsline {table}{\numberline {6.4}{\ignorespaces Truth Table for Two-Input Circuit\relax }}{115}{table.caption.77}
-\contentsline {table}{\numberline {6.5}{\ignorespaces Truth Table for Three-Input Circuit\relax }}{116}{table.caption.78}
-\contentsline {table}{\numberline {6.6}{\ignorespaces Truth Table for Four-Input Circuit\relax }}{117}{table.caption.79}
-\contentsline {table}{\numberline {6.7}{\ignorespaces Karnaugh maps Practice Problems\relax }}{132}{table.caption.80}
-\contentsline {table}{\numberline {6.8}{\ignorespaces Truth Table for Checkerboard Pattern\relax }}{133}{table.caption.81}
-\ttl@tocsep 
-\contentsline {table}{\numberline {7.1}{\ignorespaces Quine-McCluskey Ex 1: Minterm Table\relax }}{142}{table.caption.82}
-\contentsline {table}{\numberline {7.2}{\ignorespaces Quine-McCluskey Ex 1: Rearranged Table\relax }}{142}{table.caption.83}
-\contentsline {table}{\numberline {7.3}{\ignorespaces Quine-McCluskey Ex 1: Size 2 Implicants\relax }}{143}{table.caption.84}
-\contentsline {table}{\numberline {7.4}{\ignorespaces Quine-McCluskey Ex 1: Size 4 Implicants\relax }}{144}{table.caption.85}
-\contentsline {table}{\numberline {7.5}{\ignorespaces Quine-McCluskey Ex 1: Prime Implicants\relax }}{144}{table.caption.86}
-\contentsline {table}{\numberline {7.6}{\ignorespaces Quine-McCluskey Ex 1: 1st Iteration\relax }}{145}{table.caption.87}
-\contentsline {table}{\numberline {7.7}{\ignorespaces Quine-McCluskey Ex 1: 2nd Iteration\relax }}{145}{table.caption.88}
-\contentsline {table}{\numberline {7.8}{\ignorespaces Quine-McCluskey Ex 1: 3rd Iteration\relax }}{146}{table.caption.89}
-\contentsline {table}{\numberline {7.9}{\ignorespaces Quine-McCluskey Ex 2: Minterm Table\relax }}{147}{table.caption.90}
-\contentsline {table}{\numberline {7.10}{\ignorespaces Quine-McCluskey Ex 2: Rearranged Table\relax }}{148}{table.caption.91}
-\contentsline {table}{\numberline {7.11}{\ignorespaces Quine-McCluskey Ex 2: Size Two Implicants\relax }}{149}{table.caption.92}
-\contentsline {table}{\numberline {7.12}{\ignorespaces Quine-McCluskey Ex 2: Size 4 Implicants\relax }}{150}{table.caption.93}
-\contentsline {table}{\numberline {7.13}{\ignorespaces Quine-McCluskey Ex 2: Prime Implicants\relax }}{151}{table.caption.94}
-\contentsline {table}{\numberline {7.14}{\ignorespaces Quine-McCluskey Ex 2: 1st Iteration\relax }}{151}{table.caption.95}
-\contentsline {table}{\numberline {7.15}{\ignorespaces Quine-McCluskey Ex 2: 2nd Iteration\relax }}{152}{table.caption.96}
-\contentsline {table}{\numberline {7.16}{\ignorespaces Quine-McCluskey Practice Problems\relax }}{153}{table.caption.97}
-\contentsline {table}{\numberline {7.17}{\ignorespaces Truth Table for KARMA\relax }}{159}{table.caption.101}
-\contentsline {table}{\numberline {7.18}{\ignorespaces KARMA Practice Problems\relax }}{164}{table.caption.102}
-\ttl@tocsep 
-\contentsline {table}{\numberline {8.1}{\ignorespaces Truth Table for a Multiplexer\relax }}{169}{table.caption.103}
-\contentsline {table}{\numberline {8.2}{\ignorespaces Truth Table for a Demultiplexer\relax }}{170}{table.caption.104}
-\contentsline {table}{\numberline {8.3}{\ignorespaces Truth Table for Half-Adder\relax }}{171}{table.caption.105}
-\contentsline {table}{\numberline {8.4}{\ignorespaces Truth Table for Full Adder\relax }}{172}{table.caption.106}
-\contentsline {table}{\numberline {8.5}{\ignorespaces Truth Table for Half-Subtractor\relax }}{175}{table.caption.107}
-\contentsline {table}{\numberline {8.6}{\ignorespaces Truth Table for Subtractor\relax }}{176}{table.caption.108}
-\contentsline {table}{\numberline {8.7}{\ignorespaces One-Bit Comparator Functions\relax }}{181}{table.caption.110}
-\contentsline {table}{\numberline {8.8}{\ignorespaces Truth Table for Two-Bit Comparator\relax }}{182}{table.caption.111}
-\contentsline {table}{\numberline {8.9}{\ignorespaces Truth Table for Priority Encoder\relax }}{186}{table.caption.113}
-\contentsline {table}{\numberline {8.10}{\ignorespaces Truth Table for Seven-Segment Display\relax }}{187}{table.caption.114}
-\contentsline {table}{\numberline {8.11}{\ignorespaces Even Parity Examples\relax }}{190}{table.caption.116}
-\contentsline {table}{\numberline {8.12}{\ignorespaces Iterative Parity\relax }}{192}{table.caption.117}
-\contentsline {table}{\numberline {8.13}{\ignorespaces Iterative Parity With Error\relax }}{192}{table.caption.118}
-\contentsline {table}{\numberline {8.14}{\ignorespaces Hamming Parity Bits\relax }}{194}{table.caption.119}
-\contentsline {table}{\numberline {8.15}{\ignorespaces Hamming Parity Cover Table\relax }}{194}{table.caption.120}
-\contentsline {table}{\numberline {8.16}{\ignorespaces Hamming Example - Iteration 1\relax }}{195}{table.caption.121}
-\contentsline {table}{\numberline {8.17}{\ignorespaces Hamming Example - Iteration 2\relax }}{195}{table.caption.122}
-\contentsline {table}{\numberline {8.18}{\ignorespaces Hamming Example - Iteration 3\relax }}{195}{table.caption.123}
-\contentsline {table}{\numberline {8.19}{\ignorespaces Hamming Example - Iteration 4\relax }}{195}{table.caption.124}
-\contentsline {table}{\numberline {8.20}{\ignorespaces Hamming Example - Iteration 5\relax }}{196}{table.caption.125}
-\contentsline {table}{\numberline {8.21}{\ignorespaces Hamming Example - Iteration 6\relax }}{196}{table.caption.126}
-\contentsline {table}{\numberline {8.22}{\ignorespaces Hamming Parity Cover Table Reproduced\relax }}{198}{table.caption.127}
-\contentsline {table}{\numberline {8.23}{\ignorespaces Hamming Parity Examples\relax }}{200}{table.caption.129}
-\contentsline {table}{\numberline {8.24}{\ignorespaces Hamming Parity Errors\relax }}{200}{table.caption.130}
-\ttl@tocsep 
-\contentsline {table}{\numberline {9.1}{\ignorespaces Truth Table for SR Latch\relax }}{204}{table.caption.131}
-\contentsline {table}{\numberline {9.2}{\ignorespaces JK Flip-Flop Timing Table\relax }}{207}{table.caption.132}
-\contentsline {table}{\numberline {9.3}{\ignorespaces Counter IC's\relax }}{221}{table.caption.135}
-\ttl@tocsep 
-\contentsline {table}{\numberline {10.1}{\ignorespaces Crosswalk State Table\relax }}{226}{table.caption.143}
-\ttl@tocsep 
-\contentsline {table}{\numberline {a.1}{\ignorespaces Univariate Properties\relax }}{237}{table.caption.148}
-\contentsline {table}{\numberline {a.2}{\ignorespaces Multivariate Properties\relax }}{238}{table.caption.149}
-\contentsline {table}{\numberline {a.3}{\ignorespaces Boolean Functions\relax }}{238}{table.caption.150}
+\contentsline {table}{\numberline {a.1}{\ignorespaces Univariate Properties\relax }}{15}{table.caption.1}% 
+\contentsline {table}{\numberline {a.2}{\ignorespaces Multivariate Properties\relax }}{16}{table.caption.2}% 
+\contentsline {table}{\numberline {a.3}{\ignorespaces Boolean Functions\relax }}{16}{table.caption.3}% 
 \ttl@tocsep 

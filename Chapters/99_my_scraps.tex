@@ -2,6 +2,24 @@
 % the text width in a normal line is 11.80737cm
 % To make a TODO note, start a comment with two or more consecutive capital letters.
 
+\section{acronyms and glossary}
+% all acronymns and glossary entries are defined in
+% dlGloss.tex. I have some information in that document
+% about how to format entries.
+% To compile the glossary:
+% 1. Build the document
+% 2. Tools -> Glossary (F9) % to build the glossary entries
+% 3. Build the document again
+
+% To use an acronym or glossary term in the text (they are the same):
+%***************************************************************
+\gls{code} % Where ``code'' is the code I specify in the glossary entry
+\glspl{code} % For the plural (note: forms a simple ``s'' plural)
+% for more complex plurals, create an alternate form in dlGloss
+\Gls{code} % Capitalize the first letter
+\Glspl{code} % Capitalize the first letter, make the word plural
+
+
 \section{Style Guide}
 \item The word: \textit{Logisim-evolution}
 \item Inputs/Outputs/Single Bits: \emph{D2In} (Ctrl-Sh-E)
