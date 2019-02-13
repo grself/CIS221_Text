@@ -3,10 +3,11 @@
 %*******************************************************
 % work-around to have small caps also here in the headline
 \manualmark
-\markboth{\spacedlowsmallcaps{\bibname}}{\spacedlowsmallcaps{\bibname}} % work-around to have small caps also
+\markboth{\spacedlowsmallcaps{\bibname}}{\spacedlowsmallcaps{\bibname}} 
 %\phantomsection 
 \refstepcounter{dummy}
-\addtocontents{toc}{\protect\vspace{\beforebibskip}} % to have the bib a bit from the rest in the toc
+\addtocontents{toc}{\protect\vspace{\beforebibskip}} % bib separated from the toc
 \addcontentsline{toc}{chapter}{\tocEntry{\bibname}}
 \label{app:bibliography}
+\nocite{*} % Print all bibliography entries whether they were mentioned in the text or not.
 \printbibliography

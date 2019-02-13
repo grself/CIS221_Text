@@ -1,3 +1,4 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {american}{}
 \vspace {-\cftbeforepartskip }
 \babel@toc {american}{}
@@ -21,7 +22,7 @@
 \contentsline {part}{\numberline {ii}{Practice}}{11}{part.2}% 
 \contentsline {part}{\numberline {iii}{Appendix}}{13}{part.3}% 
 \contentsline {chapter}{\numberline {a}{Boolean Properties and Functions}}{15}{chapter.1}% 
-\contentsline {chapter}{\numberline {b}{Resources}}{17}{chapter.2}% 
-\contentsline {section}{\numberline {b.1}{Digital Logic}}{17}{section.2.1}% 
-\contentsline {subsection}{\numberline {b.1.1}{Books}}{17}{subsection.2.1.1}% 
-\contentsline {subsection}{\numberline {b.1.2}{Found Online}}{18}{subsection.2.1.2}% 
+\vspace {\beforebibskip }
+\contentsline {chapter}{\numberline {}{Glossary}}{17}{dummy.6}% 
+\vspace {\beforebibskip }
+\contentsline {chapter}{\numberline {}{Bibliography}}{19}{dummy.7}% 

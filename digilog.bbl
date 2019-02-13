@@ -1,0 +1,345 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{nyt/global//global/global}
+  \entry{gregg1998ones}{book}{}
+    \name{author}{1}{}{%
+      {{hash=GJ}{%
+         family={Gregg},
+         familyi={G\bibinitperiod},
+         given={John},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Wiley-IEEE Press}%
+    }
+    \strng{namehash}{GJ1}
+    \strng{fullhash}{GJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{G}
+    \field{sortinithash}{G}
+    \field{title}{Ones and zeros: understanding boolean algebra, digital
+  circuits, and the logic of sets}
+    \field{year}{1998}
+  \endentry
+
+  \entry{holdsworth2002digital}{book}{}
+    \name{author}{2}{}{%
+      {{hash=HB}{%
+         family={Holdsworth},
+         familyi={H\bibinitperiod},
+         given={Brian},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=WC}{%
+         family={Woods},
+         familyi={W\bibinitperiod},
+         given={Clive},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{HBWC1}
+    \strng{fullhash}{HBWC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+    \field{title}{Digital logic design}
+    \field{year}{2002}
+  \endentry
+
+  \entry{langholz1998foundations}{book}{}
+    \name{author}{3}{}{%
+      {{hash=LG}{%
+         family={Langholz},
+         familyi={L\bibinitperiod},
+         given={Gideon},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=KA}{%
+         family={Kandel},
+         familyi={K\bibinitperiod},
+         given={Abraham},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MJL}{%
+         family={Mott},
+         familyi={M\bibinitperiod},
+         given={Joe\bibnamedelima L},
+         giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {World Scientific Publishing Company}%
+    }
+    \strng{namehash}{LGKAMJL1}
+    \strng{fullhash}{LGKAMJL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{title}{Foundations of digital logic design}
+    \field{year}{1998}
+  \endentry
+
+  \entry{mano2002digital}{book}{}
+    \name{author}{1}{}{%
+      {{hash=MMM}{%
+         family={Mano},
+         familyi={M\bibinitperiod},
+         given={M\bibnamedelima Morris},
+         giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {EBSCO Publishing, Inc.}%
+    }
+    \strng{namehash}{MMM1}
+    \strng{fullhash}{MMM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Digital design}
+    \field{year}{2002}
+  \endentry
+
+  \entry{maxfield1998designus}{book}{}
+    \name{author}{1}{}{%
+      {{hash=MC}{%
+         family={Maxfield},
+         familyi={M\bibinitperiod},
+         given={Clive},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Newnes}%
+    }
+    \strng{namehash}{MC1}
+    \strng{fullhash}{MC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Designus Maximus Unleashed!}
+    \field{year}{1998}
+  \endentry
+
+  \entry{maxfield2003bebop}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MC}{%
+         family={Maxfield},
+         familyi={M\bibinitperiod},
+         given={Clive},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Newnes}%
+    }
+    \strng{namehash}{MC1}
+    \strng{fullhash}{MC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Bebop to the Boolean Boogie: An Unconventional Guide to
+  Electronics (with CD-ROM)}
+    \field{year}{2003}
+  \endentry
+
+  \entry{nisan2005elements}{book}{}
+    \name{author}{2}{}{%
+      {{hash=NN}{%
+         family={Nisan},
+         familyi={N\bibinitperiod},
+         given={Noam},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=SS}{%
+         family={Schocken},
+         familyi={S\bibinitperiod},
+         given={Shimon},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT press}%
+    }
+    \strng{namehash}{NNSS1}
+    \strng{fullhash}{NNSS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{N}
+    \field{sortinithash}{N}
+    \field{title}{The elements of computing systems: building a modern computer
+  from first principles}
+    \field{year}{2005}
+  \endentry
+
+  \entry{petzold2000code}{book}{}
+    \name{author}{1}{}{%
+      {{hash=PC}{%
+         family={Petzold},
+         familyi={P\bibinitperiod},
+         given={Charles},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Microsoft Press}%
+    }
+    \strng{namehash}{PC1}
+    \strng{fullhash}{PC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{Code: The hidden language of computer hardware and software}
+    \field{year}{2000}
+  \endentry
+
+  \entry{predko2004digital}{book}{}
+    \name{author}{1}{}{%
+      {{hash=PM}{%
+         family={Predko},
+         familyi={P\bibinitperiod},
+         given={Myke},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {McGraw-Hill, Inc.}%
+    }
+    \strng{namehash}{PM1}
+    \strng{fullhash}{PM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{Digital electronics demystified}
+    \field{year}{2004}
+  \endentry
+
+  \entry{rafiquzzaman2005fundamentals}{book}{}
+    \name{author}{1}{}{%
+      {{hash=RM}{%
+         family={Rafiquzzaman},
+         familyi={R\bibinitperiod},
+         given={Mohamed},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {John Wiley \& Sons}%
+    }
+    \strng{namehash}{RM1}
+    \strng{fullhash}{RM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \field{title}{Fundamentals of digital logic and microcomputer design}
+    \field{year}{2005}
+  \endentry
+
+  \entry{saha2009digital}{book}{}
+    \name{author}{2}{}{%
+      {{hash=SA}{%
+         family={Saha},
+         familyi={S\bibinitperiod},
+         given={Arijit},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MN}{%
+         family={Manna},
+         familyi={M\bibinitperiod},
+         given={Nilotpal},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Jones \& Bartlett Learning}%
+    }
+    \strng{namehash}{SAMN1}
+    \strng{fullhash}{SAMN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Digital principles and logic design}
+    \field{year}{2009}
+  \endentry
+
+  \entry{tokheim1994digital}{book}{}
+    \name{author}{1}{}{%
+      {{hash=TRL}{%
+         family={Tokheim},
+         familyi={T\bibinitperiod},
+         given={Roger\bibnamedelima L},
+         giveni={R\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Glencoe}%
+    }
+    \strng{namehash}{TRL1}
+    \strng{fullhash}{TRL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{title}{Digital electronics}
+    \field{year}{1994}
+  \endentry
+
+  \entry{yarbrough1997digital}{book}{}
+    \name{author}{2}{}{%
+      {{hash=YJM}{%
+         family={Yarbrough},
+         familyi={Y\bibinitperiod},
+         given={John\bibnamedelima M},
+         giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=YJM}{%
+         family={Yarbrough},
+         familyi={Y\bibinitperiod},
+         given={John\bibnamedelima M},
+         giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {West Publishing Company St. Paul, MN}%
+    }
+    \strng{namehash}{YJMYJM1}
+    \strng{fullhash}{YJMYJM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{Y}
+    \field{sortinithash}{Y}
+    \field{title}{Digital logic: Applications and design}
+    \field{year}{1997}
+  \endentry
+\enddatalist
+\endinput

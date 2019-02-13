@@ -96,21 +96,21 @@ version={4.0}
 % manage both inline and block quotes
 \usepackage{csquotes}
 
-% I don't use a bibliography 
-%\PassOptionsToPackage{%
-%	backend=biber, %instead of bibtex
-%	backend=bibtex8,bibencoding=ascii,%
-%	language=auto,%
-%	style=numeric-comp,%
-%	%style=authoryear-comp, % Author 1999, 2010
-%	%bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
-%	sorting=nyt, % name, year, title
-%	maxbibnames=10, % default: 3, et al.
-%	%backref=true,%
-%	natbib=true % natbib compatibility mode (\citep and \citet still work)
-%}{biblatex}
-%\usepackage{biblatex}
-%\addbibresource{dlbib}
+% Bibliography 
+\PassOptionsToPackage{%
+	backend=biber, %instead of bibtex
+	backend=bibtex8,bibencoding=ascii,%
+	language=auto,%
+	style=numeric-comp,%
+	%style=authoryear-comp, % Author 1999, 2010
+	%bibstyle=authoryear,dashed=false, % dashed: substitute rep. author with ---
+	sorting=nyt, % name, year, title
+	maxbibnames=10, % default: 3, et al.
+	%backref=true,%
+	natbib=true % natbib compatibility mode (\citep and \citet still work)
+}{biblatex}
+\usepackage{biblatex}
+\addbibresource{digilog-bib}
 
 %*****
 % Generally useful packages
@@ -139,36 +139,36 @@ version={4.0}
 \newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
 \newcommand{\myfloatalign}{\centering} 
 \usepackage{caption}
-\captionsetup{font=small} % format=hang,
+	\captionsetup{font=small} % format=hang,
 \usepackage{subfig}  
 
 %*****
 % 5. Setup code listings - formatted for Verilog listings
 %*****
-\usepackage{listings} 
+%\usepackage{listings} 
 %\lstset{emph={trueIndex,root},emphstyle=\color{BlueViolet}}%\underbar} % for special keywords
-\lstset{language=Verilog,%[LaTeX]Tex,
-    morekeywords={PassOptionsToPackage,selectlanguage},
-    keywordstyle=\color{RoyalBlue},%\bfseries,
-    basicstyle=\small\ttfamily,
-    %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{Green}\ttfamily,
-    stringstyle=\rmfamily,
-    numbers=left,
-    numberstyle=\scriptsize,%\tiny
-    stepnumber=2,
-    numbersep=8pt,
-    showstringspaces=false,
-    breaklines=true,
-    %frameround=ftff,
-    frame=lines,
-    captionpos=b,  % put captions at the bottom of the listing
-    aboveskip=.75\baselineskip,
-    belowskip=.75\baselineskip
-    %abovecaptionskip=.75\baselineskip
-    %belowcaptionskip=.75\baselineskip
-    %frame=L
-} 
+%\lstset{language=Verilog,%[LaTeX]Tex,
+%    morekeywords={PassOptionsToPackage,selectlanguage},
+%    keywordstyle=\color{RoyalBlue},%\bfseries,
+%    basicstyle=\small\ttfamily,
+%    %identifierstyle=\color{NavyBlue},
+%    commentstyle=\color{Green}\ttfamily,
+%    stringstyle=\rmfamily,
+%    numbers=left,
+%    numberstyle=\scriptsize,%\tiny
+%    stepnumber=2,
+%    numbersep=8pt,
+%    showstringspaces=false,
+%    breaklines=true,
+%    %frameround=ftff,
+%    frame=lines,
+%    captionpos=b,  % put captions at the bottom of the listing
+%    aboveskip=.75\baselineskip,
+%    belowskip=.75\baselineskip
+%    %abovecaptionskip=.75\baselineskip
+%    %belowcaptionskip=.75\baselineskip
+%    %frame=L
+%} 
 
 %*****
 % PDFLaTeX
@@ -295,7 +295,7 @@ version={4.0}
 \usepackage[style=long,nolist]{glossaries}
 \newcommand{\glossname}{Glossary}
 \makeglossaries
-\loadglsentries{dlGloss}
+\loadglsentries{digilog-gloss}
 %\newglossaryentry{LW}{name={Long Word},description={This is just a long word.}}
 %\newacronym{wtf}{WTF}{What the Flying Freakin' Flip???}
 
