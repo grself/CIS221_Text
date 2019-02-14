@@ -17,6 +17,23 @@
 \endgroup
 
 \datalist[entry]{nyt/global//global/global}
+  \entry{wikibooks2018digital}{online}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{title}{Digital Circuits}
+    \verb{url}
+    \verb https://en.wikibooks.org/w/index.php?title=Digital_Circuits&oldid=344
+    \verb 8235
+    \endverb
+    \field{day}{04}
+    \field{month}{08}
+    \field{year}{2018}
+    \field{urlday}{14}
+    \field{urlmonth}{02}
+    \field{urlyear}{2019}
+  \endentry
+
   \entry{gregg1998ones}{book}{}
     \name{author}{1}{}{%
       {{hash=GJ}{%
@@ -218,6 +235,35 @@
     \field{sortinithash}{P}
     \field{title}{Code: The hidden language of computer hardware and software}
     \field{year}{2000}
+  \endentry
+
+  \entry{phelps2006constructing}{online}{}
+    \name{author}{1}{}{%
+      {{hash=PA}{%
+         family={Phelps},
+         familyi={P\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {University of Wisconsin at Madison}%
+    }
+    \strng{namehash}{PA1}
+    \strng{fullhash}{PA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{Constructing an Error Correcting Code}
+    \verb{url}
+    \verb http://pages.cs.wisc.edu/~markhill/cs552/Fall2006/handouts/Constructi
+    \verb ngECC.pdf
+    \endverb
+    \field{year}{2006}
+    \field{urlday}{14}
+    \field{urlmonth}{02}
+    \field{urlyear}{2019}
   \endentry
 
   \entry{predko2004digital}{book}{}
