@@ -28,7 +28,7 @@ Adding binary numbers is a simple task similar to the longhand addition of decim
   \label{MO:tab:binary_addition_table}
 \end{table} 
 
-Just as with decimal addition, two binary integers are added one column at a time, starting from the \ac{LSB} (the right-most bit in the integer): 
+Just as with decimal addition, two binary integers are added one column at a time, starting from the \gls{lsb} (the right-most bit in the integer): 
 
 \begin{binDisp}[commandchars=~\[\]]
       1001101
@@ -66,7 +66,7 @@ Binary numbers that include a fractional component are added just like binary in
 \subsection{Overflow Error}
 \label{MO:sub:overflow_error}
 
-One problem circuit designers must consider is a carry out bit in the \ac{MSB} (left-most bit) in the answer. Consider the following:
+One problem circuit designers must consider is a carry out bit in the \gls{msb} (left-most bit) in the answer. Consider the following:
 
 \begin{binDisp}[commandchars=~\[\]]
       11 11    <--Carry Bits
@@ -75,9 +75,9 @@ One problem circuit designers must consider is a carry out bit in the \ac{MSB} (
      110011011
 \end{binDisp}
 
-This example illustrates a significant problem for circuit designers. Suppose the above calculation was done with a circuit that could only accommodate eight data bits. The augend and addend are both eight bits wide, so they are fine; however, the sum is nine bits wide due to the carry out in the \ac{MSB}. In an eight-bit circuit (that is, a circuit where the devices and data lines can only accommodate eight bits of data), the carry out bit would be dropped since there is not enough room to accommodate it.
+This example illustrates a significant problem for circuit designers. Suppose the above calculation was done with a circuit that could only accommodate eight data bits. The augend and addend are both eight bits wide, so they are fine; however, the sum is nine bits wide due to the carry out in the \gls{msb}. In an eight-bit circuit (that is, a circuit where the devices and data lines can only accommodate eight bits of data), the carry out bit would be dropped since there is not enough room to accommodate it.
 
-The result of a dropped bit cannot be ignored. The example problem above, when calculated in decimal, is $ 174_{10} + 237_{10} = 411_{10} $. If, though, the \ac{MSB} carry out is dropped, then the answer becomes $ 155_{10} $, which is, of course, incorrect. This type of error is called an \emph{Overflow Error}, and a circuit designer must find a way to correct overflow. One typical solution is to simply alert the user that there was an overflow error. For example, on a handheld calculator, the display may change to something like \emph{-E-} if there is an error of any sort, including overflow. 
+The result of a dropped bit cannot be ignored. The example problem above, when calculated in decimal, is $ 174_{10} + 237_{10} = 411_{10} $. If, though, the \gls{msb} carry out is dropped, then the answer becomes $ 155_{10} $, which is, of course, incorrect. This type of error is called an \emph{Overflow Error}, and a circuit designer must find a way to correct overflow. One typical solution is to simply alert the user that there was an overflow error. For example, on a handheld calculator, the display may change to something like \emph{-E-} if there is an error of any sort, including overflow. 
 
 \subsection{Sample Binary Addition Problems}
 \label{MO:sub:sample_binary_addition_problems}
@@ -119,7 +119,7 @@ Subtracting binary numbers is similar to subtracting decimal numbers and uses th
       01.1
 \end{binDisp}
 
-In this problem, the \ac{LSB} column is $ 1 - 0 $, and that equals one. The middle column, though, is $ 0 - 1 $, and one cannot be subtracted from zero. Therefore, one is borrowed from the most significant bit, so the problem in middle column becomes $ 10 - 1 $. (Note: do not think of this as ``ten minus one'' - remember that this is binary so this problem is ``one-zero minus one,'' or two minus one in decimal) The middle column is $ 10 - 1 = 1 $, and the \ac{MSB} column then becomes $ 0 - 0 = 0 $. 
+In this problem, the \gls{lsb} column is $ 1 - 0 $, and that equals one. The middle column, though, is $ 0 - 1 $, and one cannot be subtracted from zero. Therefore, one is borrowed from the most significant bit, so the problem in middle column becomes $ 10 - 1 $. (Note: do not think of this as ``ten minus one'' - remember that this is binary so this problem is ``one-zero minus one,'' or two minus one in decimal) The middle column is $ 10 - 1 = 1 $, and the \gls{msb} column then becomes $ 0 - 0 = 0 $. 
 
 The radix point must be kept in alignment throughout the problem, so if one of the two operands has too few places it is padded on the left or right (or both) to make both operands the same length. As an example, subtract: $ 101101.01 - 1110.1 $: 
 
@@ -159,7 +159,7 @@ Table \ref{MO:tab:binary_subtraction_problems} includes some subtraction problem
 \subsection{Representing Negative Binary Numbers Using Sign-and-Magnitude}
 \label{MO:sub:representing_negative_sign_magnitude}
 
-\marginpar{Sign-and-magnitude was used in early computers since it mimics real number arithmetic, but has been replaced by more efficient negative number systems in modern computers.} Binary numbers, like decimal numbers, can be both positive and negative. While there are several methods of representing negative binary numbers; one of the most intuitive is using \emph{sign-and-magnitude}, which is essentially the same as placing a ``–'' in front of a decimal number. With the sign-and-magnitude system, the circuit designer simply designates the \ac{MSB} as the \emph{sign bit} and all others as the magnitude of the number. When the sign bit is one the number is negative, and when it is zero the number is positive. Thus, $ -5_{10} $ would be written as $ 1101_2 $. 
+\marginpar{Sign-and-magnitude was used in early computers since it mimics real number arithmetic, but has been replaced by more efficient negative number systems in modern computers.} Binary numbers, like decimal numbers, can be both positive and negative. While there are several methods of representing negative binary numbers; one of the most intuitive is using \emph{sign-and-magnitude}, which is essentially the same as placing a ``–'' in front of a decimal number. With the sign-and-magnitude system, the circuit designer simply designates the \gls{msb} as the \emph{sign bit} and all others as the magnitude of the number. When the sign bit is one the number is negative, and when it is zero the number is positive. Thus, $ -5_{10} $ would be written as $ 1101_2 $. 
 
 Unfortunately, despite the simplicity of the sign-and-magnitude approach, it is not very practical for binary arithmetic, especially when done by a computer. For instance, negative five ($ 1101_2 $) cannot be added to any other binary number using standard addition technique since the sign bit would interfere. As a general rule, errors can easily occur when bits are used for any purpose other than standard place-weighted values; for example, $ 1101_2 $ could be misinterpreted as the number $ 13_{10} $ when, in fact, it is meant to represent $ -5 $. To keep things straight, the circuit designer must first decide how many bits are going to be used to represent the largest numbers in the circuit, add one more bit for the sign, and then be sure to never exceed that bit field length in arithmetic operations. For the above example, three data bits plus a sign bit would limit arithmetic operations to numbers from negative seven ($ 1111_2 $) to positive seven ($ 0111_2 $), and no more. 
 
@@ -247,7 +247,7 @@ The twos complement removes that quirk of having two values for zero. Table \ref
 \subsubsection{About Calculating the Twos Complement}
 \label{MO:subsub:about_calculating_twos_complement}
 
-In the above section, the twos (or radix) complement is calculated by finding the ones complement of a number and then adding one. For machines, this is the most efficient method of calculating the twos complement; but there is a method that is much easier for humans to use to find the twos complement of a number. Start with the \ac{LSB} (the right-most bit) and then read the number from right to left. Look for the first one and then invert every bit to the left of that one. As an example, the twos complement for $ 1010\underline{10}_2 $ is formed by starting with the least significant bit (the zero on the right), and working to the left, looking for the first one, which is in the second place from the right. Then, every bit to the left of that one is inverted, ending with: $ 0101\underline{10}_2 $ (the two \acp{LSB} are underlined to show that they are the same in both the original and twos complement number).
+In the above section, the twos (or radix) complement is calculated by finding the ones complement of a number and then adding one. For machines, this is the most efficient method of calculating the twos complement; but there is a method that is much easier for humans to use to find the twos complement of a number. Start with the \gls{lsb} (the right-most bit) and then read the number from right to left. Look for the first one and then invert every bit to the left of that one. As an example, the twos complement for $ 1010\underline{10}_2 $ is formed by starting with the least significant bit (the zero on the right), and working to the left, looking for the first one, which is in the second place from the right. Then, every bit to the left of that one is inverted, ending with: $ 0101\underline{10}_2 $ (the two \glspl{lsb} are underlined to show that they are the same in both the original and twos complement number).
 
 Table \ref{MO:tab:example_twos_comp} displays a few examples:
 
@@ -443,7 +443,7 @@ One caveat with signed binary numbers is that of overflow, where the answer to a
      100100
 \end{binDisp}
 
-The answer ($ 100100_2 $), interpreted with the most significant bit as a sign, is equal to $ -28_{10} $, not $ +36_{10} $ as expected. Obviously, this is not correct. The problem lies in the restrictions of a six-bit number field. Since the true sum ($ 36 $) exceeds the allowable limit for our designated bit field (five magnitude bits, or $ +31 $), it produces what is called an overflow error. Simply put, six places is not large enough to represent the correct sum if the \ac{MSB} is being used as a sign bit, so whatever sum is obtained will be incorrect. A similar error will occur if two negative numbers are added together to produce a sum that is too small for a six-bit binary field. As an example, add $ -17_{10} $ and $ -19_{10} $: 
+The answer ($ 100100_2 $), interpreted with the most significant bit as a sign, is equal to $ -28_{10} $, not $ +36_{10} $ as expected. Obviously, this is not correct. The problem lies in the restrictions of a six-bit number field. Since the true sum ($ 36 $) exceeds the allowable limit for our designated bit field (five magnitude bits, or $ +31 $), it produces what is called an overflow error. Simply put, six places is not large enough to represent the correct sum if the \gls{msb} is being used as a sign bit, so whatever sum is obtained will be incorrect. A similar error will occur if two negative numbers are added together to produce a sum that is too small for a six-bit binary field. As an example, add $ -17_{10} $ and $ -19_{10} $: 
 
 \begin{binDisp}[commandchars=~\[\]]
      -17 = 101111
@@ -529,17 +529,17 @@ To multiply two binary numbers, work through the multiplier one number at a time
 
 The simplest method used to multiply two numbers where one or both are negative is to use the same technique that is used for decimal numbers: multiply the two numbers and then determine the sign from the signs of the original numbers: if those signs are the same then the result is positive, if they are different then the result is negative. Multiplication by zero is a special case where the result is always zero.
 
-The multiplication method discussed above works fine for paper-and-pencil; but is not appropriate for designing binary circuits. Unfortunately, the mathematics for binary multiplication using an algorithm that can become an electronic circuit is beyond the scope of this book. Fortunately, though, \acp{IC} already exist that carry out multiplication of both signed and floating-point numbers, so a circuit designer can use a pre-designed circuit and not worry about the complexity of the multiplication process.
+The multiplication method discussed above works fine for paper-and-pencil; but is not appropriate for designing binary circuits. Unfortunately, the mathematics for binary multiplication using an algorithm that can become an electronic circuit is beyond the scope of this book. Fortunately, though, \glspl{ic} already exist that carry out multiplication of both signed and floating-point numbers, so a circuit designer can use a pre-designed circuit and not worry about the complexity of the multiplication process.
 
 \section{Binary Division}
 \label{MO:sec:binary_division}
 
-Binary division is accomplished by repeated subtraction and a right shift function; the reverse of multiplication. The actual process is rather convoluted and complex and is not covered in this book. Fortunately, though, \acp{IC} already exist that carry out division of both signed and floating-point numbers, so a circuit designer can use a pre-designed circuit and not worry about the complexity of the division process.
+Binary division is accomplished by repeated subtraction and a right shift function; the reverse of multiplication. The actual process is rather convoluted and complex and is not covered in this book. Fortunately, though, \glspl{ic} already exist that carry out division of both signed and floating-point numbers, so a circuit designer can use a pre-designed circuit and not worry about the complexity of the division process.
 
 \section{Bitwise Operations}
 \label{MO:sec:bitwise_operations}
 
-It is sometimes desirable to find the value of a given bit in a byte. For example, if the \ac{LSB} is zero then the number is even, but if it is one then the number is odd. To determine the ``evenness'' of a number, a bitwise mask is multiplied with the original number. As an example, imagine that it is desired to know if $ 1001010_2 $ is even, then:
+It is sometimes desirable to find the value of a given bit in a byte. For example, if the \gls{lsb} is zero then the number is even, but if it is one then the number is odd. To determine the ``evenness'' of a number, a bitwise mask is multiplied with the original number. As an example, imagine that it is desired to know if $ 1001010_2 $ is even, then:
 
 \begin{binDisp}[commandchars=~\[\]]
          1001010  <- Original Number
@@ -547,7 +547,7 @@ It is sometimes desirable to find the value of a given bit in a byte. For exampl
          0000000
 \end{binDisp}
 
-The bits are multiplied one position at a time, from left-to-right. Any time a zero appears in the mask that bit position in the product will be zero since any number multiplied by zero yields zero. When a one appears in the mask, then the bit in the original number will be copied to the solution. In the given example, the zero in the least significant bit of the top number is multiplied with one and the result is zero. If that \ac{LSB} in the top number had been one then the \ac{LSB} in the result would have also been one. Therefore, an ``even'' original number would yield a result of all zeros while an odd number would yield a one.
+The bits are multiplied one position at a time, from left-to-right. Any time a zero appears in the mask that bit position in the product will be zero since any number multiplied by zero yields zero. When a one appears in the mask, then the bit in the original number will be copied to the solution. In the given example, the zero in the least significant bit of the top number is multiplied with one and the result is zero. If that \gls{lsb} in the top number had been one then the \gls{lsb} in the result would have also been one. Therefore, an ``even'' original number would yield a result of all zeros while an odd number would yield a one.
 
 \section{Codes}
 \label{MO:sec:codes}
@@ -575,18 +575,18 @@ As one other example of a commonly-used code, in $ 1834 $ Louis Braille, at the 
 \subsection{Computer Codes}
 \label{MO:sub:computer_codes}
 
-The fact is, computers can only work with binary numbers; that is how information is stored in memory, how it is processed by the \ac{CPU}, how it is transmitted over a network, and how it is manipulated in any of a hundred different ways. It all boils down to binary numbers. However, humans generally want a computer to work with words (such as email or a word processor), ciphers (such as a spreadsheet), or graphics (such as photos). All of that information must be encoded into binary numbers for the computer and then decoded back into understandable information for humans. Thus, binary numbers stored in a computer are often codes used to represent letters, programming steps, or other non-numeric information. 
+The fact is, computers can only work with binary numbers; that is how information is stored in memory, how it is processed by the \gls{cpu}, how it is transmitted over a network, and how it is manipulated in any of a hundred different ways. It all boils down to binary numbers. However, humans generally want a computer to work with words (such as email or a word processor), ciphers (such as a spreadsheet), or graphics (such as photos). All of that information must be encoded into binary numbers for the computer and then decoded back into understandable information for humans. Thus, binary numbers stored in a computer are often codes used to represent letters, programming steps, or other non-numeric information. 
 
 \subsubsection{ASCII}
 \label{MO:subsub:ascii}
 
 Computers must be able to store and process letters, like those on this page. At first, it would seem easiest to create a code by simply making \lstinline[columns=fixed]|A=1|, \lstinline[columns=fixed]|B=2|, and so forth. While this simple code does not work for a number of reasons, the idea is on the right track and the code that is actually used for letters is similar to this simple example. 
 
-In the early $ 1960 $s, computer scientists came up with a code they named \ac{ASCII} and this is still among the most common ways to encode letters and other symbols for a computer. If the computer program knows that a particular spot in memory contains binary numbers that are actually ASCII-coded letters, it is a fairly easy job to convert those codes to letters for a screen display. For simplicity, \ac{ASCII} is usually represented by hexadecimal numbers rather than binary. For example, the word \emph{Hello} in \ac{ASCII} is: $ 048 \; 065 \; 06C \; 06C \; 06F $.
+In the early $ 1960 $s, computer scientists came up with a code they named \gls{ascii} and this is still among the most common ways to encode letters and other symbols for a computer. If the computer program knows that a particular spot in memory contains binary numbers that are actually ASCII-coded letters, it is a fairly easy job to convert those codes to letters for a screen display. For simplicity, \gls{ascii} is usually represented by hexadecimal numbers rather than binary. For example, the word \emph{Hello} in \gls{ascii} is: $ 048 \; 065 \; 06C \; 06C \; 06F $.
 
-\ac{ASCII} code also has a predictable relationship between letters. For example, capital letters are exactly $ 20_{16} $ higher in ASCII than their lower-case version. Thus, to change a letter from lower-case to upper-case, a programmer can add $ 20_{16} $ to the \ac{ASCII} code for the lower-case letter. This can be done in a single processing step by using what is known as a \emph{bit-wise \textsf{AND}} on the bit representing $ 20_{16} $ in the \ac{ASCII} code's binary number.
+\gls{ascii} code also has a predictable relationship between letters. For example, capital letters are exactly $ 20_{16} $ higher in ASCII than their lower-case version. Thus, to change a letter from lower-case to upper-case, a programmer can add $ 20_{16} $ to the \gls{ascii} code for the lower-case letter. This can be done in a single processing step by using what is known as a \emph{bit-wise \textsf{AND}} on the bit representing $ 20_{16} $ in the \gls{ascii} code's binary number.
 
-An \ac{ASCII} chart using hexadecimal values is presented in Table \ref{MO:tab:ascii_table}. The most significant digit is read across the top row and the least significant digit is read down the left column. For example, the letter \emph{A} is $ 41_{16} $ and the number \emph{6} is $ 36_{16} $.
+An \gls{ascii} chart using hexadecimal values is presented in Table \ref{MO:tab:ascii_table}. The most significant digit is read across the top row and the least significant digit is read down the left column. For example, the letter \emph{A} is $ 41_{16} $ and the number \emph{6} is $ 36_{16} $.
 
 \begin{table}[H]
   \sisetup{parse-numbers = false}
@@ -655,7 +655,7 @@ An \ac{ASCII} chart using hexadecimal values is presented in Table \ref{MO:tab:a
   \label{MO:tab:ascii_table}
 \end{table}
 
-\marginpar{Teletype operators from decades past tell stories of sending 25 or more $ 07_{16} $ codes (ring the bell) to a receiving terminal just to irritate another operator in the middle of the night.} \ac{ASCII} $ 20_{16} $ is a space character used to separate words in a message and the first two columns of ASCII codes (where the high-order nibble are zero and one) were codes essential for teletype machines, which were common from the $ 1920 $s until the $ 1970 $s. The meanings of a few of those special codes are given in Table \ref{MO:tab:ascii_symbols}.
+\marginpar{Teletype operators from decades past tell stories of sending 25 or more $ 07_{16} $ codes (ring the bell) to a receiving terminal just to irritate another operator in the middle of the night.} \gls{ascii} $ 20_{16} $ is a space character used to separate words in a message and the first two columns of ASCII codes (where the high-order nibble are zero and one) were codes essential for teletype machines, which were common from the $ 1920 $s until the $ 1970 $s. The meanings of a few of those special codes are given in Table \ref{MO:tab:ascii_symbols}.
 
 \begin{table}[H]
   \sisetup{parse-numbers = false}
@@ -705,18 +705,18 @@ Table \ref{MO:tab:ascii_practice} contains a few phrases in both plain text and 
 \end{table}
 % Pull Quote - Marginal Note - Sidebar
 
-While the ASCII code is the most commonly used text representation, it is certainly not the only way to encode words. Another popular code is \ac{EBCDIC} (pronounced like ``Eb See Deck''), which was invented by IBM in $ 1963 $ and has been used in most of their computers ever since.
+While the ASCII code is the most commonly used text representation, it is certainly not the only way to encode words. Another popular code is \gls{ebcdic} (pronounced like ``Eb See Deck''), which was invented by IBM in $ 1963 $ and has been used in most of their computers ever since.
 
 Since the early 2000's, computer programs have begun to use Unicode character sets, which are similar to ASCII but multiple bytes are combined to expand the number of characters available for non-English languages like Cyrillic.
 
 \subsubsection{Binary Coded Decimal (BCD)}
 \label{MO:subsub:binary_coded_decimal}
 
-It is often desirable to have numbers coded in such a way that they can be easily translated back and forth between decimal (which is easy for humans to manipulate) and binary (which is easy for computers to manipulate). \ac{BCD} is the code used to represent decimal numbers in binary systems. \ac{BCD} is useful when working with decimal input (keypads or transducers) and output (displays) devices.
+It is often desirable to have numbers coded in such a way that they can be easily translated back and forth between decimal (which is easy for humans to manipulate) and binary (which is easy for computers to manipulate). \gls{bcd} is the code used to represent decimal numbers in binary systems. \gls{bcd} is useful when working with decimal input (keypads or transducers) and output (displays) devices.
 
-There are, in general, two types of \ac{BCD} systems: non-weighted and weighted. Non-weighted codes are special codes devised for a single purpose where there is no implied relationship between one value and the next. As an example, $ 1001 $ could mean one and $ 1100 $ could mean two in some device. The circuit designer would create whatever code meaning is desired for the application. 
+There are, in general, two types of \gls{bcd} systems: non-weighted and weighted. Non-weighted codes are special codes devised for a single purpose where there is no implied relationship between one value and the next. As an example, $ 1001 $ could mean one and $ 1100 $ could mean two in some device. The circuit designer would create whatever code meaning is desired for the application. 
 
-Weighted \ac{BCD} is a more generalized system where each bit position is assigned a ``weight,'' or value. These types of \ac{BCD} systems are far more common than non-weighted and are found in all sorts of applications. Weighted \ac{BCD} codes can be converted to decimal by adding the place value for each position in exactly the same way that Expanded Positional Notation is used for to covert between decimal and binary numbers. As an example, the weights for the Natural \ac{BCD} system are $ 8-4-2-1 $. (These are the same weights used for binary numbers; thus the name ``natural'' for this system.) The code $ 1001_{BCD} $ is converted to decimal like this: 
+Weighted \gls{bcd} is a more generalized system where each bit position is assigned a ``weight,'' or value. These types of \gls{bcd} systems are far more common than non-weighted and are found in all sorts of applications. Weighted \gls{bcd} codes can be converted to decimal by adding the place value for each position in exactly the same way that Expanded Positional Notation is used for to covert between decimal and binary numbers. As an example, the weights for the Natural \gls{bcd} system are $ 8-4-2-1 $. (These are the same weights used for binary numbers; thus the name ``natural'' for this system.) The code $ 1001_{BCD} $ is converted to decimal like this: 
 
 \begin{align}
   1001_{BCD} &= (1X8)+(0X4)+(0X2)+(1X1) \\
@@ -726,7 +726,7 @@ Weighted \ac{BCD} is a more generalized system where each bit position is assign
   &= 9_{10}
 \end{align}
 
-Because there are ten decimal ciphers ($ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 $), it requires four bits to represent all decimal digits; so most \ac{BCD} code systems are four bits wide. In practice, only a few different weighted \ac{BCD} code systems are commonly used and the most common are shown in Table \ref{MO:tab:bcd_systems}. 
+Because there are ten decimal ciphers ($ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 $), it requires four bits to represent all decimal digits; so most \gls{bcd} code systems are four bits wide. In practice, only a few different weighted \gls{bcd} code systems are commonly used and the most common are shown in Table \ref{MO:tab:bcd_systems}. 
 
 \begin{table}[H]
   \sffamily
@@ -756,11 +756,11 @@ Because there are ten decimal ciphers ($ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 $), it req
   \label{MO:tab:bcd_systems}
 \end{table}
 
-\marginpar{Remember that BCD is a code system, not a number system; so the meaning of each combination of four-bit codes is up to the designer and will not necessarily follow any sort of binary numbering sequence.}The name of each type of \ac{BCD} code indicates the various place values. Thus, the $ 2421 $ \ac{BCD} system gives the most significant bit of the number a value of two, not eight as in the natural code. The \emph{Ex3} code (for ``Excess 3'') is the same as the natural code, but each value is increased by three (that is, three is added to the natural code). 
+\marginpar{Remember that BCD is a code system, not a number system; so the meaning of each combination of four-bit codes is up to the designer and will not necessarily follow any sort of binary numbering sequence.}The name of each type of \gls{bcd} code indicates the various place values. Thus, the $ 2421 $ \gls{bcd} system gives the most significant bit of the number a value of two, not eight as in the natural code. The \emph{Ex3} code (for ``Excess 3'') is the same as the natural code, but each value is increased by three (that is, three is added to the natural code). 
 
-In each of the \ac{BCD} code systems in Table \ref{MO:tab:bcd_systems} there are six unused four-bit combinations; for example, in the \emph{Natural} system the unused codes are: $ 1010, 1011, 1100, 1101, 1110, $ and $ 1111 $. Thus, any circuit designed to use \ac{BCD} must include some sort of check to ensure that if unused binary values are accidentally input into a circuit it does not create an undefined outcome.
+In each of the \gls{bcd} code systems in Table \ref{MO:tab:bcd_systems} there are six unused four-bit combinations; for example, in the \emph{Natural} system the unused codes are: $ 1010, 1011, 1100, 1101, 1110, $ and $ 1111 $. Thus, any circuit designed to use \gls{bcd} must include some sort of check to ensure that if unused binary values are accidentally input into a circuit it does not create an undefined outcome.
 
-Normally, two \ac{BCD} codes, each of which are four bits wide, are packed into an eight-bit byte in order to reduce wasted computer memory. Thus, the packed \ac{BCD} $ 0111 0010 $ contains two BCD numbers: $ 72 $. In fact, a single 32-bit word, which is common in many computers, can contain $ 8 $ \ac{BCD} codes. It is a trivial matter for software to either pack or unpack \ac{BCD} codes from a longer word.
+Normally, two \gls{bcd} codes, each of which are four bits wide, are packed into an eight-bit byte in order to reduce wasted computer memory. Thus, the packed \gls{bcd} $ 0111 0010 $ contains two BCD numbers: $ 72 $. In fact, a single 32-bit word, which is common in many computers, can contain $ 8 $ \gls{bcd} codes. It is a trivial matter for software to either pack or unpack \gls{bcd} codes from a longer word.
 
 It is natural to wonder why there are so many different ways to code decimal numbers. Each of the \ac{BCD} systems shown in Table \ref{MO:tab:bcd_systems} has certain strengths and weaknesses and a circuit designer would choose a specific system based upon those characteristics.
 

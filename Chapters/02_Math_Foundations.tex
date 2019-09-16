@@ -373,7 +373,7 @@ A bit value of one in the original number means that the respective place weight
   \textcolor{blue}{\textbf{Naming Conventions}}
   % Lower half of the box: the content
   \tcblower
-  The bit on the right end of any binary number is the \ac{LSB} because it has the least weight (the ones place) while the bit on the left end is the \ac{MSB} because it has the greatest weight. Also, groups of bits are normally referred to as \emph{words}, so engineers would speak of $ 16 $-bit or $ 32 $-bit words. As exceptions, an eight-bit group is commonly called a \emph{byte} and a four-bit group is called a \emph{nibble} (occasionally spelled \emph{nybble}).
+  The bit on the right end of any binary number is the \gls{lsb} because it has the least weight (the ones place) while the bit on the left end is the \gls{msb} because it has the greatest weight. Also, groups of bits are normally referred to as \emph{words}, so engineers would speak of $ 16 $-bit or $ 32 $-bit words. As exceptions, an eight-bit group is commonly called a \emph{byte} and a four-bit group is called a \emph{nibble} (occasionally spelled \emph{nybble}).
 \end{tcolorbox}
 % End Sidebar Box
 
@@ -870,7 +870,7 @@ Numbers can take two forms: Fixed Point and Floating Point. A fixed point number
 
 Before considering how floating point numbers are stored in memory and manipulated, it is important to recall that any number can be represented using \emph{scientific notation}. Thus, $ 123.45_{10} $ can be represented as $ 1.2345 X 10^2 $ and $ 0.0012345_{10} $ can be represented as $ 1.2345 X 10^{-3} $. Numbers in scientific notation with one place to the left of the radix point, as illustrated in the previous sentence, are considered \emph{normalized}. While most people are familiar with normalized decimal numbers, the same process can be used for any other base, including binary. Thus, $ 1101.101_2 $ can be written as $ 1.101101 X 2^3 $. Notice that for normalized binary numbers the radix is two rather than ten since binary is a radix two system, also there is only one bit to the left of the radix point.
 
-\marginpar{\ac{IEEE} Standard 754 defines Floating Point Numbers} By definition, floating point numbers are stored and manipulated in a computer using a 32-bit word (64 bits for ``double precision'' numbers). For this discussion, imagine that the number $ 10010011.0010_2 $ is to be stored as a floating point number. That number would first be normalized to $ 1.00100110010 X 2^7 $ and then placed into the floating point format:
+\marginpar{\gls{ieee} Standard 754 defines Floating Point Numbers} By definition, floating point numbers are stored and manipulated in a computer using a 32-bit word (64 bits for ``double precision'' numbers). For this discussion, imagine that the number $ 10010011.0010_2 $ is to be stored as a floating point number. That number would first be normalized to $ 1.00100110010 X 2^7 $ and then placed into the floating point format:
 
 \begin{verbatim}
      x    xxxxxxxx xxxxxxxxxxxxxxxxxxxxxxx
@@ -897,7 +897,7 @@ A few floating point special cases have been defined:
 \begin{itemize}
   \item \textsc{zero}: The exponent and mantissa are both zero and it does not matter whether the sign bit is one or zero. 
   \item \textsc{infinity}: The exponent is all ones and the mantissa is all zeros. The sign bit is used to represent either positive or negative infinity. 
-  \item \textsc{\ac{NaN}}: The exponent is all ones and the mantissa has at least one one (it does not matter how many or where). \ac{NaN} is returned as the result of an illegal operation, like an attempted division by zero.
+  \item \textsc{\gls{nan}}: The exponent is all ones and the mantissa has at least one one (it does not matter how many or where). \gls{nan} is returned as the result of an illegal operation, like an attempted division by zero.
 \end{itemize}
 
 Two specific problems may show up with floating point calculations: 
