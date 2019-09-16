@@ -1,7 +1,7 @@
-\chapter{Simulation}\label{ch10}
+\chapter{Central Processing Units}\label{ch14}
 \section{Introduction}
 
-One of the important benefits of using a simulator like \Le is that a circuit designer can simulate digital systems to determine logic flaws or weaknesses that must be addressed before a physical \ac{IC} is manufactured. This chapter introduces the concept of simulation and includes several examples of simulated systems.
+One of the important benefits of using a simulator like \Le is that a circuit designer can simulate digital systems to determine logic flaws or weaknesses that must be addressed before a physical \gls{ic} is manufactured. This chapter introduces the concept of simulation and includes several examples of simulated systems.
 
 %***************************************************************************
 % Section: CPU
@@ -12,11 +12,11 @@ One of the important benefits of using a simulator like \Le is that a circuit de
 \subsection{Introduction}
 \label{SIM:subsec:intro_to_cpu}
 
-The \acf{CPU} is the core of any computer, tablet, phone, or other computer-like device. While many definitions of \ac{CPU} have been offered, many quite poetic (like the ``heart'' or ``brain'' of a computer); probably the best definition is that the \ac{CPU} is the intersection of software and hardware. The \ac{CPU} contains circuitry that converts the ones and zeros that are stored in memory (a ``program'') into controlling signals for hardware devices. The \ac{CPU} retrieves and analyzes bytes that are contained in a program, turns on or off multiplexers and control buffers so data are moved to or from various devices in the computer, and permits humans to use a computer for intellectual work. In its simplest form, a \ac{CPU} does nothing more than fetch a list of instructions from memory and then execute those instructions one at a time. This chapter explores \acp{CPU} from a theoretical perspective.
+The \gls{cpu} is the core of any computer, tablet, phone, or other computer-like device. While many definitions of \gls{cpu} have been offered, many quite poetic (like the ``heart'' or ``brain'' of a computer); probably the best definition is that the \gls{cpu} is the intersection of software and hardware. The \gls{cpu} contains circuitry that converts the ones and zeros that are stored in memory (a ``program'') into controlling signals for hardware devices. The \gls{cpu} retrieves and analyzes bytes that are contained in a program, turns on or off multiplexers and control buffers so data are moved to or from various devices in the computer, and permits humans to use a computer for intellectual work. In its simplest form, a \gls{cpu} does nothing more than fetch a list of instructions from memory and then execute those instructions one at a time. This chapter explores \glspl{cpu} from a theoretical perspective.
 
 \subsubsection{Concepts}
 
-A \ac{CPU} processes a string of ones and zeros and uses the information in that binary code to enable/disable circuits or hardware devices in a computer system. For example, a \ac{CPU} may execute a binary code and create electronic signals that first place data on the computer's data bus and then spins up the hard drive to store that data. As another example, perhaps the \ac{CPU} detects a key press on a keyboard, transfers that key's code to memory and also sends a code to the monitor where specific pixels are activated to display the letter pressed.
+A \gls{cpu} processes a string of ones and zeros and uses the information in that binary code to enable/disable circuits or hardware devices in a computer system. For example, a \gls{cpu} may execute a binary code and create electronic signals that first place data on the computer's data bus and then spins up the hard drive to store that data. As another example, perhaps the \gls{cpu} detects a key press on a keyboard, transfers that key's code to memory and also sends a code to the monitor where specific pixels are activated to display the letter pressed.
 
 Figure \ref{sim:fig:simple_data_flow_control_circuit} illustrates a very simple circuit used to control the flow of data on a data bus.
 
@@ -99,7 +99,7 @@ Figure \ref{sim:fig:simple_data_flow_control_circuit} illustrates a very simple 
 
 In Figure \ref{sim:fig:simple_data_flow_control_circuit}, the demultiplexer at the bottom left corner of the circuit controls four control buffers that, in turn, control access to the data bus. When output $ A $ is active then input from the Keyboard is stored in Memory; but when output $ B $ is active then output from memory is sent to the monitor. By setting the select bit in the demultiplexer the circuit's function can be changed from reading the keyboard to writing to the monitor using a single data bus.
 
-In a true \ac{CPU}, of course, there are many more peripheral devices, along with an \ac{ALU}, registers, and other internal resources to control. Figure \ref{sim:fig:simplified_cpu_block_diagram} is a block diagram for a simplified \ac{CPU}.
+In a true \gls{cpu}, of course, there are many more peripheral devices, along with an \gls{alu}, registers, and other internal resources to control. Figure \ref{sim:fig:simplified_cpu_block_diagram} is a block diagram for a simplified \gls{cpu}.
 
 \begin{figure}[H]
   \caption{Simplified CPU Block Diagram}
@@ -171,46 +171,46 @@ In a true \ac{CPU}, of course, there are many more peripheral devices, along wit
   \end{tikzpicture}
 \end{figure}
 
-The \ac{CPU} in Figure \ref{sim:fig:simplified_cpu_block_diagram} has three bus lines: 
+The \gls{cpu} in Figure \ref{sim:fig:simplified_cpu_block_diagram} has three bus lines: 
 
 \begin{itemize}
   \item \textsc{Control}. This bus contains all of the signals needed to activate control buffers, multiplexers, and demultiplexers in order to move data.
-  \item \textsc{Data}. This contains the data being manipulated by the \ac{CPU}.
-  \item \textsc{Address}. This is the address for the next instruction to fetch from \ac{RAM}.
+  \item \textsc{Data}. This contains the data being manipulated by the \gls{cpu}.
+  \item \textsc{Address}. This is the address for the next instruction to fetch from \gls{ram}.
 \end{itemize}
 
-There are several blocks in the \ac{CPU} in Figure \ref{sim:fig:simplified_cpu_block_diagram}:
+There are several blocks in the \gls{cpu} in Figure \ref{sim:fig:simplified_cpu_block_diagram}:
 
 \begin{itemize}
-  \item \textsc{Control}. This block contains the circuitry necessary to decode an instruction that was fetched from \ac{RAM} and then activate the various devices needed to control the flow of data within the \ac{CPU}.
-  \item \textsc{\ac{ALU}}. This is an \acl{ALU} designed for the application that is using this \ac{CPU}.
-  \item \textsc{General Registers}. Most \acp{CPU} include a number of general registers that temporarily hold binary numbers or instructions.
-  \item \textsc{Program Counter}. This is a register that contains the address of the next instruction to fetch from \ac{RAM}.
-  \item \textsc{Address Register}. This contains the address for the current \ac{RAM} operation.
-  \item \textsc{\ac{RAM}}. While most computers and other devices have a large amount of \ac{RAM} outside the \ac{CPU}, many \acp{CPU} are constructed with a small amount of internal \ac{RAM} for increased operational efficiency. This type of high-speed \ac{RAM} is usually called cache (pronounced ``cash'').
+  \item \textsc{Control}. This block contains the circuitry necessary to decode an instruction that was fetched from \gls{ram} and then activate the various devices needed to control the flow of data within the \gls{cpu}.
+  \item \textsc{\gls{alu}}. This is an \gls{alu} designed for the application that is using this \gls{cpu}.
+  \item \textsc{General Registers}. Most \glspl{cpu} include a number of general registers that temporarily hold binary numbers or instructions.
+  \item \textsc{Program Counter}. This is a register that contains the address of the next instruction to fetch from \gls{ram}.
+  \item \textsc{Address Register}. This contains the address for the current \gls{ram} operation.
+  \item \textsc{\gls{ram}}. While most computers and other devices have a large amount of \gls{ram} outside the \gls{cpu}, many \glspl{cpu} are constructed with a small amount of internal \gls{ram} for increased operational efficiency. This type of high-speed \gls{ram} is usually called cache (pronounced ``cash'').
 \end{itemize}
 
-In operation, the \ac{CPU} moves the value of the Program Counter to the Address Register and then fetches the instruction contained at that \ac{RAM} address. That instruction is then sent to the Control circuit where it is decoded. The Control circuit activates the appropriate control devices to execute the instruction. This process is repeated millions of times every second while the \ac{CPU} executes a program.
+In operation, the \gls{cpu} moves the value of the Program Counter to the Address Register and then fetches the instruction contained at that \gls{ram} address. That instruction is then sent to the Control circuit where it is decoded. The Control circuit activates the appropriate control devices to execute the instruction. This process is repeated millions of times every second while the \gls{cpu} executes a program.
 
 \subsubsection{History}
 
-\acp{CPU} from the early days of computing (circa $ 1950 $) were custom made for the computer on which they were found. Computers in those early days were rather rare and there was no need for a general-purpose \ac{CPU} that could function on multiple platforms. By the $ 1960 $s \emph{IBM} designed a family of computers based on the design of the \emph{System/$ 360 $}, or \emph{S/$ 360 $}. The goal was to have a number of computers use the same \ac{CPU} so programs written for one computer could be executed on another in the same family. By doing this, \emph{IBM} hoped to increase their customer loyalty.
+\glspl{cpu} from the early days of computing (circa $ 1950 $) were custom made for the computer on which they were found. Computers in those early days were rather rare and there was no need for a general-purpose \gls{cpu} that could function on multiple platforms. By the $ 1960 $s \emph{IBM} designed a family of computers based on the design of the \emph{System/$ 360 $}, or \emph{S/$ 360 $}. The goal was to have a number of computers use the same \gls{cpu} so programs written for one computer could be executed on another in the same family. By doing this, \emph{IBM} hoped to increase their customer loyalty.
 
-\acp{CPU} today can be divided into two broad groups: \ac{CISC} (pronounced like ``sisk'') and \ac{RISC}. Early computers, like the IBM S/$ 360 $ had a large, and constantly growing, set of instructions, and these types of \acp{CPU} were referred to as \ac{CISC}. However, building the circuits needed to execute all of those instructions became ever more challenging until, in the late $ 1980 $s, computer scientists began to design \ac{RISC} \acp{CPU} with fewer instructions. Because there were fewer \ac{CPU} instructions circuits could be smaller and faster, but the trade off was that occasionally a desired instruction had to be simulated by combining two or more other instructions, and that creates longer, more complex computer programs. Nearly all computers, cell phones, tablets, and other computing devices in use today use a \ac{RISC} architecture.
+\glspl{cpu} today can be divided into two broad groups: \gls{cisc} (pronounced like ``sisk'') and \gls{risc}. Early computers, like the IBM S/$ 360 $ had a large, and constantly growing, set of instructions, and these types of \glspl{cpu} were referred to as \gls{cisc}. However, building the circuits needed to execute all of those instructions became ever more challenging until, in the late $ 1980 $s, computer scientists began to design \gls{risc} \glspl{cpu} with fewer instructions. Because there were fewer \gls{cpu} instructions circuits could be smaller and faster, but the trade off was that occasionally a desired instruction had to be simulated by combining two or more other instructions, and that creates longer, more complex computer programs. Nearly all computers, cell phones, tablets, and other computing devices in use today use a \gls{risc} architecture.
 
-More recent developments in \acp{CPU} include ``pipelining'' where the \ac{CPU} can execute two or more instructions simultaneously by overlapping them, that is, fetching and starting an instruction while concurrently finishing the previous instruction. Another innovation changed compilers such that they can create efficient \ac{VLIW} codes that combine several instructions into a single step. Multi-threading \acp{CPU} permit multiple programs to execute simultaneously and multi-core \acp{CPU} use multiple \ac{CPU} cores on the same substrate so programs can execute in parallel. 
+More recent developments in \glspl{cpu} include ``pipelining'' where the \gls{cpu} can execute two or more instructions simultaneously by overlapping them, that is, fetching and starting an instruction while concurrently finishing the previous instruction. Another innovation changed compilers such that they can create efficient \gls{vliw} codes that combine several instructions into a single step. Multi-threading \glspl{cpu} permit multiple programs to execute simultaneously and multi-core \glspl{cpu} use multiple \gls{cpu} cores on the same substrate so programs can execute in parallel. 
 
-\acp{CPU}, indeed, all hardware devices, are normally designed using an \ac{HDL} like Verilog to speed development and ensure high quality by using peer review before an \ac{IC} is manufactured. It is possible to find Open Source Verilog scripts for many devices, including \ac{CPU} cores\footnote{\url{http://www.opencores.org}}, so designers can begin with mature, working code and then ``tweak'' it as necessary to match their particular project.
+\glspl{cpu}, indeed, all hardware devices, are normally designed using an \gls{hdl} like Verilog to speed development and ensure high quality by using peer review before an \gls{ic} is manufactured. It is possible to find Open Source Verilog scripts for many devices, including \gls{cpu} cores\footnote{\url{http://www.opencores.org}}, so designers can begin with mature, working code and then ``tweak'' it as necessary to match their particular project.
 
 \subsubsection{CPU Design Principles}
 
-\ac{CPU} design commonly follows these steps:
+\gls{cpu} design commonly follows these steps:
 
-\paragraph{Analysis of Intended Use} Designing a \ac{CPU} starts with an analysis of its intended use since that will determine the type of \ac{CPU} that must be built. A simple four-bit \ac{CPU} --- that is, all instructions are only four-bits wide --- is more than adequate for a simple device like a microwave oven, but for a cell phone or other more complex device, a 16-bit, or larger, \ac{CPU} is needed. 
+\paragraph{Analysis of Intended Use} Designing a \gls{cpu} starts with an analysis of its intended use since that will determine the type of \gls{cpu} that must be built. A simple four-bit \gls{cpu} --- that is, all instructions are only four-bits wide --- is more than adequate for a simple device like a microwave oven, but for a cell phone or other more complex device, a 16-bit, or larger, \gls{cpu} is needed. 
 
-\paragraph{The Instruction Set} After the purpose of the \ac{CPU} is defined then an instruction set is created. \ac{CPU} instructions control the physical flow of bits through the \ac{CPU} and various components of a computer. While an instruction set looks something like a programming language, it is important to keep in mind that an instruction set is very different from the more familiar higher-level programming languages like \emph{Java} and \emph{C++}.
+\paragraph{The Instruction Set} After the purpose of the \gls{cpu} is defined then an instruction set is created. \gls{cpu} instructions control the physical flow of bits through the \gls{cpu} and various components of a computer. While an instruction set looks something like a programming language, it is important to keep in mind that an instruction set is very different from the more familiar higher-level programming languages like \emph{Java} and \emph{C++}.
 
-\ac{CPU} instructions are 16-bit (or larger) words that are conceptually divided into two sections: the operational code (\emph{opcode}) and data. There are several classes of instructions, but three are the most common: 
+\gls{cpu} instructions are 16-bit (or larger) words that are conceptually divided into two sections: the operational code (\emph{opcode}) and data. There are several classes of instructions, but three are the most common: 
 
 \begin{itemize}
   \item \textsc{R (Register)}. These instructions involve some sort of register activity. The quintessential R-Type instruction is \lstinline[columns=fixed]|ADD|, where the contents of two registers are added together and the sum is placed in another register.
@@ -233,7 +233,7 @@ More recent developments in \acp{CPU} include ``pipelining'' where the \ac{CPU} 
   0110 0000 0010 0011
 \end{align}
 
-A \ac{CPU} fetches and executes one $ 16 $-bit word of the machine code at a time. If a programmer could write machine code directly then the \ac{CPU} could execute it without needing to compile it first. Of course, as it is easy to imagine, no one actually writes machine code due to its complexity. 
+A \gls{cpu} fetches and executes one $ 16 $-bit word of the machine code at a time. If a programmer could write machine code directly then the \gls{cpu} could execute it without needing to compile it first. Of course, as it is easy to imagine, no one actually writes machine code due to its complexity. 
 
 The next level higher than machine code is called \emph{Assembly}, which uses easy-to-remember abbreviations (called ``mnemonics'') to represent the available  instructions. Following is the assembly language program for the machine code listed above:
 
@@ -248,9 +248,9 @@ The next level higher than machine code is called \emph{Assembly}, which uses ea
 
 Each line of assembly has four parts. First is an optional \emph{Label} that can be used to indicate various sections of the program and facilitates ``jumps'' around the program; second is the mnemonic for the code being executed; third are one or more operands; and fourth is an optional comment field.
 
-\marginpar{Machine code is \ac{CPU} specific so code written for one type of computer could not be used on any other type of computer.} 
+\marginpar{Machine code is \gls{cpu} specific so code written for one type of computer could not be used on any other type of computer.} 
 
-Once the program has been written in Assembly, it must be ``assembled'' into machine code before it can be executed. An assembler is a fairly simply program that does little more than convert a file containing assembly code into instructions that can be executed by the \ac{CPU}. The assembly program presented above would be assembled into Machine Code \ref{SIM:eq:sample_machine_code}.
+Once the program has been written in Assembly, it must be ``assembled'' into machine code before it can be executed. An assembler is a fairly simply program that does little more than convert a file containing assembly code into instructions that can be executed by the \gls{cpu}. The assembly program presented above would be assembled into Machine Code \ref{SIM:eq:sample_machine_code}.
 
 \paragraph{Programming Languages}
 
@@ -258,11 +258,11 @@ Many high level programming languages have been developed, for example \emph{Jav
 
 Programs written in any of these high-level languages must be either interpreted or compiled before they can be executed. Interpreters are only available for ``scripting'' languages like \emph{PERL} and \emph{Python} and they execute the source code one line at a time. In general, interpreters cannot optimize the code so they are not efficient; but they enable a programmer to quickly ``try out'' some bit of code without having to compile it. A compiler, on the other hand, converts the entire program to machine code (normally referred to as ``object'' code by a compiler) and then creates an executable file. A compiler also optimizes the code so it executes as efficiently as possible.
 
-In the end, there are dozens of different programming languages, but they all eventually reduce programming instructions to a series of ones and zeros which the \ac{CPU} can execute.
+In the end, there are dozens of different programming languages, but they all eventually reduce programming instructions to a series of ones and zeros which the \gls{cpu} can execute.
 
 \subsubsection{State Machine}
 
-Because a \ac{CPU} is little more than a complex \ac{FSM}, the next step in the design process is to define the various states and the operations that take place within each state. In general, an operating \ac{CPU} cycles endlessly through three primary states:
+Because a \gls{cpu} is little more than a complex \gls{fsm}, the next step in the design process is to define the various states and the operations that take place within each state. In general, an operating \gls{cpu} cycles endlessly through three primary states:
 
 \begin{itemize}
   \item \textsc{Fetch} an instruction from memory. Instructions take the form of 16-bit numbers similar in appearance to $ 1001 0001 0000 1010 $.
@@ -270,7 +270,7 @@ Because a \ac{CPU} is little more than a complex \ac{FSM}, the next step in the 
   \item \textsc{Execute} the instruction.
 \end{itemize}
 
-In general, the way that a \ac{CPU} functions is to fetch a single instruction from \ac{RAM} and then decode and execute that instruction. As an example, consider the Assembly example introduced above:
+In general, the way that a \gls{cpu} functions is to fetch a single instruction from gls{ram} and then decode and execute that instruction. As an example, consider the Assembly example introduced above:
 
 \begin{Verbatim}[commandchars=~\[\], samepage=true, fontfamily=courier]
 Label Mnemonic Operands    Comment
@@ -281,10 +281,10 @@ START NOP      0 0 0       No Operation
       XOR      0 2 3       Acc <- R2 XOR R3
 \end{Verbatim}
 
-Each line is an instruction and the \ac{CPU} would fetch and execute each instruction from \ac{RAM} in order. The purpose of this short code snip is to load a $ 16 $-bit register with a number when only $ 8 $ bits are available in the opcode. The eight high order bits are loaded into Register one and the eight low order bits are loaded into Register two. The high order bits are shifted to the left eight places and then the two registers are \lstinline[columns=fixed]|XOR|'d together:
+Each line is an instruction and the \gls{cpu} would fetch and execute each instruction from \gls{ram} in order. The purpose of this short code snip is to load a $ 16 $-bit register with a number when only $ 8 $ bits are available in the opcode. The eight high order bits are loaded into Register one and the eight low order bits are loaded into Register two. The high order bits are shifted to the left eight places and then the two registers are \lstinline[columns=fixed]|XOR|'d together:
 
 \begin{enumerate}
-  \item \lstinline[columns=fixed]|NOP|: This is a ``no operation'' instruction so the \ac{CPU} does nothing.
+  \item \lstinline[columns=fixed]|NOP|: This is a ``no operation'' instruction so the \gls{cpu} does nothing.
   \item \lstinline[columns=fixed]|LDI|: The number $ 0A_{16} $ is loaded into register one. This is the value of the high-order bits desired in the $ 16 $-bit number.
   \item \lstinline[columns=fixed]|LDI|: The number $ 09_{16} $ is loaded into register two.  This is the value of the low-order bits desired in the $ 16 $-bit number.
   \item \lstinline[columns=fixed]|SHL|: Register three is loaded with the value of register one shifted left eight places.
@@ -294,7 +294,7 @@ Each line is an instruction and the \ac{CPU} would fetch and execute each instru
 \subsection{CPU States}
 \label{SIM:subsec:cpu_states}
 
-The first task that a \ac{CPU} must accomplish is to fetch and decode an instruction held in memory. Figure \ref{SIM:fig:cpu_state_diagram} is a simplified state diagram that shows the first two \ac{CPU} states as \emph{Fetch} and \emph{Decode}. After that, all of the different instructions would create their own state (for simplicity, only three instructions are shown in the Figure \ref{SIM:fig:cpu_state_diagram}).
+The first task that a \gls{cpu} must accomplish is to fetch and decode an instruction held in memory. Figure \ref{SIM:fig:cpu_state_diagram} is a simplified state diagram that shows the first two \gls{cpu} states as \emph{Fetch} and \emph{Decode}. After that, all of the different instructions would create their own state (for simplicity, only three instructions are shown in the Figure \ref{SIM:fig:cpu_state_diagram}).
 
 \begin{figure}[H]
   \caption{CPU State Diagram}
@@ -317,6 +317,6 @@ The first task that a \ac{CPU} must accomplish is to fetch and decode an instruc
   \end{tikzpicture}
 \end{figure}
 
-The \ac{CPU} designer would continue to design states for all instructions and end each state with a loop back to Fetch in order to get the next instruction out of \ac{RAM}.
+The \gls{cpu} designer would continue to design states for all instructions and end each state with a loop back to Fetch in order to get the next instruction out of \gls{ram}.
 
-Designing a \ac{CPU} is no insignificant task and is well beyond the scope of this book. However, one of the labs in the accompanying lab manual design a very simple processor that demonstrates how bits are moved around a circuit based upon control codes.
+Designing a \gls{cpu} is no insignificant task and is well beyond the scope of this book. However, one of the labs in the accompanying lab manual design a very simple processor that demonstrates how bits are moved around a circuit based upon control codes.

@@ -12,7 +12,7 @@ Electronic circuits that require memory devices (like flip-flops or registers) a
 \subsection{Introduction}
 \label{SL:subsec:intro_to_counters}
 
-Counters are a type of sequential circuit designed to count input pulses (normally from a clock) and then activate some output when a specific count is reached. Counters are commonly used as timers; thus, all digital clocks, microwave ovens, and other digital timing displays use some sort of counting circuit. However, counters can be used in many diverse applications. For example, a speed gauge is a counter. By attaching some sort of sensor to a rotating shaft and counting the number of revolutions for $ 60 $ seconds the \ac{RPM} is determined. Counters are also commonly used as frequency dividers. If a high frequency is applied to the input of a counter, but only the ``tens'' count is output, then the input frequency will be divided by ten. As one final example, counters can also be used to control sequential circuits or processes; each count can either activate or deactivate some part of a circuit that controls one of the sequential processes. 
+Counters are a type of sequential circuit designed to count input pulses (normally from a clock) and then activate some output when a specific count is reached. Counters are commonly used as timers; thus, all digital clocks, microwave ovens, and other digital timing displays use some sort of counting circuit. However, counters can be used in many diverse applications. For example, a speed gauge is a counter. By attaching some sort of sensor to a rotating shaft and counting the number of revolutions for $ 60 $ seconds the \gls{rpm} is determined. Counters are also commonly used as frequency dividers. If a high frequency is applied to the input of a counter, but only the ``tens'' count is output, then the input frequency will be divided by ten. As one final example, counters can also be used to control sequential circuits or processes; each count can either activate or deactivate some part of a circuit that controls one of the sequential processes. 
 
 \subsection{Asynchronous Counters}
 \label{SL:subsec:asynchronous_counters}
@@ -145,7 +145,7 @@ Figure \ref{tmg:09_08} is the timing diagram for the circuit illustrated in Figu
   \label{tmg:09_08}
 \end{figure}
 
-The timing diagram for the asynchronous counter in Figure \ref{tmg:09_07} is the same as that for an synchronous counter in Figure \ref{tmg:09_08} since the output of the two counters are identical. The only difference in the counters is in how the count is obtained, and designers would normally opt for a synchronous \ac{IC} since that is a more efficient circuit.
+The timing diagram for the asynchronous counter in Figure \ref{tmg:09_07} is the same as that for an synchronous counter in Figure \ref{tmg:09_08} since the output of the two counters are identical. The only difference in the counters is in how the count is obtained, and designers would normally opt for a synchronous \gls{ic} since that is a more efficient circuit.
 
 \subsubsection{Synchronous Down Counters}
 \label{SL:subsubsec:synchronous_down_counters}
@@ -415,22 +415,22 @@ In practice, most designers do not build counter circuits since there are so man
 \subsection{Read-Only Memory}
 \label{SL:subsec:read-only_memory}
 
-\acf{ROM} is an \ac{IC} that contains tens-of-millions of registers (memory locations) to store information. Typically, \ac{ROM} stores microcode (like bootup routines) and computer settings that do not change. There are several types of \ac{ROM}: mask, programmable, and erasable. 
+\gls{rom} is an \gls{ic} that contains tens-of-millions of registers (memory locations) to store information. Typically, \gls{rom} stores microcode (like bootup routines) and computer settings that do not change. There are several types of \gls{rom}: mask, programmable, and erasable. 
 
 \begin{itemize}
-  \item \textsc{Mask} \acp{ROM} are manufactured such that memory locations already filled with data and that cannot be altered by the end user. They are called ``mask'' \acp{ROM} since the manufacturing process includes applying a mask to the circuit as it is being created. 
-  \item \textsc{\acp{PROM}} are a type of \ac{ROM} that can be programmed by the end user, but it cannot be altered after that initial programming. This permits a designer to distribute some sort of program on a chip that is designed to be installed in some device and then never changed.
-  \item \textsc{Erasable \acp{PROM}} can be programmed by the end user and then be later altered. An example of where an erasable \ac{PROM} would be used is in a computer's \ac{BIOS} (the operating system that boots up a computer), where the user can alter certain ``persistent'' computer specifications, like the device boot order. 
+  \item \textsc{Mask} \glspl{rom} are manufactured such that memory locations already filled with data and that cannot be altered by the end user. They are called ``mask'' \glspl{rom} since the manufacturing process includes applying a mask to the circuit as it is being created. 
+  \item \textsc{\glspl{prom}} are a type of \gls{rom} that can be programmed by the end user, but it cannot be altered after that initial programming. This permits a designer to distribute some sort of program on a chip that is designed to be installed in some device and then never changed.
+  \item \textsc{Erasable \glspl{prom}} can be programmed by the end user and then be later altered. An example of where an erasable \gls{prom} would be used is in a computer's \gls{bios} (the operating system that boots up a computer), where the user can alter certain ``persistent'' computer specifications, like the device boot order. 
 \end{itemize}
 
-Two major differences between \ac{ROM} and \ac{RAM} are 1) \ac{ROM}'s ability to hold data when the computer is powered off and 2) altering the data in \ac{RAM} is much faster than in an erasable \ac{PROM}.
+Two major differences between \gls{rom} and \gls{ram} are 1) \gls{rom}'s ability to hold data when the computer is powered off and 2) altering the data in \gls{ram} is much faster than in an erasable \gls{prom}.
 
 \subsection{Random Access Memory}
 \label{SL:subsec:random_access_memory}
 
-\acf{RAM} is an integrated circuit that contains tens-of-millions of registers (memory locations) to store information. The \ac{RAM} \ac{IC} is designed to quickly store data found at its input port and then look-up and return stored data requested by the circuit. In a computer operation, \ac{RAM} contains both program code and user input (for example, the \emph{LibreOffice Writer} program along with whatever document the user is working on). There are two types of \ac{RAM}: dynamic and static. \ac{DRAM} stores bits in such a way that it must be ``refreshed'' (or ``strobed'') every few milliseconds. \ac{SRAM} uses flip-flops to store data so it does not need to be refreshed. One enhancement to \acp{DRAM} was to package several in a single \ac{IC} and then synchronize them so they act like a single larger memory; these are called \acp{SDRAM} and they are very popular for camera and cell phone memory.
+\gls{ram} is an integrated circuit that contains tens-of-millions of registers (memory locations) to store information. The \gls{ram} \gls{ic} is designed to quickly store data found at its input port and then look-up and return stored data requested by the circuit. In a computer operation, \gls{ram} contains both program code and user input (for example, the \emph{LibreOffice Writer} program along with whatever document the user is working on). There are two types of \gls{ram}: dynamic and static. \gls{dram} stores bits in such a way that it must be ``refreshed'' (or ``strobed'') every few milliseconds. \gls{sram} uses flip-flops to store data so it does not need to be refreshed. One enhancement to \glspl{dram} was to package several in a single \gls{ic} and then synchronize them so they act like a single larger memory; these are called \glspl{sdram} and they are very popular for camera and cell phone memory.
 
-Both \ac{ROM} and \ac{RAM} circuits use registers, flip-flops, and other components already considered in this chapter, but by the millions rather than just four or so at a time. There are no example circuits or timing diagrams for these devices in this book; however, the lab manual that accompanies this book includes activities for both \ac{ROM} and \ac{RAM} devices.
+Both \gls{rom} and \gls{ram} circuits use registers, flip-flops, and other components already considered in this chapter, but by the millions rather than just four or so at a time. There are no example circuits or timing diagrams for these devices in this book; however, the lab manual that accompanies this book includes activities for both \gls{rom} and \gls{ram} devices.
 
 
 

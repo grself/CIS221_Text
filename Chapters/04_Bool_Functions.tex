@@ -118,7 +118,7 @@ A truth table is used to record all possible inputs and the output for each comb
 \end{tcolorbox}
 % End Sidebar Box
 
-Logic gates are realized (or created) in electronic circuits by using transistors, resistors, and other components. These components are normally packaged into a single \ac{IC} ``chip,'' so the logic circuit designer does not need to know all of the details of the electronics in order to use the gate. In logic diagrams, an \textsf{AND}  gate is represented by a shape that looks like a capital \textsf{D}. In Figure \ref{fig:04_01}, the input variables $ A $ and $ B $ are wired to an \textsf{AND}  gate and the output from that gate goes to $ Y $.
+Logic gates are realized (or created) in electronic circuits by using transistors, resistors, and other components. These components are normally packaged into a single \gls{ic} ``chip,'' so the logic circuit designer does not need to know all of the details of the electronics in order to use the gate. In logic diagrams, an \textsf{AND}  gate is represented by a shape that looks like a capital \textsf{D}. In Figure \ref{fig:04_01}, the input variables $ A $ and $ B $ are wired to an \textsf{AND}  gate and the output from that gate goes to $ Y $.
 
 \begin{figure}[H]
 	\centering
@@ -127,9 +127,9 @@ Logic gates are realized (or created) in electronic circuits by using transistor
 	\label{fig:04_01}
 \end{figure}
 
-Notice that each input and output is named in order to make it easier to describe the circuit algebraically. In reality, \textsf{AND}  gates are not packaged or sold one at a time; rather, several would be placed on a single \ac{IC}, like the \emph{7408 Quad AND Gate}. The designer would design the circuit card to use whichever of the four gates are needed while leaving the unused gates unconnected. 
+Notice that each input and output is named in order to make it easier to describe the circuit algebraically. In reality, \textsf{AND}  gates are not packaged or sold one at a time; rather, several would be placed on a single \gls{ic}, like the \emph{7408 Quad AND Gate}. The designer would design the circuit card to use whichever of the four gates are needed while leaving the unused gates unconnected. 
 
-There are two common sets of symbols used to represent the various elements in logic diagrams, and whichever is used is of little consequence since the logic is the same. Shaped symbols, as used in Figure \ref{fig:04_01}, are more common in the United States; but the \ac{IEEE} has its own symbols which are sometimes used, especially in Europe. Figure \ref{fig:04_02} illustrates the circuit in Figure \ref{fig:04_01} using \ac{IEEE} symbols:
+There are two common sets of symbols used to represent the various elements in logic diagrams, and whichever is used is of little consequence since the logic is the same. Shaped symbols, as used in Figure \ref{fig:04_01}, are more common in the United States; but the \gls{ieee} has its own symbols which are sometimes used, especially in Europe. Figure \ref{fig:04_02} illustrates the circuit in Figure \ref{fig:04_01} using \gls{ieee} symbols:
 
 % Pull Quote - Marginal Note - Sidebar
 \marginpar{In this book, only shaped symbols will be used.}
@@ -394,7 +394,7 @@ In Figure \ref{fig:04_07}, the input variables $ A $ and $ B $ are wired to an \
 \end{figure}
 
 
-There is some debate about the proper behavior of an \textsf{XOR}  gate that has more than two inputs. Some experts believe that an \textsf{XOR} gate should output a \emph{True} if one, and only one, input is \emph{True} regardless of the number of inputs. This would seem to be in keeping with the rules of digital logic developed by George Boole and other early logisticians and is the strict definition of \textsf{XOR} promulgated by the \ac{IEEE}. This is also the behavior of the \textsf{XOR} gate found in \textit{Logisim-evolution}, the digital logic simulator used in the lab manual accompanying this text. Others believe, though, that an \textsf{XOR} gate should output a \emph{True} if an odd number of inputs is \emph{True}. in \Le this type of behavior is found in a device called a ``parity gate'' and is covered in more detail elsewhere in this book.
+There is some debate about the proper behavior of an \textsf{XOR}  gate that has more than two inputs. Some experts believe that an \textsf{XOR} gate should output a \emph{True} if one, and only one, input is \emph{True} regardless of the number of inputs. This would seem to be in keeping with the rules of digital logic developed by George Boole and other early logisticians and is the strict definition of \textsf{XOR} promulgated by the \gls{ieee}. This is also the behavior of the \textsf{XOR} gate found in \textit{Logisim-evolution}, the digital logic simulator used in the lab manual accompanying this text. Others believe, though, that an \textsf{XOR} gate should output a \emph{True} if an odd number of inputs is \emph{True}. in \Le this type of behavior is found in a device called a ``parity gate'' and is covered in more detail elsewhere in this book.
 
 %**********************************************************
 % XNOR Gate

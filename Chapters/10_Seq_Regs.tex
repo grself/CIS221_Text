@@ -9,7 +9,7 @@ Electronic circuits that require memory devices (like flip-flops or registers) a
 \section{Timing Diagrams}
 \label{SL:sec:timing_diagrams}
 
-Unlike combinational logic circuits, timing is essential in sequential circuits. Normally, a device will include a \emph{clock} \ac{IC} that generates a square wave that is used to control the sequencing of various activities throughout the device. In order to design and troubleshoot these types of circuits, a timing diagram is developed that shows the relationship between the various input, intermediate, and output signals. Figure \ref{tmg:09_01} is an example timing diagram.
+Unlike combinational logic circuits, timing is essential in sequential circuits. Normally, a device will include a \emph{clock} \gls{ic} that generates a square wave that is used to control the sequencing of various activities throughout the device. In order to design and troubleshoot these types of circuits, a timing diagram is developed that shows the relationship between the various input, intermediate, and output signals. Figure \ref{tmg:09_01} is an example timing diagram.
 
 \begin{figure}[H]
   \centering
@@ -305,7 +305,7 @@ Table \ref{tab:09_01} summarizes timing diagram \ref{tmg:09_05}. Notice that on 
 \subsection{Toggle (T) Flip-Flop}
 \label{SL:subsec:toggle_flip-flop}
 
-If the J and K inputs to a \emph{JK Flip-Flop} are tied together, then when the input is high the output will toggle on every clock pulse but when the input is Low then the output remains in the previous state. This is often referred to as a \emph{Toggle Flip-Flop} (or \emph{T Flip-Flop}). \emph{T Flip-Flops} are not usually found in circuits as separate \acp{IC} since they are so easily created by soldering together the inputs of a standard \emph{JK Flip-Flop}. Figure \ref{fig:09_06} is a \emph{T Flip-Flop} in \Le.
+If the J and K inputs to a \emph{JK Flip-Flop} are tied together, then when the input is high the output will toggle on every clock pulse but when the input is Low then the output remains in the previous state. This is often referred to as a \emph{Toggle Flip-Flop} (or \emph{T Flip-Flop}). \emph{T Flip-Flops} are not usually found in circuits as separate \glspl{ic} since they are so easily created by soldering together the inputs of a standard \emph{JK Flip-Flop}. Figure \ref{fig:09_06} is a \emph{T Flip-Flop} in \Le.
 
 \begin{figure}[H]
 	\centering
@@ -355,7 +355,7 @@ Master-Slave Flip-Flops are two flip-flops connected in a cascade and operating 
 
 Because of the \textsf{NOT} gate on the clock signal these two flip-flops will activate on opposite clock pulses, which means the flip-flop one will enable first and read the JK inputs, then flip-flop two will enable and read the output of flip-flop one. The result is that any glitches on the input signals will tend to be eliminated.
 
-Often, only one physical \ac{IC} is needed to provide the two flip-flops for a master-slave circuit because dual \emph{JK flip-flops} are frequently found on a single \ac{IC}. Thus, the output pins for one flip-flop could be connected directly to the input pins for the second flip-flop on the same \ac{IC}. By combining two flip-flops into a single \ac{IC} package, circuit design can be simplified and fewer components need to be purchased and mounted on a circuit board. 
+Often, only one physical \gls{ic} is needed to provide the two flip-flops for a master-slave circuit because dual \emph{JK flip-flops} are frequently found on a single \gls{ic}. Thus, the output pins for one flip-flop could be connected directly to the input pins for the second flip-flop on the same \gls{ic}. By combining two flip-flops into a single \gls{ic} package, circuit design can be simplified and fewer components need to be purchased and mounted on a circuit board. 
 
 %***************************************************************************
 % Section: Registers
@@ -366,7 +366,7 @@ Often, only one physical \ac{IC} is needed to provide the two flip-flops for a m
 \subsection{Introduction}
 \label{SL:subsec:intro_to_registers}
 
-A register is a simple memory device that is composed of a series of flip-flops wired together such that they share a common clock pulse. Registers come in various sizes and types and are often used as ``scratch pads'' for devices. For example, a register can hold a number entered on a keypad until the calculation circuit is ready do something with that number or a register can hold a byte of data coming from a hard drive until the \ac{CPU} is ready to move that data someplace else. 
+A register is a simple memory device that is composed of a series of flip-flops wired together such that they share a common clock pulse. Registers come in various sizes and types and are often used as ``scratch pads'' for devices. For example, a register can hold a number entered on a keypad until the calculation circuit is ready do something with that number or a register can hold a byte of data coming from a hard drive until the \gls{cpu} is ready to move that data someplace else. 
 
 \subsection{Registers As Memory}
 \label{SL:subsec:registers_as_memory}
@@ -385,14 +385,14 @@ Data are moved from the input port, in the upper left corner, into the register;
 \subsubsection{74x273 Eight-Bit Register}
 \label{SL:subsubsec:74x273_8-bit_register}
 
-In reality, designers do not build memory from independent flip-flops, as shown in Figure \ref{fig:09_08}. Instead, they use a memory \ac{IC} that contains the amount of memory needed. In general, purchasing a memory \ac{IC} is cheaper and more reliable than attempting to build a memory device.
+In reality, designers do not build memory from independent flip-flops, as shown in Figure \ref{fig:09_08}. Instead, they use a memory \gls{ic} that contains the amount of memory needed. In general, purchasing a memory \gls{ic} is cheaper and more reliable than attempting to build a memory device.
 
-One such memory device is a $ 74x273 $ eight-bit register. This device is designed to load and store a single eight-bit number, but other memory devices are much larger, including \ac{RAM} that can store and retrieve millions of eight-bit bytes.
+One such memory device is a $ 74x273 $ eight-bit register. This device is designed to load and store a single eight-bit number, but other memory devices are much larger, including \gls{ram} that can store and retrieve millions of eight-bit bytes.
 
 \subsection{Shift Registers}
 \label{SL:subsec:shift_registers}
 
-Registers have an important function in changing a stream of data from serial to parallel or parallel to serial; a function that is called ``shifting'' data. For example, data entering a computer from a network or \ac{USB} port is in serial form; that is, one bit at a time is streamed into or out of the computer. However, data inside the computer are always moved in parallel; that is, all of the bits in a word are placed on a bus and moved through the system simultaneously. Changing data from serial to parallel or vice-verse is an essential function and enables a computer to communicate over a serial device.
+Registers have an important function in changing a stream of data from serial to parallel or parallel to serial; a function that is called ``shifting'' data. For example, data entering a computer from a network or \gls{usb} port is in serial form; that is, one bit at a time is streamed into or out of the computer. However, data inside the computer are always moved in parallel; that is, all of the bits in a word are placed on a bus and moved through the system simultaneously. Changing data from serial to parallel or vice-verse is an essential function and enables a computer to communicate over a serial device.
 
 Figure \ref{fig:09_09} illustrates a four-bit parallel-in/serial-out shift register. The four-bit data into the register is placed on \emph{D0}-\emph{D3}, the \emph{Shift\_Write} bit is set to $ 1 $ and the clock is pulsed to write the data into the register. Then the \emph{Shift\_Write} bit is set to $ 0 $ and on each clock pulse the four bits are shifted right to the \emph{SOUT} (for ``serial out'') port.
 

@@ -576,10 +576,310 @@ The following problems are presented as practice for using the Quine-McClusky me
 \clearpage\section{Automated Tools}
 \label{ASM:sec:automated_tools}
 
-\subsection{Introduction}
+\subsection{KARMA}
 \label{ASM:subsec:introduction_to_automated_tools}
 
-There are numerous automated tools available to aid in simplifying complex Boolean equations. Many of the tools are quite expensive and intended for professionals working full time in large companies; but others are inexpensive, or even free of charge, and are more than adequate for student use. One free tool, a Java application named \ac{KARMA}, can be downloaded from \url{http://goo.gl/8Lmx5v} and installed on a local computer. It helps to simplify complex Boolean expressions using both Karnaugh Maps and Quine-McCluskey methods. \ac{KARMA} is a good program with numerous benefits but is not further covered here.
+There are numerous automated tools available to aid in simplifying complex Boolean equations. Many of the tools are quite expensive and intended for professionals working full time in large companies; but others are inexpensive, or even free of charge, and are more than adequate for student use. One free tool, a Java application named \gls{karma}, can be downloaded from \url{http://bit.ly/2mcXVp9} and installed on a local computer, though the website also has a free online version that can be used without installation. \Gls{karma} helps to simplify complex Boolean expressions using both Karnaugh Maps and Quine-McCluskey methods. \Gls{karma} is a good program with numerous benefits.
+
+When first started, \gls{karma} looks like Figure \ref{fig:07_01}. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_01}
+	\caption{KARMA Start Screen}
+	\label{fig:07_01}
+\end{figure}
+
+The right side of the screen contains a row of tools available in \gls{karma} and the main part of the screen is a canvas where most of the work is done. The following tools are available:
+
+\begin{itemize}
+	\item \textbf{Logic2Logic}. Converts between two different logical representations of data; for example, a Truth Table can be converted to Boolean expressions.
+
+	\item \textbf{Logic Equivalence}. Compares two functions and determines if they are equivalent; for example, a truth table can be compared with a SOP expression to see if they are the same.
+
+	\item \textbf{Logic Probability}. Calculates the probability of any one outcome for a given Boolean expression.
+	
+	\item \textbf{Karnaugh Map}. Analyzes a Karnaugh map and returns the Minimized Expression.
+
+	\item \textbf{KM Teaching Mode}. Provides drill and practice with Karnaugh maps; for example, finding adjacent minterms on a 6­‐variable map.
+
+	\item \textbf{SOP and POS}. Finds the SOP and POS expressions for a given function.
+	
+	\item \textbf{Exclusive‐OR}. Uses XOR gates to simplify an expression.
+
+	\item \textbf{Multiplexer‐Based}. Realizes a function using multiplexers.
+	
+	\item \textbf{Factorization}. Factors Boolean expressions.
+
+	\item \textbf{About}. Information about Karma.
+
+\end{itemize}
+
+For this lesson, only the Karnaugh Map analyzer will be used, and the initial screen for that function is illustrated in Figure \ref{fig:07_02}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_02}
+	\caption{Karnaugh Map Screen}
+	\label{fig:07_02}
+\end{figure}
+
+\subsubsection{Data Entry} When using \gls{karma}, the first step is to input some sort of information about the circuit to be analyzed. That information can be entered in several different formats, but the most common for this class would be either a truth table or a Boolean expression.
+
+To enter the initial data, click the Load Function button at the top of the canvas.
+
+By default, the Load Function screen opens with a blank screen. In the lower left corner of the Load Function window, the Source Format for the input data can be selected. There is a template available for each of the different source formats; and that template can be used to help with data entry. The best way to work with \gls{karma} is to click the ``Templates'' button and select the data format being used. In Figure \ref{fig:07_03}, the ``Expression 1'' template was selected:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_03}
+	\caption{The Expression 1 Template}
+	\label{fig:07_03}
+\end{figure}
+
+The designer would replace the ``inputs'' and ``onset'' lines with information for the circuit being simplified. Once the source data are entered into this window, click the ``Load'' button at the bottom of the window to load the data into \gls{karma}.
+
+\subsubsection{Data Source Formats}
+
+Karma works with input data in any of six different formats: Boolean Expression, Truth Table, Integer, Minterms, Berkeley Logic Interchange Format (\textit{BLIF}), and Binary Decision Diagram (\textit{BDD}). \textit{BLIF} and \textit{BDD} are programming tools that are beyond the scope of this lesson and will not be covered.
+
+\paragraph{Expression}
+
+Boolean expressions can be defined in Karma using the following format.
+
+\begin{verbatim}
+     #Sample Expression
+     (!x1*!x2*!x4)+(!x1*x2*!x3)+(x1*!x4*!x5)+(x1*x3*x4)
+\end{verbatim}
+
+Notes:
+
+\begin{itemize}
+	\item Any line that starts with a hash tag (``\#'') is a comment and will be ignored by Karma.
+	\item ``Not'' is indicated by a leading exclamation mark. Thus ``!x1'' is the same as X1'.
+	\item All operations are explicit. In real‐number algebra the phrase ``AB'' is understood to be ``A*B''. However, in \gls{karma}, since variable names can be more than one character long, all operations must be explicitly stated. AND is indicated by an asterisk and OR is indicated by a plus sign.
+	\item No space is left between operations.
+\end{itemize}
+
+\paragraph{Truth Table}
+
+A truth table can be defined in \gls{karma} using the following format.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+     #Sample Truth Table 
+     inputs -\textgreater X, Y, Z 
+     000 : 1
+     001 : 1 
+     010 : 0 
+     011 : 0 
+     100 : 0 
+     101 : 1 
+     110 : 0 
+     111 : 1
+\end{Verbatim}
+
+Notes:
+
+\begin{itemize}
+	\item Any line that starts with a hash tag (``\#'') is a comment and will be ignored by \gls{karma}.
+	\item The various inputs are named before they are used. In the example, there are three inputs: X, Y, and Z.
+	\item Each row in the truth table is shown, along with the output required. So, in the example above, an input of 000 should yield an output of 1.
+	\item An output of ``-'' is permitted and means ``don't care.''
+\end{itemize}
+
+\paragraph{Integer}
+
+In Karma, an integer can be used to define the outputs of the truth table, so it is ``shorthand'' for an entire truth table input. Following is the example of the ``integer'' type input.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+     #Sample Integer Input 
+     inputs -\textgreater A, B, C, D 
+     onset -\textgreater E81A base 16
+\end{Verbatim}
+
+Notes:
+
+\begin{itemize}
+	\item Any line that starts with a hash mark (``\#'') is a comment and will be ignored by Karma.
+	\item Input variables are defined first. In this example, there are four inputs: A, B, C, and D.
+	\item The ``onset'' line indicates what combinations of inputs should yield a True on a truth table. 
+\end{itemize}
+
+In the example, the number E81A is a hexadecimal number that is written like this in binary:
+
+\begin{verbatim}
+     1110 1000 0001 1010 
+       E    8    1    A
+\end{verbatim}
+
+The least significant bit of the binary number, 0 in this example, corresponds to the output of the first row in the truth table; thus, it is false. Each bit to the left of the least significant bit corresponds to the next row, counting from 0000 to 1111. Following is the truth table generated by the hexadecimal integer E81A.
+
+\begin{table}[H]
+	\sffamily
+	\newcommand{\head}[1]{\textcolor{white}{\textbf{#1}}}		
+	\begin{center}
+		\rowcolors{2}{gray!10}{white} % Color every other line a light gray
+		\begin{tabular}{ccccc} 
+			\rowcolor{black!75}
+			\multicolumn{4}{c}{\head{Inputs}} & \head{Output} \\
+			A & B & C & D & Q \\
+			\hline
+			0 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 1 & 1 \\
+			0 & 0 & 1 & 0 & 0 \\
+			0 & 0 & 1 & 1 & 1 \\
+			0 & 1 & 0 & 0 & 1 \\
+			0 & 1 & 0 & 1 & 0 \\
+			0 & 1 & 1 & 0 & 0 \\
+			0 & 1 & 1 & 1 & 0 \\
+			1 & 0 & 0 & 0 & 0 \\
+			1 & 0 & 0 & 1 & 0 \\
+			1 & 0 & 1 & 0 & 0 \\
+			1 & 0 & 1 & 1 & 1 \\
+			1 & 1 & 0 & 0 & 0 \\
+			1 & 1 & 0 & 1 & 1 \\
+			1 & 1 & 1 & 0 & 1 \\
+			1 & 1 & 1 & 1 & 1 \\
+		\end{tabular}
+	\end{center}
+	\caption{Truth Table for E81A Output}
+	\label{tab:e81a_output}
+\end{table}
+
+The ``Output'' column contains the binary integer $1110$ $1000$ $0001$ $1010$ (or $E81A$h) from bottom to top.
+
+\paragraph{Terms}
+
+Data input can be defined by using the minterms for the Boolean expression. Following is an example minterm input.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+     #Sample Minterms 
+     inputs -\textgreater A, B, C, D
+     onset -\textgreater 0, 1, 2, 3, 5, 10
+\end{Verbatim}
+
+Notes:
+
+\begin{itemize}
+	\item Any line that starts with a hash mark (``\#'') is a comment and will be ignored by \gls{karma}.
+	\item The inputs, A, B, C, and D, are defined first.
+	\item The ``onset'' line indicates the minterms that yield a ``true'' output.
+	\item This is similar to a SOP Sigma expression, and the digits in that expression could be directly entered on the onset line. For example, the onset line above would have been generated from this Sigma expression:
+
+	$ \int(A,B,C,D)=\sum(0,1,2,3,5,10) $
+\end{itemize}
+
+\subsubsection{Truth Table and Karnaugh Map Input}
+
+While Karma will accept a number of different input methods, as described above, one of the easiest to use is the Truth Table and its related Karnaugh Map, and these are displayed by default when the \textit{Karnaugh Map} function is selected. The value of any of the cells in the \textit{Out} column in the Truth Table, or cells in the Karnaugh Map, and can be cycled through 0, 1, and ``don’t care'' (indicated by a dash) on each click of the mouse in the cell. The Truth Table and Karnaugh Map are synchronized as cells are clicked. The number of input variables can be adjusted by changing the \textit{Var} setting at the top of the screen. Also, the placement of those variables on the Karnaugh Map can be adjusted as desired.
+
+\subsubsection{Solution}
+
+To simplify the Karnaugh Map, click the Minimize button. A number of windows will pop up (illustrated in Figure \ref{fig:07_04}), each showing the circuit simplification in a slightly different way. Note: this Boolean expression was entered to generate the following illustrations: $ A'C + A'B + AB'C' + B'C'D' $. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_04}
+	\caption{A KARMA Solution}
+	\label{fig:07_04}
+\end{figure}
+
+\paragraph{Boolean Expression}
+
+The minimized Boolean expression is shown in Figure \ref{fig:07_05}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_05}
+	\caption{The Minimized Boolean Expression}
+	\label{fig:07_05}
+\end{figure}
+
+In this solution, a NOT term is identified by a leading exclamation point; thus, the minimized expression is: $ A'D' + AB'C' + A'C + A'B $.
+
+\paragraph{BDDeiro}
+
+The \textit{BDDeiro} window is a form of Binary Decision Diagram (\textit{BDD}). The decision tree for the minimized expression is represented graphically in Figure \ref{fig:07_06}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_06}
+	\caption{The BDDeiro Solution}
+	\label{fig:07_06}
+\end{figure}
+
+The top node represents input \textit{a}, which can either be true or false. If false, then follow the blue dotted line down to node \textit{d}, which can also be either true or false. If \textit{d} is false, follow the blue dotted line down to the \textit{1} output. This would mean that one True output for this circuit is $ A'D' $, which can be verified as one of the outputs in the minimized expression.
+
+Starting at the top again, if \textit{a} is true, then follow the solid red line down to \textit{b}. It that is true, then follow the red solid line down to the \textit{0} output. The expression $ AB $ is false and does not appear in the minimized solution. In a similar way, all four True outputs, and three false outputs, can be traced from the top to bottom of the diagram.
+
+\paragraph{Quine-McCluskey}
+
+Karma includes complete Quine‐McCluskey solution data. Several tables display the various implicants and show how they are derived.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_07}
+	\caption{Quine-McCluskey Solution}
+	\label{fig:07_07}
+\end{figure}
+
+Karma also displays the Covering Table for a Quine‐McCluskey solution. Each of the minterms (down the left column) can be turned on or off by clicking on it. The smaller blue balls in the table indicate prime implicants and the larger red balls (if any) indicate essential prime implicants. Because this table is interactive, various different solutions can be attempted by clicking some of the colored markers to achieve the best possible simplification.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\maxwidth{.95\linewidth}]{gfx/07_08}
+	\caption{Selecting Implicants}
+	\label{fig:07_08}
+\end{figure}
+
+\subsubsection{Practice Problems}
+
+The following problems are presented as practice for usingKarma to simplify a Boolean expression. Note: designers can select different Prime Implicants so the simplified expression could vary from what is presented below.
+
+\begin{table}[H]
+	\sffamily
+	\begin{center}
+		\begin{tabular}{c c p{8cm} }
+			\multirow{2}{*}{\textbf{1}} 
+			& Expression & $ \int(A,B,C,D) = \sum(5,6,7,9,10,11,13,14) $ \\
+			& \cellcolor{gray!10} Simplified 
+			& \cellcolor{gray!10} $ BC'D+A'BC+ACD'+AB'D $ \\
+			\hline
+			\multirow{2}{*}{\textbf{2}} 
+			& Exression & $ A'BC'D+A'BCD'+A'BCD+AB'C'D+AB'CD'+AB'CD+AB'CD+ABC'D+ABCD' $ \\
+			& \cellcolor{gray!10} Simplified 
+			& \cellcolor{gray!10} $ BC'D+A'BC+ACD'+AB'D $ \\
+			\hline
+			\multirow{2}{*}{\textbf{3}} 
+			& Exression & 4-variable Karnaugh Map where cells 5,6,7,9,10 are True and 13,14 are Don't Care  \\
+			& \cellcolor{gray!10} Simplified 
+			& \cellcolor{gray!10} $ BC'D+AC'D+A'BC+ACD' $ \\
+			\hline
+			\multirow{2}{*}{\textbf{3}} 
+			& Exression & $ \int(A,B,C,D,E) = \sum(0,3,4,12,13,14,15,24,25,28,29,30) $ \\
+			& \cellcolor{gray!10} Simplified 
+			& \cellcolor{gray!10} $ ABD'+A'B'C'DE+BCE'+A'BC+A'B'D'E' $ \\
+		\end{tabular}
+	\end{center}
+	\caption{KARMA Practice Problems}
+	\label{tab:karma_practice_problems}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{32x8}
 
 One online site of interest is \url{http://www.32x8.com/}. This site permits visitors to set up a truth table with two to eight variables and then will create a simplified Boolean circuit for that truth table.
 

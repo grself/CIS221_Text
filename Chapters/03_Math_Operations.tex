@@ -762,16 +762,16 @@ In each of the \gls{bcd} code systems in Table \ref{MO:tab:bcd_systems} there ar
 
 Normally, two \gls{bcd} codes, each of which are four bits wide, are packed into an eight-bit byte in order to reduce wasted computer memory. Thus, the packed \gls{bcd} $ 0111 0010 $ contains two BCD numbers: $ 72 $. In fact, a single 32-bit word, which is common in many computers, can contain $ 8 $ \gls{bcd} codes. It is a trivial matter for software to either pack or unpack \gls{bcd} codes from a longer word.
 
-It is natural to wonder why there are so many different ways to code decimal numbers. Each of the \ac{BCD} systems shown in Table \ref{MO:tab:bcd_systems} has certain strengths and weaknesses and a circuit designer would choose a specific system based upon those characteristics.
+It is natural to wonder why there are so many different ways to code decimal numbers. Each of the \gls{bcd} systems shown in Table \ref{MO:tab:bcd_systems} has certain strengths and weaknesses and a circuit designer would choose a specific system based upon those characteristics.
 
-\paragraph{Converting between BCD and Other Systems.} One thing that makes \ac{BCD} so useful is the ease of converting from \ac{BCD} to decimal. Each decimal digit is converted into a four-bit \ac{BCD} code, one at a time. Here is $ 37_{10} $ in Natural \ac{BCD}:
+\paragraph{Converting between BCD and Other Systems.} One thing that makes \gls{bcd} so useful is the ease of converting from \gls{bcd} to decimal. Each decimal digit is converted into a four-bit \gls{bcd} code, one at a time. Here is $ 37_{10} $ in Natural \gls{bcd}:
 
 \begin{binDisp}
      0011 0111
        3    7
 \end{binDisp}
 
-It is, generally, very easy to convert Natural \ac{BCD} to decimal since the \ac{BCD} codes are the same as binary numbers. Other \ac{BCD} systems use different place values, and those require more thought to convert (though the process is the same). The place values for \ac{BCD} systems other than Natural are indicated in the name of the system; so, for example, the $ 5421 $ system would interpret the number $ 1001_{BCD5421} $ as:
+It is, generally, very easy to convert Natural \gls{bcd} to decimal since the \gls{bcd} codes are the same as binary numbers. Other \gls{bcd} systems use different place values, and those require more thought to convert (though the process is the same). The place values for \gls{bcd} systems other than Natural are indicated in the name of the system; so, for example, the $ 5421 $ system would interpret the number $ 1001_{BCD5421} $ as:
 
 \begin{align}
   1001_{BCD5421} &= (1X5)+(0X4)+(0X2)+(1X1) \\
@@ -781,7 +781,7 @@ It is, generally, very easy to convert Natural \ac{BCD} to decimal since the \ac
   &= 6_{10}
 \end{align}
 
-Converting from decimal to \ac{BCD} is also a rather simple process. Each decimal digit is converted to a four-bit \ac{BCD} equivalent. In the case of Natural \ac{BCD} the four-bit code is the binary equivalent to the decimal number, other weighted \ac{BCD} codes would be converted with a similar process.
+Converting from decimal to \gls{bcd} is also a rather simple process. Each decimal digit is converted to a four-bit \gls{bcd} equivalent. In the case of Natural \gls{bcd} the four-bit code is the binary equivalent to the decimal number, other weighted \gls{bcd} codes would be converted with a similar process.
 
 \begin{binDisp}
       2    4    5
@@ -790,9 +790,9 @@ Converting from decimal to \ac{BCD} is also a rather simple process. Each decima
 
 %TODO If codes are separated from this chapter then the Double-Dabble system could be explained in some detail.
 
-To convert binary to \ac{BCD} is no trivial exercise and is best done with an automated process. The normal method used is called the \emph{Shift Left and Add Three} algorithm (or, frequently, \emph{Double-Dabble}). The process involves a number of steps where the binary number is shifted left and occasionally three is added to the resulting shift. Wikipedia (\url{https://en.wikipedia.org/wiki/Double_dabble}) has a good explanation of this process, along with some examples.
+To convert binary to \gls{bcd} is no trivial exercise and is best done with an automated process. The normal method used is called the \emph{Shift Left and Add Three} algorithm (or, frequently, \emph{Double-Dabble}). The process involves a number of steps where the binary number is shifted left and occasionally three is added to the resulting shift. Wikipedia (\url{https://en.wikipedia.org/wiki/Double_dabble}) has a good explanation of this process, along with some examples.
 
-Converting \ac{BCD} to any other system (like hexadecimal) is most easily done by first converting to binary and then to whatever base is desired. Unfortunately, converting \ac{BCD} to binary is not as simple as concatenating two \ac{BCD} numbers; for example, $ 0100 0001 $ is 41 in \ac{BCD}, but those two \ac{BCD} numbers concatenated, $ 01000001 $, is $ 65 $ in binary. One way to approach this type of problem is to use the reverse of the \emph{Double-Dabble} process: \emph{Shift Right and Subtract Three}. As in converting binary to \ac{BCD}, this is most easily handled by an automated process.
+Converting \gls{bcd} to any other system (like hexadecimal) is most easily done by first converting to binary and then to whatever base is desired. Unfortunately, converting \gls{bcd} to binary is not as simple as concatenating two \gls{bcd} numbers; for example, $ 0100 0001 $ is 41 in \gls{bcd}, but those two \gls{bcd} numbers concatenated, $ 01000001 $, is $ 65 $ in binary. One way to approach this type of problem is to use the reverse of the \emph{Double-Dabble} process: \emph{Shift Right and Subtract Three}. As in converting binary to \gls{bcd}, this is most easily handled by an automated process.
 
 \paragraph{Self-Complementing.} The Excess-3 code (called \emph{Ex3} in the table) is self-complementing; that is, the nines complement of any decimal number is found by complementing each bit in the Ex3 code. As an example, find the nines complement for $ 127_{10} $:
 
@@ -815,11 +815,11 @@ Converting \ac{BCD} to any other system (like hexadecimal) is most easily done b
   \label{MO:tab:nines_complement}
 \end{table}
 
-Thus, $ 872_{10} $, is the nines complement of $ 127_{10} $. It is a powerful feature to be able to find the nines complement of a decimal number by simply complementing each bit of its Ex3 \ac{BCD} representation. 
+Thus, $ 872_{10} $, is the nines complement of $ 127_{10} $. It is a powerful feature to be able to find the nines complement of a decimal number by simply complementing each bit of its Ex3 \gls{bcd} representation. 
 
-\paragraph{Reflexive.} Some \ac{BCD} codes exhibit a reflexive property where each of the upper five codes are complementary reflections of the lower five codes. For example, $ 0111_{Ex3} $ (4) and $ 1000_{Ex3} $ (5) are complements, $ 0110_{Ex3} $ (3) and $ 1001_{Ex3} $ (6) are complements, and so forth. The reflexive property for the $ 5421 $ code is different. Notice that the codes for zero through four are the same as those for five through nine, except for the \ac{MSB} (zero for the lower codes, one for the upper codes). Thus, $ 0000_{5421} $ (zero) is the same as $ 1000_{5421} $ (five) except for the first bit, $ 0001_{5421} $ (one) is the same as $ 1001_{5421} $ (six) except for the first bit, and so forth. Studying Table \ref{MO:tab:bcd_systems} should reveal the various reflexive patterns found in these codes.
+\paragraph{Reflexive.} Some \gls{bcd} codes exhibit a reflexive property where each of the upper five codes are complementary reflections of the lower five codes. For example, $ 0111_{Ex3} $ (4) and $ 1000_{Ex3} $ (5) are complements, $ 0110_{Ex3} $ (3) and $ 1001_{Ex3} $ (6) are complements, and so forth. The reflexive property for the $ 5421 $ code is different. Notice that the codes for zero through four are the same as those for five through nine, except for the \gls{msb} (zero for the lower codes, one for the upper codes). Thus, $ 0000_{5421} $ (zero) is the same as $ 1000_{5421} $ (five) except for the first bit, $ 0001_{5421} $ (one) is the same as $ 1001_{5421} $ (six) except for the first bit, and so forth. Studying Table \ref{MO:tab:bcd_systems} should reveal the various reflexive patterns found in these codes.
 
-\paragraph{Practice.} Table \ref{MO:tab:bcd_practice} shows several decimal numbers in various \ac{BCD} systems which can be used for practice in converting between these number systems.
+\paragraph{Practice.} Table \ref{MO:tab:bcd_practice} shows several decimal numbers in various \gls{bcd} systems which can be used for practice in converting between these number systems.
 
 \begin{table}[H]
   \sffamily
@@ -853,7 +853,7 @@ Thus, $ 872_{10} $, is the nines complement of $ 127_{10} $. It is a powerful fe
   \label{MO:tab:bcd_practice}
 \end{table}
 
-\paragraph{Adding BCD Numbers.} \ac{BCD} numbers can be added in either of two ways. Probably the simplest is to convert the \ac{BCD} numbers to binary, add them as binary numbers, and then convert the sum back to \ac{BCD}. However, it is possible to add two \ac{BCD} numbers without converting. When two \ac{BCD} numbers are added such that the result is less than ten, then the addition is the same as for binary numbers:
+\paragraph{Adding BCD Numbers.} \gls{bcd} numbers can be added in either of two ways. Probably the simplest is to convert the \gls{bcd} numbers to binary, add them as binary numbers, and then convert the sum back to \gls{bcd}. However, it is possible to add two \gls{bcd} numbers without converting. When two \gls{bcd} numbers are added such that the result is less than ten, then the addition is the same as for binary numbers:
 
 \begin{binDisp}[commandchars=~\[\]]
      0101  (5)
@@ -861,7 +861,7 @@ Thus, $ 872_{10} $, is the nines complement of $ 127_{10} $. It is a powerful fe
      0111  (7)
 \end{binDisp}
 
-However, four-bit binary numbers greater than $ 1001_2 $ (that is: $ 9_{10} $) are invalid \ac{BCD} codes, so adding two \ac{BCD} numbers where the result is greater than nine requires a bit more effort:
+However, four-bit binary numbers greater than $ 1001_2 $ (that is: $ 9_{10} $) are invalid \gls{bcd} codes, so adding two \gls{bcd} numbers where the result is greater than nine requires a bit more effort:
 
 \begin{binDisp}[commandchars=~\[\]]
      0111  (7)
@@ -869,7 +869,7 @@ However, four-bit binary numbers greater than $ 1001_2 $ (that is: $ 9_{10} $) a
      1100  (12 -- not valid in BCD)
 \end{binDisp}
 
-When the sum is greater than nine, then six must be added to that result since there are six invalid binary codes in \ac{BCD}.
+When the sum is greater than nine, then six must be added to that result since there are six invalid binary codes in \gls{bcd}.
 
 \begin{binDisp}[commandchars=~\[\]]
      1100  (12 -- from previous addition)
@@ -877,7 +877,7 @@ When the sum is greater than nine, then six must be added to that result since t
    1 0010  (12 in BCD)
 \end{binDisp}
 
-When adding two-digit \ac{BCD} numbers, start with the \ac{LSN}, the right-most nibble, then add the nibbles with carry bits from the right. Here are some examples to help clarify this concept:
+When adding two-digit \gls{bcd} numbers, start with the \gls{lsn}, the right-most nibble, then add the nibbles with carry bits from the right. Here are some examples to help clarify this concept:
 
 \begin{binDisp}[commandchars=~\[\], samepage=true]
      0101 0010  (52)
@@ -903,9 +903,9 @@ When adding two-digit \ac{BCD} numbers, start with the \ac{LSN}, the right-most 
    1 0001 0001  (111 in BSD)
 \end{binDisp}
 
-\paragraph{Negative Numbers.} \ac{BCD} codes do not have any way to store negative numbers, so a sign nibble must be used. One approach to this problem is to use a sign-and-magnitude value where a sign nibble is prefixed onto the \ac{BCD} value. By convention, a sign nibble of $ 0000 $ makes the \ac{BCD} number positive while $ 1001 $ makes it negative. Thus, the \ac{BCD} number $ 0000 0010 0111 $ is $ 27 $, but $ 1001 0010 0111 $ is $ -27 $. 
+\paragraph{Negative Numbers.} \gls{bcd} codes do not have any way to store negative numbers, so a sign nibble must be used. One approach to this problem is to use a sign-and-magnitude value where a sign nibble is prefixed onto the \gls{bcd} value. By convention, a sign nibble of $ 0000 $ makes the \gls{bcd} number positive while $ 1001 $ makes it negative. Thus, the \gls{bcd} number $ 0000 0010 0111 $ is $ 27 $, but $ 1001 0010 0111 $ is $ -27 $. 
 
-A more mathematically rigorous, and useful, method of indicating negative \ac{BCD} numbers is use the tens complement of the \ac{BCD} number since \ac{BCD} is a code for decimal numbers, exactly like the twos complement is used for binary numbers. It may be useful to review Section \ref{MO:subsub:about_complementation} on page \pageref{MO:subsub:about_complementation} for information about the tens complement. In the \emph{Natural BCD} system the tens complement is found by adding one to the nines complement, which is found by subtracting each digit of the original \ac{BCD} number from nine. Here are some examples to clarify this concept:
+A more mathematically rigorous, and useful, method of indicating negative \gls{bcd} numbers is use the tens complement of the \gls{bcd} number since \gls{bcd} is a code for decimal numbers, exactly like the twos complement is used for binary numbers. It may be useful to review Section \ref{MO:subsub:about_complementation} on page \pageref{MO:subsub:about_complementation} for information about the tens complement. In the \emph{Natural BCD} system the tens complement is found by adding one to the nines complement, which is found by subtracting each digit of the original \gls{bcd} number from nine. Here are some examples to clarify this concept:
 
 \begin{binDisp}[commandchars=~\[\]]
     0111 (7 in BCD)
@@ -919,9 +919,9 @@ A more mathematically rigorous, and useful, method of indicating negative \ac{BC
     0111 0110 (76, the 10's complement of 24)
 \end{binDisp}
 
-Also, some \ac{BCD} code systems are designed to easily create the tens complement of a number. For example, in the $ 2421 $ \ac{BCD} system the tens complement is found by nothing more than inverting the \ac{MSB}. Thus, three is the tens complement of seven and in the $ 2421 $ \ac{BCD} system $ 0011_{BCD2421} $ is the tens complement of $ 1101_{BCD2421} $, a difference of only the \ac{MSB}. Therefore, designers creating circuits that must work with negative \ac{BCD} numbers may opt to use the $ 2421 $ \ac{BCD} system.
+Also, some \gls{bcd} code systems are designed to easily create the tens complement of a number. For example, in the $ 2421 $ \gls{bcd} system the tens complement is found by nothing more than inverting the \gls{msb}. Thus, three is the tens complement of seven and in the $ 2421 $ \gls{bcd} system $ 0011_{BCD2421} $ is the tens complement of $ 1101_{BCD2421} $, a difference of only the \gls{msb}. Therefore, designers creating circuits that must work with negative \gls{bcd} numbers may opt to use the $ 2421 $ \gls{bcd} system.
 
-\paragraph{Subtracting BCD Numbers.} A \ac{BCD} number can be subtracted from another by changing it to a negative number and adding. Just like in decimal, $ 5 - 2 $ is the same as $ 5 + (-2) $. Either a nines or tens complement can be used to change a \ac{BCD} number to its negative, but for this book, the tens complement will be used. If there is a carry-out bit then it can be ignored and the result is positive, but if there is no carry-out bit then answer is negative so the magnitude must be found by finding the tens complement of the calculated sum. Compare this process with subtracting regular binary numbers. Here are a few examples:
+\paragraph{Subtracting BCD Numbers.} A \gls{bcd} number can be subtracted from another by changing it to a negative number and adding. Just like in decimal, $ 5 - 2 $ is the same as $ 5 + (-2) $. Either a nines or tens complement can be used to change a \gls{bcd} number to its negative, but for this book, the tens complement will be used. If there is a carry-out bit then it can be ignored and the result is positive, but if there is no carry-out bit then answer is negative so the magnitude must be found by finding the tens complement of the calculated sum. Compare this process with subtracting regular binary numbers. Here are a few examples:
 
 \begin{minipage}{\linewidth} % This keeps the block on the same page
 \begin{binDisp}[commandchars=~\[\]]
@@ -993,7 +993,7 @@ Also, some \ac{BCD} code systems are designed to easily create the tens compleme
 \end{binDisp}
 \end{minipage}
 
-Here are some notes on the last example: adding the \ac{LSN} yields $ 1001+1000=10001 $. The initial one is ignored, but this is an invalid \ac{BCD} code so this byte needs to be corrected by adding six to it. Then the result of that addition includes an understood carry into the next nibble after the correction is applied. In the same way, the middle nibble was corrected: $ 1100+0110=10011 $ but the initial one in this answer is carried to the \ac{MSN} and added there.
+Here are some notes on the last example: adding the \gls{lsn} yields $ 1001+1000=10001 $. The initial one is ignored, but this is an invalid \gls{bcd} code so this byte needs to be corrected by adding six to it. Then the result of that addition includes an understood carry into the next nibble after the correction is applied. In the same way, the middle nibble was corrected: $ 1100+0110=10011 $ but the initial one in this answer is carried to the \gls{msn} and added there.
 
 \subsubsection{Gray Code}
 \label{MO:subsub:gray_code}

@@ -90,12 +90,12 @@ A machine is to be programmed to help pack shipping boxes for the ABC Novelty Co
 \subsection{Introduction}
 \label{05:subsec:introduction_to_minterms_and_maxterms}
 
-The solution to a Boolean equation is normally expressed in one of two formats: \ac{SOP} or \ac{POS}.
+The solution to a Boolean equation is normally expressed in one of two formats: \gls{sop} or \gls{pos}.
 
 \subsection{Sum Of Products (SOP) Defined}
 \label{05:subsec:sum_of_products_sop_defined}
 
-Equation \ref{05:eq:sop_example} is an example of a \ac{SOP} expression. Notice that the expression describes four inputs ($ A $, $ B $, $ C $, $ D $) that are combined through two \textsf{AND} gates and then the output of those \textsf{AND} gates are combined through an \textsf{OR} gate. 
+Equation \ref{05:eq:sop_example} is an example of a \gls{sop} expression. Notice that the expression describes four inputs ($ A $, $ B $, $ C $, $ D $) that are combined through two \textsf{AND} gates and then the output of those \textsf{AND} gates are combined through an \textsf{OR} gate. 
 
 \begin{align}
   \label{05:eq:sop_example}
@@ -114,7 +114,7 @@ Each of the two terms in this expression is a \emph{minterm}. Minterms can be id
 \subsection{Product of Sums (POS) Defined}
 \label{05:subsec:product_of_sums_pos_defined}
 
-Equation \ref{05:eq:pos_example} is an example of a \ac{POS} expression. Notice that the expression describes four inputs ($ A $, $ B $, $ C $, $ D $) that are combined through two \textsf{OR} gates and then the output of those \textsf{OR} gates are combined through an \textsf{AND} gate. 
+Equation \ref{05:eq:pos_example} is an example of a \gls{pos} expression. Notice that the expression describes four inputs ($ A $, $ B $, $ C $, $ D $) that are combined through two \textsf{OR} gates and then the output of those \textsf{OR} gates are combined through an \textsf{AND} gate. 
 
 \begin{align}
   \label{05:eq:pos_example}
@@ -547,9 +547,9 @@ At this point, a circuit could be created with four 3-input \textsf{OR}  gates c
 \subsection{Summary}
 \label{05:subsubsec:summary_minterms_and_maxterms}
 
-\ac{SOP} Boolean expressions may be generated from truth tables quite easily, by determining which rows of the table have an output of \emph{True}, writing one minterm for each of those rows, and then summing all of the minterms. The resulting expression will lend itself well to implementation as a set of \textsf{AND} gates (products) feeding into a single \textsf{OR} gate (sum). 
+\gls{sop} Boolean expressions may be generated from truth tables quite easily, by determining which rows of the table have an output of \emph{True}, writing one minterm for each of those rows, and then summing all of the minterms. The resulting expression will lend itself well to implementation as a set of \textsf{AND} gates (products) feeding into a single \textsf{OR} gate (sum). 
 
-\ac{POS} Boolean expressions may be generated from truth tables quite easily, by determining which rows of the table have an output of \emph{False}, writing one maxterm for each of those rows, and then multiplying all of the maxterms. The resulting expression will lend itself well to implementation as a set of \textsf{OR} gates (sums) feeding into a single \textsf{AND} gate (product). 
+\gls{pos} Boolean expressions may be generated from truth tables quite easily, by determining which rows of the table have an output of \emph{False}, writing one maxterm for each of those rows, and then multiplying all of the maxterms. The resulting expression will lend itself well to implementation as a set of \textsf{OR} gates (sums) feeding into a single \textsf{AND} gate (product). 
 
 %***************************************************************************
 % Section: Canonical Form
@@ -897,7 +897,7 @@ This is simplified below.
 
 Note how the Absorption Property ($ A + AB = A $) is used to ``un-simplify'' the first  $ A $ term, changing  $ A $ into $ A + AB $. While this may seem like a backward step, it ultimately helped to reduce the expression to something simpler. Sometimes ``backward'' steps must be taken to achieve the most elegant solution. Knowing when to take such a step is part of the art of algebra. 
 
-As another example, simplify this \ac{POS} expression equation: 
+As another example, simplify this \gls{pos} expression equation: 
 
 \begin{align}
   \label{05:eq:equation_to_simplify_four}

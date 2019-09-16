@@ -88,7 +88,7 @@ Truth Table \ref{tab:08_01}, below, is for a multiplexer:
   \label{tab:08_01}
 \end{table}
 
-In this multiplexer, the data input ports are only a single bit wide; however, in a normal circuit those ports could be a full $ 32 $-bit or $ 64 $-bit word and the selected word would be passed to the output port. Moreover, a multiplexer can have more than two input ports so a very versatile switch can be built to handle switching full words from one of eight or even sixteen different inputs. Because of its ability to channel a selected data stream to a single bus line from many different sub-circuits, the multiplexer is one of the workhorses for digital logic circuits and is frequently found in complex devices like \acp{CPU}.
+In this multiplexer, the data input ports are only a single bit wide; however, in a normal circuit those ports could be a full $ 32 $-bit or $ 64 $-bit word and the selected word would be passed to the output port. Moreover, a multiplexer can have more than two input ports so a very versatile switch can be built to handle switching full words from one of eight or even sixteen different inputs. Because of its ability to channel a selected data stream to a single bus line from many different sub-circuits, the multiplexer is one of the workhorses for digital logic circuits and is frequently found in complex devices like \glspl{cpu}.
  
 \subsection{Demultiplexer}
 \label{CL:subsec:demultiplexer}
@@ -124,7 +124,7 @@ Truth Table \ref{tab:08_02}, below, is for a demultiplexer.
   \label{tab:08_02}
 \end{table}
 
-In this demultiplexer the data input port is only a single bit wide; however, in a normal circuit that port could be a full $ 32 $-bit or $ 64 $-bit word and that entire word would be passed to the selected output port. Moreover, a demultiplexer can have more than two outputs so a very versatile switch can be built to handle switching full words to one of eight or even sixteen different outputs. Because of its ability to switch a data stream to different sub-circuits, the demultiplexer is one of the workhorses for digital logic circuits and is frequently found in complex devices like \acp{CPU}.
+In this demultiplexer the data input port is only a single bit wide; however, in a normal circuit that port could be a full $ 32 $-bit or $ 64 $-bit word and that entire word would be passed to the selected output port. Moreover, a demultiplexer can have more than two outputs so a very versatile switch can be built to handle switching full words to one of eight or even sixteen different outputs. Because of its ability to switch a data stream to different sub-circuits, the demultiplexer is one of the workhorses for digital logic circuits and is frequently found in complex devices like \glspl{cpu}.
 
 \subsection{Minterm Generators}
 \label{CL:subsec:minterm_generators}
@@ -163,7 +163,7 @@ However, the equation specifies that the only outputs that would be used are whe
 \subsection{Introduction}
 \label{CL:subsec:introduction_to_encoders_decoders}
 
-Encoders and decoders are used to convert some sort of coded data into a different code. For example, it may be necessary to convert the code created by a keyboard into \ac{ASCII} for use in a word processor. By definition, the difference between an encoder and a decoder is the number of inputs and outputs: Encoders have more inputs than outputs, while decoders have more outputs than inputs. 
+Encoders and decoders are used to convert some sort of coded data into a different code. For example, it may be necessary to convert the code created by a keyboard into \gls{ascii} for use in a word processor. By definition, the difference between an encoder and a decoder is the number of inputs and outputs: Encoders have more inputs than outputs, while decoders have more outputs than inputs. 
 
 As an introduction to encoders, consider Figure \ref{fig:08_14}, which is designed to encode three single line inputs (maybe three different push buttons on a control panel) into a binary number for further processing by the computer. In this circuit, the junction between the two \textsf{OR} gates and the output ($ Y $) is a \emph{joiner} that combines two bit streams into a single bus. Physically, two wires (one from \emph{U1} and one from \emph{U2}) would be spliced together into a single cable (a \emph{bus}) that contains two strands. The figure shows that when input \emph{C} is active the output of the encoder is $ 11 $.
 
@@ -174,7 +174,7 @@ As an introduction to encoders, consider Figure \ref{fig:08_14}, which is design
 	\label{fig:08_14}
 \end{figure}
  
-As an introduction to decoders, consider Figure \ref{fig:08_15}, which is designed to decode a two-bit binary input and drive a single output line high. A circuit like this may be used to light an \ac{LED} used as a warning on a console if a particular binary code is generated elsewhere in a circuit. In this circuit, the input is a two-bit number ($ 10 $ in the illustration), but those two bits are separated through a splitter and each is applied to one of the inputs of a series of four \textsf{AND} gates. Imagine that the \ac{MSB} was placed on the wire on the left of the grid and wired to the bottom input of each of the \textsf{AND} gates. If $ A=10 $, then \textsf{AND} gate three would activate and output \emph{X} would go high.
+As an introduction to decoders, consider Figure \ref{fig:08_15}, which is designed to decode a two-bit binary input and drive a single output line high. A circuit like this may be used to light an \gls{led} used as a warning on a console if a particular binary code is generated elsewhere in a circuit. In this circuit, the input is a two-bit number ($ 10 $ in the illustration), but those two bits are separated through a splitter and each is applied to one of the inputs of a series of four \textsf{AND} gates. Imagine that the \gls{msb} was placed on the wire on the left of the grid and wired to the bottom input of each of the \textsf{AND} gates. If $ A=10 $, then \textsf{AND} gate three would activate and output \emph{X} would go high.
 
 \begin{figure}[H]
 	\centering
@@ -330,7 +330,7 @@ Whenever a byte (or any other group of bits) is transmitted or stored, there is 
      0110 1010 0111 1010
 \end{verbatim} 
 
-They differ by only one bit (notice Group Three). If the top number is what is supposed to be in a memory location but the bottom number is what is actually there then this would, obviously, create a problem. There could be any number of reasons why a bit would be wrong, but the most common is some sort of error that creeps in while the byte is being transmitted between two stores, like between a \ac{USB} drive and memory or between two computers sharing a network. It is desirable to be able to detect that a byte contains a bad bit and, ideally, even know which bit is wrong so it can be corrected. 
+They differ by only one bit (notice Group Three). If the top number is what is supposed to be in a memory location but the bottom number is what is actually there then this would, obviously, create a problem. There could be any number of reasons why a bit would be wrong, but the most common is some sort of error that creeps in while the byte is being transmitted between two stores, like between a \gls{usb} drive and memory or between two computers sharing a network. It is desirable to be able to detect that a byte contains a bad bit and, ideally, even know which bit is wrong so it can be corrected. 
 
 Parity is a common method used to check data for errors and it can be used to check data that has been transmitted, held in memory, or stored on a hard drive. The concept of parity is fairly simple: A bit (called the \emph{parity bit}) is added to each data byte and that extra bit is either set to zero or one in order to make the bit-count of that byte contain an even or odd number of ones. For example, consider this binary number: 
 
@@ -808,7 +808,7 @@ The circuit illusted in Figure \ref{fig:08_22} realizes a Hamming parity check. 
 \label{CL:subsec:hamming_code_notes}
 
 \begin{itemize}
-  \item When a binary word that includes Hamming parity is checked to verify the accuracy of the data bits using three overlapping parity bits, as developed in this book, one-bit errors can be corrected and two-bit errors can be detected. This type of system is often called \ac{SECDED} and is commonly used in computer memories to ensure data integrity.
+  \item When a binary word that includes Hamming parity is checked to verify the accuracy of the data bits using three overlapping parity bits, as developed in this book, one-bit errors can be corrected and two-bit errors can be detected. This type of system is often called \gls{secded} and is commonly used in computer memories to ensure data integrity.
 
   \item While it seems wasteful to add five Hamming bits to an eight-bit byte (a 62.5\% increase in length), the number of bits needed for longer words does not continue to increase at that rate. Hamming bits are added to a binary word in multiples of powers of two. For example, to cover a 32-bit word only seven Hamming bits are needed, an increase of only about 22.\%; and to cover a 256-bit word only $ 10 $ Hamming bits are needed, an increase of just under 4\%.
 

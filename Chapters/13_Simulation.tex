@@ -1,7 +1,7 @@
-\chapter{Simulation}\label{ch10}
+\chapter{Simulation}\label{ch13}
 \section{Introduction}
 
-One of the important benefits of using a simulator like \Le is that a circuit designer can simulate digital systems to determine logic flaws or weaknesses that must be addressed before a physical \ac{IC} is manufactured. This chapter introduces the concept of simulation and includes several examples of simulated systems.
+One of the important benefits of using a simulator like \Le is that a circuit designer can simulate digital systems to determine logic flaws or weaknesses that must be addressed before a physical \gls{ic} is manufactured. This chapter introduces the concept of simulation and includes several examples of simulated systems. \textit{(Note: this chapter is still under development and only contains one simulated system.)}
 
 %***************************************************************************
 % Section: Elevator
@@ -9,9 +9,9 @@ One of the important benefits of using a simulator like \Le is that a circuit de
 \section{Elevator}
 \label{SIM:sec:elevator}
 
-As a simple example of a \ac{FSM}, imagine an elevator control circuit. For simplicity, this elevator is in a five story building and buttons like ``door open'' will be ignored. There are two ways the elevator can be called to a given floor: someone could push the floor button on the elevator to ride to that floor or someone could push the call button beside the elevator door on a floor.
+As a simple example of a \gls{ic}, imagine an elevator control circuit. For simplicity, this elevator is in a five story building and buttons like ``door open'' will be ignored. There are two ways the elevator can be called to a given floor: someone could push the floor button in the elevator car to ride to that floor or someone could push the call button beside the elevator door on a floor.
 
- Figure \ref{SIM:fig:elevator} is the Moore \ac{FSM} for this circuit:
+ Figure \ref{SIM:fig:elevator} is the Moore \gls{fsm} for this circuit:
 
 \begin{figure}[H]
   \caption{Elevator}
@@ -56,6 +56,6 @@ As a simple example of a \ac{FSM}, imagine an elevator control circuit. For simp
   \end{tikzpicture}
 \end{figure}
 
-In Figure \ref{SIM:fig:elevator} the various floors are represented by the five states (S1-S5). While the elevator is at a floor then the output from the circuit is the floor number. The elevator is quiescent while in any one state and if a user pushes the button for that same floor then nothing will happen, which is illustrated by the loops starting and coming back to the same state. The star pattern in the middle of the \ac{FSM} illustrates that the elevator can move directly from one state to any other state. Finally, a Reset signal will automatically move the elevator to state S1.
+In Figure \ref{SIM:fig:elevator} the various floors are represented by the five states (S1-S5). While the elevator is at a floor then the output from the circuit is the floor number. The elevator is quiescent while in any one state and if a user pushes the button for that same floor then nothing will happen, which is illustrated by the loops starting and coming back to the same state. The star pattern in the middle of the \gls{fsm} illustrates that the elevator can move directly from one state to any other state. Finally, a Reset signal will automatically move the elevator to state S1.
 
 
