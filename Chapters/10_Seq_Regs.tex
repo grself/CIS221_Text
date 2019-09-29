@@ -1,11 +1,23 @@
-\chapter{Sequential Register Circuits}\label{ch10}
+\chapter{Register Circuits}\label{ch10}
 \section{Introduction}
 
-Electronic circuits that require memory devices (like flip-flops or registers) and feedback loops are designed using is called ``Sequential Logic.'' The final output of the circuit is determined by both the inputs and internal circuit feedback loops; and the states of the various logic gates may change rapidly as the output from one stage is fed back to various input points. This makes sequential logic circuits much more dynamic, and complex, than combinational circuits, and their analysis normally requires tools like timing diagrams and state maps. Because sequential circuits are able to latch and hold output states, useful applications like flip-flops, registers, counters, and memory are possible.
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+	% Upper half of box: my "title" area
+	\textcolor{blue}{\textbf{What to Expect}}
+	% Lower half of the box: the content
+	\tcblower
+	Flip-flops are the smallest possible memory available for a digital device. A flip-flop can store a single bit of data and ``remembers'' if that bit is on or off. Flip-flops are combined in groups of eight or more to create a register, which is a memory device for a byte or word of data in a system. The following topics are included in this chapter.
+	
+	\begin{itemize}
+		\item Analyzing a sequential circuit using a timing diagram
+		\item Developing and using an SR latch
+		\item Developing and using D, JK, Toggle, and Master-Slave flip-flops
+		\item Designing memory components with registers
+		\item Converting data between serial and parallel formats using registers
+	\end{itemize}
 
-%***************************************************************************
-% Section: Timing Diagrams
-%***************************************************************************
+\end{tcolorbox}
+
 \section{Timing Diagrams}
 \label{SL:sec:timing_diagrams}
 

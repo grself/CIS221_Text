@@ -1,9 +1,21 @@
-\chapter{Combinational Arithmetic Circuits}\label{ch08}
-\section{Introduction}
+\chapter{Arithmetic Circuits}\label{ch08}
 
-Electronic circuits that do not require any memory devices (like flip-flops or registers) use what is called ``Combinational Logic.'' These systems can be quite complex, but all outputs are determined solely by the actions of a series of logic gates on a given set of inputs. Another characteristic of combinational circuits is the lack of feedback. An output state is determined almost instantly from the inputs with no feedback loops. Combinational circuits can be reduced to a Boolean Algebra expression, though one that may be quite complex. Combinational circuits include many useful applications, including adders, subtractors, multipliers, dividers, encoders, decoders, display drivers, and keyboard encoders.
- 
-This chapter develops combinational logic circuits.\footnote{All circuits found in this chapter are available as \Le files in the course materials.}
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+	% Upper half of box: my "title" area
+	\textcolor{blue}{\textbf{What to Expect}}
+	% Lower half of the box: the content
+	\tcblower
+	This chapter develops various types of digital arithmetic circuits, like adders and subtractors. It also introduces \glspl{alu}, which combine both arithmetic and logic functions in a single integrated circuit. The following topics are included in this chapter.
+
+	\begin{itemize}
+		\item Developing and using half-adders, full adders, and cascading adders
+		\item Developing and using half-subtractors, full subtractors, and cascading subtractors
+		\item Combining an adder and subtractor in a single \gls{ic}
+		\item Describing \glspl{alu}
+		\item Creating a comparator
+	\end{itemize}
+
+\end{tcolorbox}
 
 \section{Adders and Subtractors}
 \label{CL:sec:adders_and_subtractors}

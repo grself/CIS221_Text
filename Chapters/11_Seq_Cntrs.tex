@@ -1,11 +1,25 @@
-\chapter{Sequential Counters}\label{ch11}
+\chapter{Counters}\label{ch11}
 \section{Introduction}
 
-Electronic circuits that require memory devices (like flip-flops or registers) and feedback loops are designed using is called ``Sequential Logic.'' The final output of the circuit is determined by both the inputs and internal circuit feedback loops; and the states of the various logic gates may change rapidly as the output from one stage is fed back to various input points. This makes sequential logic circuits much more dynamic, and complex, than combinational circuits, and their analysis normally requires tools like timing diagrams and state maps. Because sequential circuits are able to latch and hold output states, useful applications like flip-flops, registers, counters, and memory are possible.
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+	% Upper half of box: my "title" area
+	\textcolor{blue}{\textbf{What to Expect}}
+	% Lower half of the box: the content
+	\tcblower
+	Counters are a type of sequential circuit that are designed to count input pulses (normally from a clock) and then activate some output when a specific count is reached. Counters are commonly used as timers; thus, all digital clocks, microwave ovens, and other digital timing displays use some sort of counting circuit. Counters, however, have many other uses including devices as diverse as speedometers and frequency dividers. The following topics are included in this chapter. 
+	
+	\begin{itemize}
+		\item Comparing synchronous and asynchronous counters
+		\item Developing and using up, down, ring, and modulus counters
+		\item Creating a frequency divider using a counter
+		\item Listing some of the more common counter \glspl{ic}
+		\item Describing the common types of read-only memory \glspl{ic}
+		\item Describing the function and use of random access memory
+	\end{itemize}
+	
+\end{tcolorbox}
 
-%***************************************************************************
-% Section: Counters
-%***************************************************************************
+
 \section{Counters}
 \label{SL:sec:counters}
 
@@ -430,7 +444,7 @@ Two major differences between \gls{rom} and \gls{ram} are 1) \gls{rom}'s ability
 
 \gls{ram} is an integrated circuit that contains tens-of-millions of registers (memory locations) to store information. The \gls{ram} \gls{ic} is designed to quickly store data found at its input port and then look-up and return stored data requested by the circuit. In a computer operation, \gls{ram} contains both program code and user input (for example, the \emph{LibreOffice Writer} program along with whatever document the user is working on). There are two types of \gls{ram}: dynamic and static. \gls{dram} stores bits in such a way that it must be ``refreshed'' (or ``strobed'') every few milliseconds. \gls{sram} uses flip-flops to store data so it does not need to be refreshed. One enhancement to \glspl{dram} was to package several in a single \gls{ic} and then synchronize them so they act like a single larger memory; these are called \glspl{sdram} and they are very popular for camera and cell phone memory.
 
-Both \gls{rom} and \gls{ram} circuits use registers, flip-flops, and other components already considered in this chapter, but by the millions rather than just four or so at a time. There are no example circuits or timing diagrams for these devices in this book; however, the lab manual that accompanies this book includes activities for both \gls{rom} and \gls{ram} devices.
+Both \gls{rom} and \gls{ram} circuits use registers, flip-flops, and other components already considered in this chapter, but by the millions rather than just four or so at a time. There are no example circuits or timing diagrams for these devices in this book; however, the lab manual that accompanies this book includes an activity for a \gls{rom} device.
 
 
 

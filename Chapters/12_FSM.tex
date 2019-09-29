@@ -1,10 +1,23 @@
 \chapter{Finite State Machines}\label{ch12}
 \section{Introduction}
 
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+	% Upper half of box: my "title" area
+	\textcolor{blue}{\textbf{What to Expect}}
+	% Lower half of the box: the content
+	\tcblower
+	\Glspl{fsm} are a model of a real-world application. System designers often start with a \gls{fsm} in order to determine what a digital logic system must do and then use that model to design the system. This chapter introduces the two most common forms of \glspl{fsm}: Moore and Mealy. It includes the following topics.
+	
+	\begin{itemize}
+		\item Analyzing a circuit using a Moore \gls{fsm}
+		\item Analyzing a circuit using a Mealy \gls{fsm}
+		\item Developing state tables for a circuit
+		\item Creating a \gls{fsm} for an elevator simulation
+	\end{itemize}
+	
+\end{tcolorbox}
 
-%***************************************************************************
-% Section: Finite State Machines
-%***************************************************************************
+
 \section{Finite State Machines}
 \label{SIM:sec:finite_state_machines}
 
@@ -139,9 +152,6 @@ State tables can be used with either Mealy or Moore machines and a designer coul
 
 One of the important benefits of using a simulator like \Le is that a circuit designer can simulate digital systems to determine logic flaws or weaknesses that must be addressed before a physical \gls{ic} is manufactured.
 
-%***************************************************************************
-% Section: Elevator
-%***************************************************************************
 \section{Elevator}
 
 As a simple example of a \gls{ic}, imagine an elevator control circuit. For simplicity, this elevator is in a five story building and buttons like ``door open'' will be ignored. There are two ways the elevator can be called to a given floor: someone could push the floor button in the elevator car to ride to that floor or someone could push the call button beside the elevator door on a floor.

@@ -1,4 +1,22 @@
-\chapter{Binary Mathematics Operations}\label{ch03}
+\chapter{Binary Arithmetic Operations}\label{ch03}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+	% Upper half of box: my "title" area
+	\textcolor{blue}{\textbf{What to Expect}}
+	% Lower half of the box: the content
+	\tcblower
+	This chapter develops a number of different binary arithmetic operations. These operations are fundamental in understanding and constructing digital logic circuits using components like adders and logic gates like \textsf{NOT}. Included in this chapter are the following topics.
+
+	\begin{itemize}
+		\item Calculating addition/subtraction/multiplication/division problems with binary numbers
+		\item Countering overflow in arithmetic operations
+		\item Representing binary negative numbers
+		\item Contrasting the use of ones-complement and twos-complement numbers
+		\item Developing circuits where bitwise operations like masking are required
+		\item Using and converting codes like ASCII/\gls{bcd}/Gray
+	\end{itemize}
+\end{tcolorbox}
+
 \section{Binary Addition}
 
 Adding binary numbers is a simple task similar to the longhand addition of decimal numbers. As with decimal numbers, the bits are added one column at a time, from right to left. Unlike decimal addition, there is little to memorize in the way of an ``Addition Table,'' as seen in Table \ref{MO:tab:binary_addition_table}
@@ -183,7 +201,7 @@ The radix complement (or \emph{twos complement}) of a binary number is found by 
 
 \subsubsection{Signed Complements} 
 \label{MO:subsub:signed_complement}
-In circuits that use binary mathematics, a circuit designer can opt to use ones complement for negative numbers and designate the most significant bit as the sign bit; and, if so, the other bits are the magnitude of the number. This is similar to the \emph{sign-and-magnitude} system discussed on page \pageref{MO:sub:representing_negative_sign_magnitude}. By definition, when using ones complement negative numbers, if the most significant bit is zero, then the number is positive and the magnitude of the number is determined by the remaining bits; but if the most significant bit is one, then the number is negative and the magnitude of the number is determined by calculating the ones complement of the number. Thus: $ 0111_2 = +7_{10} $, and $ 1000_2 = -7_{10} $ (the ones complement for $ 1000_2 $ is $ 0111_2 $). Table \ref{MO:tab:ones_complement} may help to clarify this concept: 
+In circuits that use binary arithmetic, a circuit designer can opt to use ones complement for negative numbers and designate the most significant bit as the sign bit; and, if so, the other bits are the magnitude of the number. This is similar to the \emph{sign-and-magnitude} system discussed on page \pageref{MO:sub:representing_negative_sign_magnitude}. By definition, when using ones complement negative numbers, if the most significant bit is zero, then the number is positive and the magnitude of the number is determined by the remaining bits; but if the most significant bit is one, then the number is negative and the magnitude of the number is determined by calculating the ones complement of the number. Thus: $ 0111_2 = +7_{10} $, and $ 1000_2 = -7_{10} $ (the ones complement for $ 1000_2 $ is $ 0111_2 $). Table \ref{MO:tab:ones_complement} may help to clarify this concept: 
 
 \begin{table}[H]
   \sffamily

@@ -1,9 +1,23 @@
-\chapter{Combinational Encoder Circuits}\label{ch09}
-\section{Introduction}
+\chapter{Encoder Circuits}\label{ch09}
 
-Electronic circuits that do not require any memory devices (like flip-flops or registers) use what is called ``Combinational Logic.'' These systems can be quite complex, but all outputs are determined solely by the actions of a series of logic gates on a given set of inputs. Another characteristic of combinational circuits is the lack of feedback. An output state is determined almost instantly from the inputs with no feedback loops. Combinational circuits can be reduced to a Boolean Algebra expression, though one that may be quite complex. Combinational circuits include many useful applications, including adders, subtractors, multipliers, dividers, encoders, decoders, display drivers, and keyboard encoders.
- 
-This chapter develops combinational logic circuits.\footnote{All circuits found in this chapter are available as \Le files in the course materials.}
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black]
+	% Upper half of box: my "title" area
+	\textcolor{blue}{\textbf{What to Expect}}
+	% Lower half of the box: the content
+	\tcblower
+	Encoders and decoders are used to change a coded byte from one form to another. For example, a binary-to-BCD encoder changes a binary byte to its \gls{bcd} equivalent. Encoders and decoders are very common in digital circuits and are used, for example, to change a binary number to a visual display that uses an \gls{led}. The following topics are included in this chapter.
+	
+	\begin{itemize}
+		\item Developing circuits the use multiplexers and demultiplexers
+		\item Creating a minterm generator using a multiplexers
+		\item Creating a ten-line priority encoder
+		\item Using a seven-segment display for a decoded binary number
+		\item Employing a decoder as a function generator
+		\item Explaining the theory and process of error detection and correction
+		\item Detecting errors in a transmitted byte using the Hamming Code
+	\end{itemize}
+	
+\end{tcolorbox}
 
 \section{Multiplexers/Demultiplexers}
 \label{CL:sec:multiplexers_demultiplexers}
@@ -53,7 +67,7 @@ To help clarify this concept, Figure \ref{CL:fig:multiplexer_using_rotary_switch
 
 Imagine that the switches could somehow be synchronized so they rotated among the setting together; that is, \textsf{INPUT A}  would always connect to \textsf{OUTPUT 1} and so forth. That would mean a single wire could carry five different signals. For example, imagine that the inputs were connected to five different intrusion sensors in a building and the five outputs were connected to lamps on a guard's console in a remote building. If something triggered sensor $ A $ then as soon as the mux/dmux pair rotated to that position it would light lamp one on the console. Carrying all of these signals on a single wire saves a lot of expense. Of course, a true alarm system would be more complex than this, but this example is only designed to illustrate how a mux/dmux pair works in a transmission system.
 
-\footnote{In this book, input data ports are labeled with a single letter from the beginning of the alphabet, output data ports are labeled with a single letter from the end of the alphabet, and other signals use descriptive labels.}Figure \ref{fig:08_01} is the logic diagram for a simple one-bit two-to-one multiplexer. In this circuit, an input is applied to input ports \emph{A} and \emph{B}. Port \emph{Sel} is the selector and if that signal is zero then Port \emph{A} will be routed to output \emph{Y}; if, though, \emph{Sel} is one then Port \emph{B} will be routed to \emph{Y}.
+Figure \ref{fig:08_01} is the logic diagram for a simple one-bit two-to-one multiplexer. In this circuit, an input is applied to input ports \emph{A} and \emph{B}. Port \emph{Sel} is the selector and if that signal is zero then Port \emph{A} will be routed to output \emph{Y}; if, though, \emph{Sel} is one then Port \emph{B} will be routed to \emph{Y}.
 
 \begin{figure}[H]
 	\centering
