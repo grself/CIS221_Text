@@ -5,17 +5,20 @@ This is the text for the Cochise College CIS 221 (Digital Logic) class. This is 
 The text contains these chapters:
 
 1. Introduction
-2. Foundations of Binary Mathematics
-3. Binary Mathematics Operations
+2. Foundations of Binary Arithmetic
+3. Binary Arithmetic Operations
 4. Boolean Functions
 5. Boolean Expressions
 6. Karnaugh Maps
 7. Advanced Simplifying Methods
-8. Combinational Logic Circuits
-9. Sequential Logic Circuits
-10. Simulation
+8. Arithmetic Circuits
+9. Encoder Circuits
+10. Register Circuits
+11. Counters
+12. Finite State Machines
+13. Central Processing Units
 
-The text can be used as a stand-alone volume for digital logic classes but it was designed to be paired with a Logisim-Evolution lab manual, available at http://bit.ly/2uNYnvv.
+The text can be used as a stand-alone volume for digital logic classes but it was designed to be paired with a Logisim-Evolution lab manual, available at http://bit.ly/2prvSnG.
 
 The author is happy to share this work and would be happy to collaborate with other instructors to improve this work.
 
@@ -26,3 +29,4 @@ History:
 * 2014\. New material on Mealy and Moore State Machines was included, but the major change was in the laboratory exercises where five Verilog labs were added to the ten gate-level simulation labs.
 * 2015\. New information was added about adding/subtracting Binary Coded Decimal (BCD) numbers and representing floating point numbers in binary form; and all of the laboratory exercises were re-written in Verilog. Also, the book was reorganized and converted to LATEXfor printing.
 * 2018\. The labs were re-written using Logisim-evolution because students find that system easier to understand than iVerilog.
+* 2019\. The chapters were reorganized and split into smaller units. Also, a "What to Expect" section was added to the top of each chapter.
